@@ -4,61 +4,123 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <title>Pilotage DT — Feuille de route architecture</title>
-<style>:root{--bg:#f3f5f8;--paper:#fff;--ink:#202c3d;--muted:#66768a;--line:#dbe2eb;--soft:#edf1f6;--blue:#285e88;--orange:#c86c37;--minor:#accce7;--medium:#5795c5;--high:#285e88;--unknown:#bdc5ce;--name-width:390px;--chart-width:900px;--row-height:70px;--head-height:66px;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);font-size:14px;color-scheme:light}
-*{box-sizing:border-box}body{margin:0;background:var(--bg)}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}button,input{touch-action:manipulation}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #95bad5;outline-offset:2px}button{color:inherit}button svg{pointer-events:none}svg text{font-family:inherit}main{max-width:1900px;margin:auto;padding:22px 26px 30px}h1,h2,h3,p{margin:0}header.app-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}.eyebrow{color:var(--muted);font-size:10px;font-weight:750;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:5px}h1{font-size:25px;letter-spacing:-.8px;line-height:1.2;font-weight:750}.header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.sync{font-size:11px;color:var(--muted);margin-right:8px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:white;border:1px solid var(--line);border-radius:8px;padding:8px 12px;white-space:nowrap;font-size:12px;font-weight:600;min-height:35px;line-height:1.2}.btn:hover{background:#f5f7fa;border-color:#bdcbd9}.btn.icon{padding:8px;min-width:35px}.btn.quiet{background:transparent}.btn.active{background:#e8eff6;border-color:#9db5ca;color:#244e70}.notice{padding:12px 15px;border:1px solid #ddcda9;background:#fbf8ee;color:#69552f;border-radius:9px;font-size:12px;line-height:1.6;margin-bottom:14px}.notice.error{background:#fdf0f0;color:#8b3838;border-color:#e4c1c1}.notice.info{background:#eef3f8;color:#496278;border-color:#c9d8e6}.notice[hidden], [hidden]{display:none!important}.filters{padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;box-shadow:0 2px 6px #293c4e03}.filters-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line);margin-bottom:12px}.segmented{display:flex;align-items:center;gap:3px;padding:3px;background:#f0f3f6;border-radius:8px;width:fit-content}.segmented button{border:none;border-radius:6px;background:transparent;font-size:12px;font-weight:650;color:#69798b;padding:8px 13px;white-space:nowrap;display:flex;gap:9px;align-items:center}.segmented button[aria-pressed=true]{background:white;color:#223c51;box-shadow:0 1px 4px #152c4314}.count-pill{font-variant-numeric:tabular-nums;background:#e9edf2;border-radius:5px;padding:1px 5px;font-size:10px;color:#61738a}.filters-inputs{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field>label,.field-label{font-size:10px;letter-spacing:.75px;font-weight:700;color:var(--muted);text-transform:uppercase}.search-field{flex:1 1 230px;max-width:360px}.input-wrap{position:relative}.input-wrap>svg{position:absolute;left:11px;top:11px;color:#7b8c9f}.field input{height:37px;width:100%;border:1px solid var(--line);background:white;border-radius:7px;padding:8px 11px;color:var(--ink);font-size:12px}.field input::placeholder{color:#7f8996;opacity:1}#search{padding-left:34px}.combo{width:190px;position:relative}.combo input{padding-right:25px}.combo .clear{position:absolute;right:5px;top:5px;width:26px;height:27px;padding:0;background:transparent;border:0;color:#6e7f91}.combo-menu{position:absolute;top:calc(100% + 5px);left:0;min-width:100%;width:max-content;max-width:min(380px,90vw);background:white;border:1px solid var(--line);border-radius:9px;box-shadow:0 12px 30px #1b334325;z-index:80;max-height:290px;overflow:auto;padding:5px}.combo-option{display:flex;align-items:center;width:100%;text-align:left;padding:9px 10px;font-size:12px;border:0;border-radius:5px;background:white;white-space:normal;line-height:1.35}.combo-option:hover,.combo-option.focused{background:#edf3f8}.combo-option[aria-selected=true]{font-weight:700;background:#e8eff6}.combo-empty{font-size:12px;color:var(--muted);padding:12px}.filters-reset{margin-left:auto;height:37px}.stats{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 16px}.stat{border:0;border-radius:8px;background:#e9eef3;display:flex;align-items:baseline;gap:7px;padding:10px 14px;min-width:130px}.stat b{font-size:22px;font-weight:750;color:#314960;line-height:1;font-variant-numeric:tabular-nums}.stat span{font-size:11px;color:#637488}.stat.action{cursor:pointer}.stat.action:hover{background:#e0e7ef}.stat.active{box-shadow:inset 0 0 0 1px #7997b4}.stat-spacer{flex:1}.read-only{font-size:11px;color:var(--muted);display:flex;gap:5px;align-items:center}.roadmap-card{background:white;border:1px solid var(--line);border-radius:13px;overflow:hidden;box-shadow:0 3px 12px #263b5210}.roadmap-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 17px;border-bottom:1px solid var(--line);flex-wrap:wrap}.roadmap-toolbar h2{font-size:15px;letter-spacing:-.3px}.period-caption{font-size:11px;color:var(--muted);margin-top:3px}.toolbar-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.compact-field{display:flex;align-items:center;gap:6px;color:#65748a;font-size:11px}.compact-field input{height:32px;border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:white;color:#32455b;font-size:11px;min-width:0}.compact-field input[type=month]{width:126px}.compact-field input[type=date]{width:125px}.scale-buttons{padding:2px}.scale-buttons button{padding:6px 9px;font-size:11px}.roadmap-legend{display:flex;flex-wrap:wrap;align-items:center;gap:9px 18px;padding:10px 17px;background:#fcfdfe;border-bottom:1px solid var(--line);font-size:11px;color:#617288}.legend-item{display:flex;align-items:center;gap:6px}.swatch{width:20px;height:8px;border-radius:2px;display:inline-block}.swatch.hatched{background:repeating-linear-gradient(135deg,#bdcbd6,#bdcbd6 2px,#edf2f5 2px,#edf2f5 5px);height:10px;border:1px solid #b5c2ce}.marker-symbol{width:2px;height:13px;background:var(--orange)}.legend-spacer{flex:1}.small-toggle{display:flex;align-items:center;gap:5px;cursor:pointer}.small-toggle input{accent-color:#5e778e}.collapse-actions{display:flex;gap:7px}.text-btn{font-size:11px;color:#61758b;background:none;border:0;padding:2px 0}.text-btn:hover{text-decoration:underline}.roadmap-scroll{overflow:auto;max-height:calc(100vh - 365px);min-height:360px;position:relative;scrollbar-gutter:stable;scroll-behavior:auto}.roadmap-inner{width:calc(var(--name-width) + var(--chart-width));position:relative;min-height:100%}.axis,.gantt-row{display:grid;grid-template-columns:var(--name-width) var(--chart-width);width:calc(var(--name-width) + var(--chart-width))}.axis{height:var(--head-height);position:sticky;top:0;z-index:25;background:white;border-bottom:1px solid #c9d4df}.label-cell{position:sticky;left:0;z-index:5;min-width:0;border-right:1px solid var(--line);background:white}.axis-label{padding:13px 18px;display:flex;justify-content:space-between;align-items:center;z-index:27;font-size:10px;color:#6d7b8e;text-transform:uppercase;letter-spacing:1px;font-weight:700}.axis-label .label-sub{font-size:9px;letter-spacing:0;display:block;margin-top:4px;color:#8a97a6;font-weight:450;text-transform:none}.axis-track{position:relative;overflow:hidden;height:var(--head-height)}.axis-year{position:absolute;top:0;height:30px;display:flex;align-items:center;justify-content:center;background:#edf1f5;border-left:1px solid #d6e0e8;font-size:12px;font-weight:750;color:#425770}.axis-unit{position:absolute;top:30px;height:35px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#738398;border-left:1px solid #edf1f4}.axis-unit.current{color:#a05c31;font-weight:800;background:#f8eee5}.axis-reference{position:absolute;top:0;height:100%;width:2px;background:var(--orange);z-index:3;pointer-events:none}.gantt-row{height:var(--row-height);position:relative}.gantt-row .track{position:relative;min-width:0;overflow:hidden;background:white}.gantt-row:nth-of-type(even) .track,.gantt-row:nth-of-type(even)>.label-cell{background:#f7f9fb}.gantt-row .task-name{width:100%;height:100%;border:0;border-radius:0;text-align:left;padding:9px 14px 9px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px;background:transparent}.task-title{font-weight:580;font-size:12px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.task-meta{display:flex;align-items:center;gap:7px;font-size:10px;color:#77869a;min-width:0}.phase-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.urgency-dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}.gantt-row.task:hover .label-cell,.gantt-row.task:hover .track{background:#edf3f8}.gantt-row.task.selected .label-cell,.gantt-row.task.selected .track{background:#e6eff7}.task-name::after{content:'↗';position:absolute;right:10px;top:11px;font-size:11px;color:#90a0b2;opacity:0}.task-name:hover::after{opacity:1}.gantt-row.scope{height:43px;border-top:1px solid #c8d5e1;border-bottom:1px solid #d5dfe8}.gantt-row.scope>.label-cell,.gantt-row.scope>.track{background:#eaf0f5!important}.scope-button{height:100%;width:100%;display:flex;gap:8px;align-items:center;padding:8px 13px;border:0;background:none;text-align:left;font-weight:750;font-size:11px;letter-spacing:.25px;text-transform:uppercase}.scope-button .scope-name{flex:1;line-height:1.25}.chevron{width:12px;flex:none;transform:rotate(90deg);transition:transform .15s}.scope-button[aria-expanded=false] .chevron{transform:rotate(0)}.group-count{font-size:10px;font-weight:650;padding:2px 6px;border-radius:5px;background:#dce5ee;color:#5e7287;letter-spacing:0}.gantt-row.strand{height:39px;margin-top:12px}.gantt-row.strand>.label-cell,.gantt-row.strand>.track{background:#fff!important;border-top:0}.strand-title{padding:11px 14px;font-size:11px;font-weight:800;color:#456580;letter-spacing:.6px;text-transform:uppercase}.strand-title::before{content:'';display:inline-block;width:4px;height:13px;background:#8faabd;border-radius:2px;margin-right:9px;vertical-align:-2px}.track svg{width:100%;height:100%;display:block}.bar-hit{cursor:pointer}.bar-hit:focus{outline:none}.bar-hit:focus .main-bar{stroke:#172b3b;stroke-width:2}.bar-hit:hover .main-bar{filter:brightness(.94)}.roadmap-empty{padding:70px 24px;text-align:center;color:var(--muted);line-height:1.7;max-width:100vw}.empty-title{font-weight:700;color:#465c74;margin-bottom:8px}.footer-note{font-size:11px;color:#78879a;line-height:1.65;padding:11px 17px;border-top:1px solid var(--line);display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap}.quality-panel{margin-top:13px;border:1px solid var(--line);border-radius:10px;background:white;padding:0 15px}.quality-panel>summary{cursor:pointer;padding:13px 0;font-size:12px;color:#687a8b}.quality-list{display:grid;gap:6px;padding-bottom:14px}.quality-item{display:flex;gap:10px;justify-content:space-between;border:1px solid #e1e6ec;border-radius:7px;padding:9px 11px;font-size:12px;background:#fafbfd;text-align:left}.quality-item:hover{background:#eef3f8}.quality-item span:last-child{font-size:11px;color:#7a6a54;text-align:right}.local-actions{display:flex;gap:10px;align-items:center;margin-bottom:12px;color:var(--muted);font-size:11px}.overlay{position:fixed;inset:0;background:#16233569;backdrop-filter:blur(2px);z-index:150;display:flex;justify-content:flex-end;padding:18px}.dialog{background:white;border:1px solid #d5dfe8;border-radius:14px;width:510px;max-width:100%;max-height:100%;box-shadow:0 20px 70px #0e203554;display:flex;flex-direction:column}.dialog-head{padding:23px 24px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}.dialog-head .heading{flex:1;min-width:0}.dialog h2{font-size:21px;line-height:1.35;letter-spacing:-.5px}.dialog-body{padding:20px 24px;overflow:auto}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px 18px}.detail dt{font-size:10px;text-transform:uppercase;letter-spacing:.6px;font-weight:700;color:#748399;margin-bottom:6px}.detail dd{margin:0;font-size:13px;line-height:1.5;overflow-wrap:anywhere}.detail.wide{grid-column:1/-1}.detail .precision{font-size:11px;color:#8995a4;margin-top:4px}.detail .comment{white-space:pre-wrap}.detail .no-comment{color:#8b97a5;font-style:italic}.urgency-tag{display:inline-flex;align-items:center;gap:6px;border:1px solid #dce3ec;padding:4px 8px;border-radius:6px;font-size:12px}.dialog-footer{padding:13px 24px;border-top:1px solid var(--line);font-size:11px;color:#8490a0}.dialog-warnings{border-radius:8px;background:#faf4e9;color:#826036;padding:11px;margin-bottom:18px;font-size:12px;line-height:1.6}.visually-hidden{position:absolute;clip:rect(0,0,0,0);height:1px;width:1px;overflow:hidden}.app-footer{margin-top:14px;color:#92a0ae;font-size:10px;display:flex;justify-content:space-between}.no-script{padding:20px;color:#903e3e}
-@media(min-width:1700px){:root{--name-width:450px}h1{font-size:28px}.roadmap-scroll{max-height:calc(100vh - 350px)}}
-@media(max-width:1100px){main{padding:16px}.combo{width:175px}.filters-inputs{gap:10px}.search-field{max-width:none}.filters-reset{margin-left:0}.roadmap-scroll{max-height:600px}.toolbar-controls{gap:6px}.roadmap-toolbar{align-items:flex-start}:root{--name-width:340px}}
-@media(max-width:720px){:root{--name-width:255px;--row-height:78px}main{padding:12px}header.app-header{align-items:flex-start;gap:8px}h1{font-size:21px}.sync{width:100%;text-align:right;font-size:10px}.header-right{gap:5px}.header-right .btn span{display:none}.filters-top{align-items:flex-start;flex-wrap:wrap}.segmented{max-width:100%;overflow-x:auto}.segmented button{padding:8px;font-size:11px}.filters-inputs>.field{width:calc(50% - 5px);flex:none}.filters-inputs>.search-field{width:100%}.filters-reset{margin-left:auto}.stats{gap:7px}.stat{min-width:0;flex:1 1 43%;padding:10px}.read-only{display:none}.roadmap-toolbar{padding:12px}.compact-field input[type=month]{width:117px}.toolbar-controls{gap:8px}.roadmap-legend{padding:10px 12px;gap:9px 12px}.legend-spacer{display:none}.task-title{font-size:11px}.scope-button{font-size:10px}.strand-title{font-size:10px}.task-meta{font-size:9px}.roadmap-scroll{min-height:420px;max-height:650px}.overlay{padding:8px}.dialog-head,.dialog-body{padding:18px}.quality-item{flex-direction:column;gap:5px}.quality-item span:last-child{text-align:left}}
-@media print{@page{size:A3 landscape;margin:10mm}body,main{background:white}main{padding:0;max-width:none}.filters,.header-right,.stats,.toolbar-controls,.collapse-actions,.small-toggle,.notice,.local-actions,.quality-panel,.app-footer{display:none!important}.roadmap-card{box-shadow:none;border-radius:0}.roadmap-scroll{overflow:visible;max-height:none;min-height:0}.roadmap-inner,.gantt-row,.axis{width:100%!important;min-width:0!important}.axis,.gantt-row{grid-template-columns:30% 70%}.label-cell,.axis{position:static!important}.gantt-row{break-inside:avoid}.roadmap-legend{font-size:9px}.gantt-row.scope{break-after:avoid}.gantt-row.strand{break-after:avoid}.roadmap-inner{--row-height:55px}.task-title{font-size:10px}.task-meta{font-size:9px}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.overlay{display:none!important}}
+<style>
+:root{
+ --bg:#f4f6f9;--paper:#fff;--ink:#233349;--muted:#738197;--line:#dfe5ed;
+ --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#accce7;--medium:#5795c5;
+ --high:#285e88;--unknown:#bdc5ce;--name-width:310px;--chart-width:900px;
+ --row-height:42px;--head-height:52px;
+ font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+ font-size:13px;color:var(--ink);color-scheme:light
+}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:var(--bg)}
+button,input,select{font:inherit}button{cursor:pointer;color:inherit;touch-action:manipulation}
+button:disabled{cursor:default;opacity:.45}input{touch-action:manipulation}
+button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid #739bb9;outline-offset:2px}
+button svg{pointer-events:none}svg text{font-family:inherit}h1,h2,h3,p{margin:0}[hidden]{display:none!important}
+main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;display:flex;flex-direction:column;gap:9px;min-height:0}
+.app-header{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-shrink:0;min-height:31px}
+.title-group{display:flex;align-items:center;gap:12px;min-width:0}h1{font-size:21px;letter-spacing:-.65px;line-height:1.25;font-weight:720}
+.header-right{display:flex;gap:6px;align-items:center;flex-shrink:0}.sync{font-size:10px;color:var(--muted);margin-right:6px;font-variant-numeric:tabular-nums}
+.btn{border:1px solid var(--line);background:white;border-radius:7px;padding:7px 11px;min-height:33px;font-size:12px;font-weight:580;line-height:1.2;display:inline-flex;gap:6px;align-items:center;justify-content:center;white-space:nowrap}
+.btn:hover{background:#edf2f7;border-color:#bdcbd9}.btn.icon{width:33px;padding:6px}.btn.quiet{background:transparent;border-color:transparent;color:#64758a}.btn.active,.btn[aria-expanded=true]{background:#e8eef5;color:#294c6b;border-color:#acbfd0}.badge{background:#dde7f0;font-size:10px;min-width:16px;line-height:16px;border-radius:4px;font-variant-numeric:tabular-nums}
+.main-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;min-height:36px;padding-bottom:1px}
+.segmented{display:flex;align-items:center;gap:2px;padding:3px;background:#e9edf2;border:1px solid #e1e7ee;border-radius:8px;width:fit-content;max-width:100%}
+.segmented button{border:0;border-radius:5px;background:transparent;padding:7px 12px;font-size:12px;line-height:1.2;font-weight:600;color:#67788b;white-space:nowrap}
+.segmented button[aria-pressed=true]{background:white;color:#233e55;box-shadow:0 1px 3px #1e334615}
+.control-right{display:flex;align-items:center;gap:7px;min-width:0}.search-field{width:250px;min-width:150px}
+.input-wrap{position:relative}.input-wrap>svg{position:absolute;left:10px;top:9px;color:#8191a4;pointer-events:none}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field>label,.field-label{font-size:10px;font-weight:650;color:#6d7c90;letter-spacing:.3px}
+.field input{height:34px;width:100%;border:1px solid var(--line);border-radius:7px;padding:7px 10px;background:white;color:var(--ink);font-size:12px;min-width:0}.field input::placeholder{color:#8995a5;opacity:1}#search{padding-left:32px}
+.notice{padding:9px 12px;border:1px solid #dbc5a2;background:#fbf7ed;color:#765b2f;border-radius:8px;font-size:12px;line-height:1.5;max-height:80px;overflow:auto;flex-shrink:0}.notice.info{background:#edf3f8;color:#496278;border-color:#c9d8e6}.notice.error{background:#fff1ef;color:#8a4538;border-color:#e5c6bf}
+.roadmap-card{flex:1;min-height:140px;display:flex;flex-direction:column;overflow:hidden;background:white;border:1px solid #dbe3ec;border-radius:10px;box-shadow:0 2px 10px #263b5207}
+.roadmap-legend{display:flex;align-items:center;gap:15px;flex-wrap:wrap;min-height:35px;flex-shrink:0;padding:8px 13px;border-bottom:1px solid var(--line);font-size:10px;color:#708096;background:#fff}
+.legend-label{font-weight:650;color:#566b83}.legend-item{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.swatch{width:17px;height:7px;border-radius:2px;display:inline-block}.swatch.hatched{background:repeating-linear-gradient(135deg,#bdcbd6,#bdcbd6 2px,#edf2f5 2px,#edf2f5 5px);height:10px;border:1px solid #b5c2ce}.legend-spacer{flex:1}.period-caption{color:#8190a2;white-space:nowrap;font-size:10px}.marker-symbol{width:2px;height:11px;background:var(--orange)}
+.roadmap-scroll{flex:1;min-height:0;overflow:auto;position:relative;scrollbar-gutter:stable;overscroll-behavior:contain;scroll-behavior:auto}.roadmap-inner{width:calc(var(--name-width) + var(--chart-width));position:relative;min-height:100%}
+.axis,.gantt-row{display:grid;grid-template-columns:var(--name-width) var(--chart-width);width:calc(var(--name-width) + var(--chart-width))}
+.axis{height:var(--head-height);position:sticky;top:0;z-index:25;background:white;border-bottom:1px solid #d5dfe8}.label-cell{position:sticky;left:0;z-index:5;min-width:0;border-right:1px solid #dfe7ee;background:white}
+.axis-label{padding:9px 15px;display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:27;color:#6c7e93;font-size:10px;letter-spacing:.7px;text-transform:uppercase;font-weight:650;background:#f9fafc}.axis-label .rows-count{color:#91a0af;font-size:9px;font-weight:500;letter-spacing:0;white-space:nowrap}
+.axis-track{position:relative;overflow:hidden;height:var(--head-height)}.axis-year{position:absolute;top:0;height:26px;display:flex;align-items:center;justify-content:center;background:#eef2f6;border-left:1px solid #dbe4ec;font-size:12px;font-weight:650;color:#48617a}.axis-unit{position:absolute;top:26px;height:25px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#8694a6;border-left:1px solid #edf1f5}.axis-unit.current{color:#9d653d;background:#faf3ec;font-weight:700}.axis-reference{position:absolute;top:0;height:100%;width:1px;background:var(--orange);z-index:3;pointer-events:none}
+.gantt-row{height:var(--row-height);position:relative}.gantt-row .track{position:relative;min-width:0;overflow:hidden;background:white}.gantt-row:nth-of-type(even) .track,.gantt-row:nth-of-type(even)>.label-cell{background:#f8fafc}
+.gantt-row .task-name{width:100%;height:100%;border:0;text-align:left;padding:6px 15px 6px 24px;display:flex;flex-direction:column;justify-content:center;gap:4px;background:transparent}
+.task-title{font-size:12px;line-height:1.3;font-weight:520;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.task-meta{display:none;align-items:center;gap:6px;font-size:10px;color:#8a98a9;min-width:0}.phase-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.urgency-dot{width:6px;height:6px;display:inline-block;border-radius:50%;flex-shrink:0}.show-details .task-meta{display:flex}
+.gantt-row.task:hover .label-cell,.gantt-row.task:hover .track{background:#edf3f8}.gantt-row.task.selected .label-cell,.gantt-row.task.selected .track{background:#eaf1f7}
+.gantt-row.scope{height:32px;border-top:1px solid #d8e3ec;border-bottom:1px solid #e1e8ef}.gantt-row.scope>.label-cell,.gantt-row.scope>.track{background:#edf2f6!important}
+.scope-button{height:100%;width:100%;display:flex;align-items:center;gap:7px;padding:4px 12px;border:0;background:none;text-align:left;font-size:10px;font-weight:720;letter-spacing:.3px;text-transform:uppercase}.scope-name{flex:1;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.chevron{width:10px;flex:none;transform:rotate(90deg)}.scope-button[aria-expanded=false] .chevron{transform:rotate(0)}.group-count{font-size:10px;color:#8c9cad;font-weight:500;letter-spacing:0}
+.gantt-row.strand{height:28px;margin-top:6px}.gantt-row.strand>.label-cell,.gantt-row.strand>.track{background:#fff!important}.strand-title{display:flex;align-items:center;padding:4px 13px;font-size:10px;letter-spacing:.5px;font-weight:750;text-transform:uppercase;color:#536d83}.strand-title:before{content:'';width:3px;height:11px;background:#9bb0c2;border-radius:2px;margin-right:8px;flex-shrink:0}
+.track svg{width:100%;height:100%;display:block}.bar-hit{cursor:pointer}.bar-hit:focus{outline:none}.bar-hit:focus .main-bar{stroke:#183951;stroke-width:2}.bar-hit:hover .main-bar{filter:brightness(.95)}
+.roadmap-empty{padding:65px 24px;text-align:center;color:var(--muted);font-size:12px;line-height:1.7;max-width:100vw}.empty-title{font-weight:650;color:#4a6179;margin-bottom:6px}
+/* Secondary controls float above the calendar and never reduce its height. */
+.popover{position:fixed;z-index:90;background:white;border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 12px 40px #1c354426;padding:16px;width:410px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 100px);overflow:auto}
+.popover-head{display:flex;align-items:center;justify-content:space-between;margin:-4px -3px 13px 0}.popover-head h2{font-size:14px;letter-spacing:-.2px}.popover-head .btn{min-height:27px;width:27px;padding:3px}.filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px 12px}.combo{position:relative}.combo input{padding-right:28px}.combo .clear{position:absolute;right:4px;top:3px;width:25px;height:28px;padding:0;background:transparent;border:0;color:#7d8b9c}.combo-menu{position:fixed;width:260px;max-width:calc(100vw - 24px);background:white;border:1px solid #d8e2eb;border-radius:8px;box-shadow:0 10px 25px #203a4a2a;z-index:100;max-height:230px;overflow:auto;padding:4px}.combo-option{display:block;width:100%;text-align:left;padding:8px 9px;border:0;border-radius:4px;background:white;font-size:12px;line-height:1.4;white-space:normal;overflow-wrap:anywhere}.combo-option:hover,.combo-option.focused{background:#edf3f8}.combo-option[aria-selected=true]{background:#e8eff5;font-weight:650}.combo-empty{padding:10px;font-size:12px;color:var(--muted)}
+.popover-footer{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}.small-toggle{display:flex;align-items:center;gap:6px;font-size:12px;color:#5d7186;cursor:pointer}.small-toggle input{accent-color:#6c8296;width:14px;height:14px}
+.options-block{display:flex;flex-direction:column;gap:10px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}.options-label{font-size:11px;color:#79899b;font-weight:650;margin-bottom:1px}.scale-buttons{width:100%;padding:2px}.scale-buttons button{flex:1;padding:7px 8px;font-size:11px}.date-fields{display:flex;gap:10px;align-items:flex-end}.date-fields>.field{flex:1}.date-fields input{width:100%;height:33px;font-size:11px;padding:5px}.date-fields .btn{height:33px}.option-hint{font-size:11px;color:#8290a1;line-height:1.5}
+.quality-panel{border-top:1px solid var(--line);padding-top:12px;margin-top:14px}.quality-panel summary{font-size:12px;color:#738499;cursor:pointer;line-height:1.5}.quality-list{display:grid;gap:6px;padding-top:10px}.quality-item{display:flex;flex-direction:column;gap:4px;border:1px solid #e1e6ec;border-radius:6px;padding:9px;font-size:12px;background:#fafbfd;text-align:left}.quality-item:hover{background:#eef3f8}.quality-item span:last-child{font-size:11px;color:#8d775c}
+.actions-popover{width:215px;padding:6px}.menu-item{width:100%;display:flex;align-items:center;gap:9px;border:0;border-radius:6px;background:white;padding:10px 11px;font-size:12px;text-align:left}.menu-item:hover{background:#edf2f7}.menu-item svg{width:16px;height:16px;color:#7a8c9e}.menu-item:disabled{opacity:.4}
+.overlay{position:fixed;inset:0;z-index:150;background:#15283d55;backdrop-filter:blur(2px);display:flex;justify-content:flex-end;padding:14px}.dialog{background:white;border:1px solid #d5dfe8;border-radius:13px;width:500px;max-width:100%;max-height:100%;box-shadow:0 20px 65px #0e203545;display:flex;flex-direction:column}.dialog-head{padding:21px 23px 17px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}.dialog-head .heading{flex:1;min-width:0}.eyebrow{font-size:10px;font-weight:650;letter-spacing:1.2px;text-transform:uppercase;color:#8190a2;margin-bottom:7px}.dialog h2{font-size:20px;line-height:1.35;letter-spacing:-.4px}.dialog-body{padding:18px 23px;overflow:auto}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.detail dt{font-size:10px;letter-spacing:.3px;font-weight:650;text-transform:uppercase;color:#8592a2;margin-bottom:5px}.detail dd{margin:0;font-size:13px;line-height:1.5;overflow-wrap:anywhere}.detail.wide{grid-column:1/-1}.detail .precision{font-size:11px;color:#8b98a7;margin-top:3px}.detail .comment{white-space:pre-wrap}.detail .no-comment{color:#8b97a5;font-style:italic}.urgency-tag{display:inline-flex;align-items:center;gap:6px;border:1px solid #dce3ec;padding:3px 8px;border-radius:5px;font-size:12px}.dialog-footer{padding:12px 23px;border-top:1px solid var(--line);font-size:10px;color:#8a97a6}.dialog-warnings{border-radius:7px;background:#faf4e9;color:#826036;padding:10px;margin-bottom:16px;font-size:12px;line-height:1.5}
+.visually-hidden{position:absolute;clip:rect(0,0,0,0);height:1px;width:1px;overflow:hidden}.no-script{padding:16px;color:#903e3e}
+@media(min-width:1700px){:root{--name-width:340px}main{padding:14px 20px}h1{font-size:23px}}
+@media(max-width:1100px){:root{--name-width:280px}.search-field{width:210px}.segmented button{padding:7px 10px}main{padding:10px 12px}}
+@media(max-width:820px){:root{--name-width:250px}.main-controls{flex-wrap:wrap;gap:7px}.control-right{flex:1;justify-content:flex-end}.search-field{flex:1;max-width:none}.roadmap-legend{gap:10px}.sync{display:none}h1{font-size:19px}.period-caption{margin-left:auto}.legend-date{display:none}}
+@media(max-width:560px){:root{--name-width:200px;--row-height:46px}main{padding:8px;gap:7px}h1{font-size:17px;letter-spacing:-.4px}.header-right{gap:3px}.control-right{width:100%;flex-wrap:nowrap}.search-field{min-width:90px;width:auto}.main-controls>.segmented{width:100%}.main-controls>.segmented button{flex:1;font-size:11px;padding:7px 6px}.roadmap-legend{font-size:9px;gap:8px;padding:7px 9px}.legend-label{display:none}.period-caption{display:none}.task-title{font-size:11px}.gantt-row .task-name{padding:5px 10px 5px 18px}.scope-button{font-size:9px;padding:4px 8px;gap:5px}.strand-title{font-size:9px;padding:5px 8px}.axis-label{padding:8px 10px}.axis-label .rows-count{font-size:8px}.overlay{padding:6px}.dialog-head,.dialog-body{padding:17px}.popover{padding:13px}.detail-grid{gap:14px}}
+@media print{@page{size:A3 landscape;margin:10mm}html,body{height:auto;overflow:visible;background:white}main{height:auto;display:block;padding:0;max-width:none}.main-controls,.header-right,.notice,.popover,.overlay{display:none!important}.app-header{margin-bottom:10px}.roadmap-card{height:auto;display:block;overflow:visible;box-shadow:none;border-radius:0}.roadmap-scroll{display:block;overflow:visible;max-height:none;height:auto;min-height:0}.roadmap-inner,.gantt-row,.axis{width:100%!important;min-width:0!important}.axis,.gantt-row{grid-template-columns:30% 70%}.label-cell,.axis{position:static!important}.gantt-row{break-inside:avoid}.gantt-row.scope,.gantt-row.strand{break-after:avoid}.roadmap-legend{font-size:9px}.task-title{font-size:10px}.task-meta{font-size:9px}.period-caption{display:block}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
 </style>
 </head>
 <body>
 <noscript><p class="no-script">JavaScript doit être activé pour afficher la feuille de route.</p></noscript>
 <main>
-<header class="app-header">
- <div><div class="eyebrow">Pilotage DT</div><h1>Feuille de route pôle architecture</h1></div>
- <div class="header-right"><span class="sync" id="sync" role="status">Connexion à Grist…</span><button class="btn" id="refresh" title="Relire la table Architecture">↻ <span>Actualiser</span></button><button class="btn" id="export" title="Exporter la feuille de route affichée au format SVG">↓ <span>Exporter SVG</span></button><button class="btn" id="print" title="Imprimer la feuille de route">⎙ <span>Imprimer</span></button></div>
-</header>
-<div id="notice" class="notice info" role="status" hidden></div>
-<div id="localActions" class="local-actions" hidden><button class="btn" id="importCsv">Ouvrir un export Architecture (.csv)</button><span>Aperçu local : le fichier est lu uniquement dans ce navigateur.</span><input type="file" id="csvFile" accept=".csv,text/csv" hidden></div>
-<section class="filters" aria-label="Filtres de la feuille de route">
- <div class="filters-top"><div class="segmented" id="strandTabs" aria-label="Volet"></div><span class="read-only">◉ Lecture seule · table Architecture</span></div>
- <div class="filters-inputs">
-  <div class="field search-field"><label for="search">Recherche</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg><input type="search" id="search" placeholder="Rechercher un chantier ou un mot clé" autocomplete="off"></div></div>
-  <div class="field combo" id="scopeCombo"></div><div class="field combo" id="phaseCombo"></div><div class="field combo" id="urgencyCombo"></div><div class="field combo" id="ownerCombo"></div>
-  <button id="clear" class="btn quiet filters-reset">Effacer</button>
- </div>
-</section>
-<section class="stats" aria-label="Synthèse du périmètre filtré">
- <div class="stat"><b id="kpiTotal">—</b><span>chantiers</span></div><div class="stat"><b id="kpiScope">—</b><span>périmètres</span></div>
- <button class="stat action" id="kpiPriority" aria-pressed="false" title="Afficher les chantiers prioritaires"><b id="kpiHigh">—</b><span>prioritaires</span></button>
- <button class="stat action" id="kpiDates" aria-pressed="false" title="Afficher les chantiers dont la date de fin est absente ou invalide"><b id="kpiOpen">—</b><span>fins à préciser</span></button>
- <span class="stat-spacer"></span><span id="scopeCount" class="read-only"></span>
-</section>
-<section class="roadmap-card" aria-labelledby="calendarTitle">
- <div class="roadmap-toolbar">
-  <div><h2 id="calendarTitle">Calendrier des chantiers</h2><div class="period-caption" id="periodCaption">En attente des données</div></div>
-  <div class="toolbar-controls">
-   <div class="segmented scale-buttons" id="scales" aria-label="Échelle de temps"><button data-scale="fit" aria-pressed="true">Vue d’ensemble</button><button data-scale="month" aria-pressed="false">Mois</button><button data-scale="quarter" aria-pressed="false">Trimestres</button></div>
-   <label class="compact-field">De <input type="month" id="rangeStart" aria-label="Début de la période affichée"></label>
-   <label class="compact-field">à <input type="month" id="rangeEnd" aria-label="Fin de la période affichée"></label>
-   <button class="btn icon" id="allDates" title="Afficher toute la période">↔</button>
-   <label class="compact-field">Repère <input type="date" id="referenceDate" aria-label="Date du repère vertical"></label>
-   <button class="btn icon" id="today" title="Placer le repère à aujourd’hui">◎</button>
+ <header class="app-header">
+  <div class="title-group"><h1>Feuille de route pôle architecture</h1></div>
+  <div class="header-right">
+   <span class="sync" id="sync" role="status">Connexion à Grist…</span>
+   <button class="btn icon quiet" id="refresh" title="Actualiser les données" aria-label="Actualiser les données"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7v5h-5"/><path d="M20 12a8 8 0 1 0-2.3 5.7M20 7v5l-4-4"/></svg></button>
+   <button class="btn icon quiet" id="actionsToggle" title="Exporter ou imprimer" aria-label="Plus d’actions" aria-expanded="false" aria-controls="actionsPanel"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
   </div>
- </div>
- <div class="roadmap-legend" aria-label="Légende">
-  <span class="legend-item"><i class="swatch" style="background:var(--minor)"></i>Mineur</span><span class="legend-item"><i class="swatch" style="background:var(--medium)"></i>Intermédiaire</span><span class="legend-item"><i class="swatch" style="background:var(--high)"></i>Prioritaire</span><span class="legend-item"><i class="swatch" style="background:var(--unknown)"></i>À qualifier / non renseigné</span>
-  <span class="legend-item"><i class="swatch hatched"></i>Précision annuelle</span><span class="legend-item"><i class="marker-symbol"></i><span id="referenceLabel">Repère</span></span>
-  <span class="legend-spacer"></span><label class="small-toggle"><input type="checkbox" id="consolidated">Durées consolidées</label>
-  <span class="collapse-actions"><button class="text-btn" id="expand">Tout déplier</button><span>·</span><button class="text-btn" id="collapse">Tout replier</button></span>
- </div>
- <div class="roadmap-scroll" id="roadmapScroll" tabindex="0" aria-label="Feuille de route défilante"><div class="roadmap-inner" id="roadmap"><div class="roadmap-empty"><p class="empty-title">Connexion à la table Architecture</p><p>Les chantiers apparaîtront ici dès que Grist transmettra les données.</p></div></div></div>
- <div class="footer-note"><span>Couleur = urgence, et non avancement. Cliquez sur un chantier pour consulter son détail.</span><span>Une fin absente n’est jamais remplacée par une échéance estimée.</span></div>
-</section>
-<details id="qualityPanel" class="quality-panel" hidden><summary id="qualitySummary"></summary><div id="qualityList" class="quality-list"></div></details>
-<footer class="app-footer"><span>Architecture · Données conservées dans Grist</span><span>Aucune modification des tables depuis cette vue</span></footer>
+ </header>
+ <nav class="main-controls" aria-label="Navigation de la feuille de route">
+  <div class="segmented" id="strandTabs" aria-label="Volet"><button data-strand="" aria-pressed="true">Tous</button><button data-strand="Internes DT" aria-pressed="false">Internes DT</button><button data-strand="Avec les autres directions" aria-pressed="false">Autres directions</button></div>
+  <div class="control-right">
+   <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
+   <button class="btn" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtres<span id="filterCount" class="badge" hidden></span></button>
+   <button class="btn" id="viewToggle" aria-expanded="false" aria-controls="viewPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>Affichage</button>
+   <button class="btn icon quiet" id="resetQuick" title="Effacer tous les filtres" aria-label="Effacer tous les filtres" hidden>×</button>
+  </div>
+ </nav>
+ <div id="notice" class="notice info" role="status" hidden></div>
+ <section class="roadmap-card" aria-label="Feuille de route architecture">
+  <div class="roadmap-legend" aria-label="Couleurs par niveau d’urgence">
+   <span class="legend-label">Urgence</span>
+   <span class="legend-item"><i class="swatch" style="background:var(--minor)"></i>Mineur</span>
+   <span class="legend-item"><i class="swatch" style="background:var(--medium)"></i>Intermédiaire</span>
+   <span class="legend-item"><i class="swatch" style="background:var(--high)"></i>Prioritaire</span>
+   <span class="legend-item" title="Urgence à qualifier ou non renseignée"><i class="swatch" style="background:var(--unknown)"></i>À qualifier</span>
+   <span class="legend-spacer"></span>
+   <span class="period-caption" id="periodCaption"></span>
+   <span class="legend-item legend-date" title="Date du repère vertical"><i class="marker-symbol"></i><span id="referenceLabel"></span></span>
+  </div>
+  <div class="roadmap-scroll" id="roadmapScroll" tabindex="0" aria-label="Feuille de route défilante"><div class="roadmap-inner" id="roadmap"><div class="roadmap-empty"><p class="empty-title">Connexion à la table Architecture</p><p>Les chantiers apparaîtront ici dès que Grist transmettra les données.</p></div></div></div>
+ </section>
 </main>
+<section class="popover" id="filtersPanel" role="dialog" aria-label="Filtres de la feuille de route" hidden>
+ <div class="popover-head"><h2>Filtres</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer les filtres">×</button></div>
+ <div class="filter-grid"><div class="field combo" id="scopeCombo"></div><div class="field combo" id="urgencyCombo"></div><div class="field combo" id="phaseCombo"></div><div class="field combo" id="ownerCombo"></div></div>
+ <div class="popover-footer"><label class="small-toggle"><input id="missingEnd" type="checkbox">Fins à préciser uniquement</label><button id="clear" class="btn quiet">Effacer</button></div>
+</section>
+<section class="popover" id="viewPanel" role="dialog" aria-label="Affichage du planning" hidden>
+ <div class="popover-head"><h2>Affichage du planning</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer les réglages d’affichage">×</button></div>
+ <div class="segmented scale-buttons" id="scales" aria-label="Échelle de temps"><button data-scale="fit" aria-pressed="true">Vue d’ensemble</button><button data-scale="month" aria-pressed="false">Mois</button><button data-scale="quarter" aria-pressed="false">Trimestres</button></div>
+ <div class="options-block"><div class="options-label">Période affichée</div><div class="date-fields"><label class="field">De<input type="month" id="rangeStart" aria-label="Début de la période affichée"></label><label class="field">À<input type="month" id="rangeEnd" aria-label="Fin de la période affichée"></label><button class="btn icon" id="allDates" title="Afficher toute la période" aria-label="Afficher toute la période">↔</button></div></div>
+ <div class="options-block"><div class="options-label">Repère vertical</div><div class="date-fields"><label class="field"><span class="visually-hidden">Date du repère</span><input type="date" id="referenceDate" aria-label="Date du repère vertical"></label><button class="btn" id="today">Aujourd’hui</button></div></div>
+ <div class="options-block"><label class="small-toggle"><input type="checkbox" id="showDetails">Afficher les phases et les dates sur chaque ligne</label><label class="small-toggle"><input type="checkbox" id="consolidated">Afficher les durées consolidées par périmètre</label><p class="option-hint">Hachures : date connue à l’année. Pointillés : date à préciser. La couleur indique l’urgence, pas l’avancement.</p></div>
+ <div class="popover-footer"><button class="btn quiet" id="expand">Tout déplier</button><button class="btn quiet" id="collapse">Tout replier</button></div>
+ <details id="qualityPanel" class="quality-panel" hidden><summary id="qualitySummary"></summary><div id="qualityList" class="quality-list"></div></details>
+</section>
+<section class="popover actions-popover" id="actionsPanel" role="dialog" aria-label="Actions" hidden>
+ <button class="menu-item" id="export"><span aria-hidden="true">↓</span>Exporter SVG</button>
+ <button class="menu-item" id="print"><span aria-hidden="true">⎙</span>Imprimer</button>
+ <div id="localActions" hidden><button class="menu-item" id="importCsv">Ouvrir un CSV local</button><input type="file" id="csvFile" accept=".csv,text/csv" hidden></div>
+</section>
 <div class="overlay" id="overlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="heading"><div class="eyebrow">Détail du chantier</div><h2 id="dialogTitle"></h2></div><button class="btn icon" id="closeDialog" aria-label="Fermer le détail">✕</button></div><div class="dialog-body" id="dialogBody"></div><div class="dialog-footer">Lecture seule · Les modifications s’effectuent dans la table Architecture.</div></section></div>
 <script>/* Modèle de lecture de la table Architecture. Aucun appel d'écriture. */
 const RoadmapCore = (() => {
@@ -229,7 +291,7 @@ const C=RoadmapCore, $=id=>document.getElementById(id);
 const MONTHS=['Jan.','Fév.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
 const INITIALS=['J','F','M','A','M','J','J','A','S','O','N','D'];
 const LABELS={name:'Nom',scope:'Périmètre',strand:'Volet',phase:'Phase',urgency:'Urgence',owner:'Responsable Projet',comment:'Commentaires',start:'Date de début',startPrecision:'Précision début',end:'Date de fin',endPrecision:'Précision fin',order:'Ordre'};
-const state={rows:[],loaded:false,source:'',map:{},filters:{strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false},range:null,manualRange:false,scale:'fit',width:800,reference:C.today(),collapsed:new Set(),selected:null,showConsolidated:false};
+const state={rows:[],loaded:false,source:'',map:{},filters:{strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false},range:null,manualRange:false,scale:'fit',width:800,reference:C.today(),collapsed:new Set(),selected:null,showConsolidated:false,showDetails:false};
 let lastFocus=null,renderTimer=null,loadingTimer=null,refreshing=false;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function notice(message,kind='info'){const el=$('notice');el.textContent=message;el.className='notice '+kind;el.hidden=!message;}
@@ -258,7 +320,7 @@ class Combo {
   this.input.addEventListener('keydown',e=>{
    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(!this.opened)this.show('');else{this.active=(this.active+(e.key==='ArrowDown'?1:-1)+this.options.length)%Math.max(1,this.options.length);this.draw();}}
    if(e.key==='Enter'&&this.opened){e.preventDefault();if(this.options[this.active]!==undefined)this.choose(this.options[this.active]);}
-   if(e.key==='Escape'){e.preventDefault();this.close();}
+   if(e.key==='Escape'&&this.opened){e.preventDefault();e.stopPropagation();this.close();}
    if(e.key==='Tab')this.close();
   });
   this.clear.addEventListener('click',e=>{e.preventDefault();this.choose('');});
@@ -266,7 +328,8 @@ class Combo {
   this.menu.addEventListener('click',e=>{const b=e.target.closest('[data-combo-index]');if(b)this.choose(this.options[+b.dataset.comboIndex]);});
  }
  values(){const vals=getFiltered(this.field).map(r=>this.field==='urgency'?r.urgency.label:r[this.field]);if(state.filters[this.field])vals.push(state.filters[this.field]);return [...new Set(vals)].sort((a,b)=>a.localeCompare(b,'fr',{numeric:true}));}
- show(query){this.opened=true;this.active=0;this.options=['',...this.values().filter(v=>C.norm(v).includes(C.norm(query)))];this.menu.hidden=false;this.input.setAttribute('aria-expanded','true');this.draw();}
+ show(query){combos.forEach(c=>{if(c!==this)c.close();});this.opened=true;this.active=0;this.options=['',...this.values().filter(v=>C.norm(v).includes(C.norm(query)))];this.menu.hidden=false;this.input.setAttribute('aria-expanded','true');this.draw();this.place();}
+ place(){const r=this.input.getBoundingClientRect(),W=Math.min(330,window.innerWidth-24),bottom=window.innerHeight-r.bottom-14,above=r.top-14;this.menu.style.width=Math.max(Math.min(W,Math.max(240,r.width)),0)+'px';this.menu.style.left=Math.max(12,Math.min(r.left,window.innerWidth-this.menu.offsetWidth-12))+'px';const below=bottom>=Math.min(200,above);this.menu.style.maxHeight=Math.max(90,Math.min(230,below?bottom:above))+'px';this.menu.style.top=(below?r.bottom+5:Math.max(8,r.top-this.menu.offsetHeight-5))+'px';}
  draw(){this.menu.innerHTML=this.options.map((v,i)=>`<button type="button" role="option" id="${this.root.id}Option${i}" aria-selected="${state.filters[this.field]===v}" data-combo-index="${i}" class="combo-option ${i===this.active?'focused':''}">${esc(v||'Toutes les valeurs')}</button>`).join('');this.input.setAttribute('aria-activedescendant',this.root.id+'Option'+this.active);this.menu.querySelector('.focused')?.scrollIntoView({block:'nearest'});}
  close(){this.opened=false;this.menu.hidden=true;this.input.setAttribute('aria-expanded','false');this.input.removeAttribute('aria-activedescendant');this.sync();}
  choose(v){state.filters[this.field]=v;this.close();render();}
@@ -278,15 +341,14 @@ function renderTabs(){
  const vals=[...new Set(state.rows.map(r=>r.strand))];
  const rank=v=>C.norm(v)==='internes dt'?0:C.norm(v)==='avec les autres directions'?1:2;
  vals.sort((a,b)=>rank(a)-rank(b));
- const context=getFiltered('strand');
- $('strandTabs').innerHTML=[['','Tous les chantiers'],...vals.map(v=>[v,v==='Avec les autres directions'?'Autres directions':v])].map(([v,label])=>`<button data-strand="${esc(v)}" aria-pressed="${state.filters.strand===v}">${esc(label)}<span class="count-pill">${context.filter(r=>!v||r.strand===v).length}</span></button>`).join('');
+ $('strandTabs').innerHTML=[['','Tous'],...vals.map(v=>[v,v==='Avec les autres directions'?'Autres directions':v])].map(([v,label])=>`<button data-strand="${esc(v)}" aria-pressed="${state.filters.strand===v}">${esc(label)}</button>`).join('');
 }
 function axisGeometry(){
  const {lo,hi}=state.range,span=hi-lo,W=state.width;
  const x=t=>(t-lo)/span*W;
  const months=C.monthsBetween(lo,hi),years=[];
  for(const m of months){let last=years[years.length-1];if(!last||last.year!==m.year){last={year:m.year,t:Math.max(lo,m.t),end:Math.min(hi,m.end)};years.push(last);}else last.end=Math.min(hi,m.end);}
- const unitWidth=W/months.length, quarterly=state.scale==='quarter'||unitWidth<17;
+ const unitWidth=W/months.length, quarterly=state.scale==='quarter'||unitWidth<28;
  const units=quarterly?[]:months.map(m=>({...m,label:unitWidth<35?INITIALS[m.month]:MONTHS[m.month]}));
  if(quarterly){for(const m of months){const q=Math.floor(m.month/3),last=units[units.length-1];if(!last||last.q!==q||last.year!==m.year)units.push({...m,q,label:'T'+(q+1),t:Math.max(lo,m.t),end:Math.min(hi,m.end)});else last.end=Math.min(hi,m.end);}}
  return {x,months,years,units,quarterly};
@@ -294,15 +356,16 @@ function axisGeometry(){
 function gridSvg(h){
  const {x,months,quarterly}=axisGeometry();
  let out='';
- for(const m of months){if(quarterly&&m.month%3)continue;const xx=x(m.t);out+=`<line x1="${xx}" y1="0" x2="${xx}" y2="${h}" stroke="${m.month===0?'#d4dfe8':'#edf1f5'}" stroke-width="${m.month===0?1.1:.7}"/>`;}
- if(state.reference>=state.range.lo&&state.reference<state.range.hi){const xx=x(state.reference);out+=`<line x1="${xx}" y1="0" x2="${xx}" y2="${h}" stroke="#c86c37" stroke-width="1.7" opacity=".85"/>`;}
+ for(const m of months){if(quarterly&&m.month%3)continue;const xx=x(m.t);out+=`<line x1="${xx}" y1="0" x2="${xx}" y2="${h}" stroke="${m.month===0?'#d4dfe8':'#edf1f5'}" stroke-width="${m.month===0?1:.6}"/>`;}
+ if(state.reference>=state.range.lo&&state.reference<state.range.hi){const xx=x(state.reference);out+=`<line x1="${xx}" y1="0" x2="${xx}" y2="${h}" stroke="#c86c37" stroke-width="1.3" opacity=".75"/>`;}
  return out;
 }
 function dateText(r){return `${r.start.kind==='valid'?r.start.label:'Début à préciser'} → ${r.end.kind==='valid'?r.end.label:'fin à préciser'}`;}
 function titleText(r){return [r.name,r.scope,'Phase : '+r.phase,'Urgence : '+r.urgency.label,'Période : '+dateText(r),'Responsable : '+r.owner,...r.issues].join('\n');}
 function trackContent(r,h,exportMode=false){
  const W=state.width,{lo,hi}=state.range,{x}=axisGeometry();let out=gridSvg(h);
- const pad=7,y=Math.round(h/2)+4,bh=14,validStart=r.start.kind==='valid',validEnd=r.end.kind==='valid';
+ const detailed=state.showDetails||exportMode;
+ const pad=7,bh=14,y=detailed?Math.round(h/2)+4:Math.round((h-bh)/2),validStart=r.start.kind==='valid',validEnd=r.end.kind==='valid';
  const close=()=> exportMode?'':`</g>`;
  if(!exportMode)out+=`<g class="bar-hit" tabindex="0" role="button" aria-label="${esc('Voir '+r.name)}" data-task-id="${esc(r.id)}"><title>${esc(titleText(r))}</title><rect x="0" y="0" width="${W}" height="${h}" fill="transparent"/>`;
  if(r.invalid){return out+`<text x="14" y="${h/2+4}" fill="#9a5d35" font-size="11">Dates à vérifier</text>`+close();}
@@ -319,7 +382,7 @@ function trackContent(r,h,exportMode=false){
   if(a<lo)out+=`<path d="M8 ${y+3} L3 ${y+7} L8 ${y+11}" fill="none" stroke="#24465c" stroke-width="1.4"/>`;
   if(b>hi)out+=`<path d="M${W-8} ${y+3} L${W-3} ${y+7} L${W-8} ${y+11}" fill="none" stroke="#24465c" stroke-width="1.4"/>`;
   const label=dateText(r),lw=Math.min(W-18,label.length*5.8),tx=Math.max(pad,Math.min(sx,W-lw-pad));
-  out+=`<text x="${tx}" y="${y-8}" font-size="10.5" fill="#5f748a">${esc(label)}</text>`;
+  if(detailed)out+=`<text x="${tx}" y="${y-8}" font-size="10.5" fill="#5f748a">${esc(label)}</text>`;
  }else{
   const d=validStart?r.start:r.end,t=validStart?d.lo:d.hi;
   if(t>=hi||t<lo)return out+`<text x="14" y="${h/2+4}" fill="#8493a5" font-size="11">${esc(dateText(r))} · hors période</text>`+close();
@@ -327,17 +390,23 @@ function trackContent(r,h,exportMode=false){
   const end=Math.max(5,Math.min(W-5,px+dir*85));
   out+=`<circle cx="${px}" cy="${y+bh/2}" r="4.5" fill="${color}"/><line x1="${px}" y1="${y+bh/2}" x2="${end}" y2="${y+bh/2}" stroke="${color}" stroke-width="3" stroke-dasharray="5 4"/><path d="M${end-dir*5} ${y+3} L${end} ${y+7} L${end-dir*5} ${y+11}" fill="none" stroke="${color}" stroke-width="1.6"/>`;
   const label=dateText(r),lw=Math.min(W-15,label.length*5.8),tx=Math.max(pad,Math.min(px,W-lw-pad));
-  out+=`<text x="${tx}" y="${y-8}" font-size="10.5" fill="#718397">${esc(label)}</text>`;
+  if(detailed)out+=`<text x="${tx}" y="${y-8}" font-size="10.5" fill="#718397">${esc(label)}</text>`;
+  else {
+   const note=validStart?'Fin à préciser':'Début à préciser',nw=note.length*5.4;
+   const right=end+9,left=Math.min(end,px)-nw-9;
+   const nx=right+nw<W-6?right:Math.max(8,left);
+   out+=`<text x="${nx}" y="${y+11}" font-size="10" fill="#8796a6">${note}</text>`;
+  }
  }
  return out+close();
 }
-function groupTrack(g,h=42,exportMode=false){
+function groupTrack(g,h=30,exportMode=false){
  let out=gridSvg(h);if(!state.showConsolidated)return out;
  const ss=g.items.filter(r=>r.start.kind==='valid'&&!r.invalid).map(r=>r.start.lo),ee=g.items.filter(r=>r.end.kind==='valid'&&!r.invalid).map(r=>r.end.hi+C.DAY);
  if(!ss.length||!ee.length)return out;
  const a=Math.min(...ss),b=Math.max(...ee);if(a>b||b<=state.range.lo||a>=state.range.hi)return out;
  const {x}=axisGeometry(),sx=Math.max(4,x(a)),ex=Math.min(state.width-4,x(b)),incomplete=g.items.some(r=>r.start.kind!=='valid'||r.end.kind!=='valid');
- out+=`<g><title>${esc('Durée consolidée : enveloppe des dates connues des chantiers visibles. '+(incomplete?'Périmètre incomplet : certaines dates restent à préciser.':'Ce calcul n’est pas un engagement supplémentaire.'))}</title><path d="M${sx} 14 V27 M${sx} 20.5 H${ex} M${ex} 14 V27" fill="none" stroke="#c17e52" stroke-width="1.4" stroke-dasharray="4 3"/>${incomplete?`<text x="${Math.min(ex+6,state.width-10)}" y="24" fill="#8b6b51" font-size="11">?</text>`:''}</g>`;
+ out+=`<g><title>${esc('Durée consolidée : enveloppe des dates connues des chantiers visibles. '+(incomplete?'Périmètre incomplet : certaines dates restent à préciser.':'Ce calcul n’est pas un engagement supplémentaire.'))}</title><path d="M${sx} ${h/2-5} V${h/2+5} M${sx} ${h/2} H${ex} M${ex} ${h/2-5} V${h/2+5}" fill="none" stroke="#c17e52" stroke-width="1.4" stroke-dasharray="4 3"/>${incomplete?`<text x="${Math.min(ex+6,state.width-10)}" y="${h/2+4}" fill="#8b6b51" font-size="11">?</text>`:''}</g>`;
  return out;
 }
 function sizeChart(){
@@ -355,14 +424,14 @@ function renderRoadmap(rows){
  sizeChart();const {x,years,units}=axisGeometry();
  const rowH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row-height'))||70;
  const refVisible=state.reference>=state.range.lo&&state.reference<state.range.hi;
- const axis=`<div class="axis"><div class="label-cell axis-label"><span>Chantier<span class="label-sub">Phase de réalisation</span></span><span>${rows.length} sujets</span></div><div class="axis-track">${years.map(y=>`<div class="axis-year" style="left:${x(y.t)}px;width:${x(y.end)-x(y.t)}px">${y.year}</div>`).join('')}${units.map(u=>`<div class="axis-unit ${state.reference>=u.t&&state.reference<u.end?'current':''}" style="left:${x(u.t)}px;width:${x(u.end)-x(u.t)}px">${u.label}</div>`).join('')}${refVisible?`<div class="axis-reference" style="left:${x(state.reference)}px" title="Repère ${C.prettyDay(state.reference)}"></div>`:''}</div></div>`;
+ const axis=`<div class="axis"><div class="label-cell axis-label"><span>Chantiers</span><span class="rows-count">${rows.length} / ${state.rows.length}</span></div><div class="axis-track">${years.map(y=>`<div class="axis-year" style="left:${x(y.t)}px;width:${x(y.end)-x(y.t)}px">${y.year}</div>`).join('')}${units.map(u=>`<div class="axis-unit ${state.reference>=u.t&&state.reference<u.end?'current':''}" style="left:${x(u.t)}px;width:${x(u.end)-x(u.t)}px">${u.label}</div>`).join('')}${refVisible?`<div class="axis-reference" style="left:${x(state.reference)}px" title="Repère ${C.prettyDay(state.reference)}"></div>`:''}</div></div>`;
  let html=axis;
  if(!rows.length)html+=`<div class="roadmap-empty"><p class="empty-title">${state.rows.length?'Aucun chantier ne correspond aux filtres':'Aucun chantier à afficher'}</p><p>${state.rows.length?'Utilisez « Effacer » pour retrouver l’ensemble de la feuille de route.':'Vérifiez la table sélectionnée et les lignes visibles dans Grist.'}</p></div>`;
  for(const s of C.grouped(rows)){
   html+=`<div class="gantt-row strand"><div class="label-cell strand-title">${esc(s.strand==='Internes DT'?'Chantiers archi internes DT':s.strand==='Avec les autres directions'?'Avec les autres directions':s.strand)}</div><div class="track">&nbsp;</div></div>`;
   for(const g of s.groups){
    const isCollapsed=state.collapsed.has(g.id);
-   html+=`<div class="gantt-row scope"><div class="label-cell"><button class="scope-button" data-collapse="${esc(g.id)}" aria-expanded="${!isCollapsed}" title="${isCollapsed?'Déplier':'Replier'} ce périmètre"><span class="chevron">›</span><span class="scope-name">${esc(g.scope)}</span><span class="group-count">${g.items.length}</span></button></div><div class="track"><svg viewBox="0 0 ${state.width} 42" aria-hidden="true">${groupTrack(g)}</svg></div></div>`;
+   html+=`<div class="gantt-row scope"><div class="label-cell"><button class="scope-button" data-collapse="${esc(g.id)}" aria-expanded="${!isCollapsed}" title="${isCollapsed?'Déplier':'Replier'} ce périmètre"><span class="chevron">›</span><span class="scope-name">${esc(g.scope)}</span><span class="group-count">${g.items.length}</span></button></div><div class="track"><svg viewBox="0 0 ${state.width} 30" aria-hidden="true">${groupTrack(g,30)}</svg></div></div>`;
    if(!isCollapsed)for(const r of g.items){
     html+=`<div class="gantt-row task ${state.selected===r.id?'selected':''}" data-row-id="${esc(r.id)}"><div class="label-cell"><button class="task-name" data-task-id="${esc(r.id)}" title="${esc(titleText(r))}"><span class="task-title">${esc(r.name)}</span><span class="task-meta"><i class="urgency-dot" style="background:${r.urgency.color}"></i><span class="phase-label">${esc(r.phase)}</span></span></button></div><div class="track"><svg viewBox="0 0 ${state.width} ${rowH}" role="group" aria-label="${esc(r.name+' : '+dateText(r))}">${trackContent(r,rowH)}</svg></div></div>`;
    }
@@ -370,7 +439,7 @@ function renderRoadmap(rows){
  }
  el.innerHTML=html;scroller.scrollTop=oldTop;scroller.scrollLeft=oldLeft;
  $('periodCaption').textContent=`${MONTHS[new Date(state.range.lo).getUTCMonth()]} ${new Date(state.range.lo).getUTCFullYear()} — ${MONTHS[new Date(state.range.hi-C.DAY).getUTCMonth()]} ${new Date(state.range.hi-C.DAY).getUTCFullYear()}`;
- $('referenceLabel').textContent='Repère : '+C.prettyDay(state.reference)+(refVisible?'':' (hors période)');
+ $('referenceLabel').textContent=C.prettyDay(state.reference)+(refVisible?'':' · hors période');
 }
 function renderQuality(rows){
  const concerns=rows.filter(r=>r.issues.length||r.urgency.id==='unknown');
@@ -382,14 +451,14 @@ function render(){
  if(!state.loaded)return;
  const rows=getFiltered();
  renderTabs();combos.forEach(c=>c.sync());
- $('kpiTotal').textContent=rows.length;
- $('kpiScope').textContent=new Set(rows.map(r=>r.strand+'|'+r.scope)).size;
- $('kpiHigh').textContent=rows.filter(r=>r.urgency.id==='high').length;
- $('kpiOpen').textContent=rows.filter(r=>r.end.kind!=='valid').length;
- $('kpiPriority').classList.toggle('active',C.norm(state.filters.urgency)==='prioritaire');
- $('kpiPriority').setAttribute('aria-pressed',C.norm(state.filters.urgency)==='prioritaire');
- $('kpiDates').classList.toggle('active',state.filters.incomplete);$('kpiDates').setAttribute('aria-pressed',state.filters.incomplete);
- $('scopeCount').textContent=rows.length===state.rows.length?'Tous les chantiers':'Vue filtrée · '+rows.length+' / '+state.rows.length+' chantiers';
+ const filterCount=['scope','phase','urgency','owner'].filter(k=>state.filters[k]).length+Number(state.filters.incomplete);
+ $('filterCount').textContent=filterCount;$('filterCount').hidden=!filterCount;
+ $('filtersToggle').classList.toggle('active',filterCount>0);
+ $('resetQuick').hidden=!(filterCount||state.filters.strand||state.filters.search);
+ $('missingEnd').checked=state.filters.incomplete;
+ document.documentElement.classList.toggle('show-details',state.showDetails);
+ document.documentElement.style.setProperty('--row-height',state.showDetails?'64px':(window.innerWidth<=560?'46px':'42px'));
+ $('export').disabled=!rows.length;$('print').disabled=!rows.length;
  document.querySelectorAll('[data-scale]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.scale===state.scale));
  renderRoadmap(rows);renderQuality(rows);
 }
@@ -403,10 +472,10 @@ function ingest(data,source){
  const formulaErrors=state.rows.filter(r=>[r.name,r.scope,r.strand,r.phase,r.owner,r.urgency.label].some(v=>v.includes('Erreur de formule')||v==='Référence non développée'));
  if(result.keys.length&&missing.length)notice('Colonnes non transmises : '+missing.map(f=>LABELS[f]).join(', ')+'. Dans Grist, rendez les 12 colonnes de la table accessibles au widget.','error');
  else if(formulaErrors.length)notice('Certaines valeurs contiennent une erreur de formule ou une référence non développée. Vérifiez les cellules correspondantes dans Grist.','error');
- else if(source==='csv')notice('Aperçu local d’un CSV. Cette vue ne se synchronise pas avec Grist. Aucun contenu de ce fichier n’est envoyé au serveur.','info');
+ else if(source==='csv')notice('');
  else notice('');
  const time=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
- liveStatus((source==='csv'?'CSV chargé à ':'Actualisé à ')+time);
+ liveStatus((source==='csv'?'Aperçu CSV · ':'Actualisé à ')+time);$('sync').title=source==='csv'?'Fichier lu localement, sans synchronisation Grist.':'Données Architecture en lecture seule';
  render();
  if(state.selected&&!$('overlay').hidden)fillDialog(state.rows.find(r=>r.id===state.selected));
 }
@@ -424,7 +493,7 @@ function fillDialog(r){
  const dateDetail=(label,d)=>detail(label,esc(d.kind==='valid'?d.label:d.kind==='empty'?'À préciser':d.raw)+`<div class="precision">${d.kind==='valid'?'Précision : '+C.precisionName(d.precision):d.kind==='invalid'?'Valeur source non exploitable':'Aucune date déduite'}</div>`);
  $('dialogBody').innerHTML=(r.issues.length?`<div class="dialog-warnings">${r.issues.map(esc).join('<br>')}</div>`:'')+`<dl class="detail-grid">`+detail('Volet',esc(r.strand),true)+detail('Périmètre',esc(r.scope),true)+detail('Phase',esc(r.phase))+detail('Urgence',`<span class="urgency-tag"><i class="urgency-dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span>`)+detail('Responsable Projet',esc(r.owner),true)+dateDetail('Date de début',r.start)+dateDetail('Date de fin',r.end)+detail('Commentaires',r.comment?`<div class="comment">${esc(r.comment)}</div>`:'<span class="no-comment">Aucun commentaire renseigné.</span>',true)+detail('Ordre dans le périmètre',r.order===Number.MAX_SAFE_INTEGER?'Non renseigné':String(r.order))+'</dl>';
 }
-function openDialog(id){const r=state.rows.find(r=>r.id===id);if(!r)return;lastFocus=document.activeElement;state.selected=id;fillDialog(r);$('overlay').hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.gantt-row.task').forEach(el=>el.classList.toggle('selected',el.dataset.rowId===id));$('closeDialog').focus();}
+function openDialog(id){closePopovers(false);const r=state.rows.find(r=>r.id===id);if(!r)return;lastFocus=document.activeElement;state.selected=id;fillDialog(r);$('overlay').hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.gantt-row.task').forEach(el=>el.classList.toggle('selected',el.dataset.rowId===id));$('closeDialog').focus();}
 function closeDialog(){const wasOpen=!$('overlay').hidden;$('overlay').hidden=true;document.body.style.overflow='';if(wasOpen&&lastFocus?.isConnected)lastFocus.focus();}
 function wrapText(s,max=51){
  const words=String(s).split(/\s+/),lines=[];let line='';
@@ -483,7 +552,7 @@ function boot(){
  $('referenceDate').value=C.iso(state.reference);
  if(window.grist){connect();return;}
  if(window.parent===window){
-  liveStatus('Aperçu hors Grist');$('localActions').hidden=false;notice('Cette page est le widget à intégrer dans Grist. Pour un aperçu local, ouvrez un export CSV de la table Architecture. Aucune donnée métier n’est embarquée dans le code.','info');
+  liveStatus('Aperçu hors Grist');$('localActions').hidden=false;notice('Aperçu hors Grist : ouvrez votre export Architecture avec le menu ⋯ → Ouvrir un CSV local.','info');
   $('roadmap').innerHTML='<div class="roadmap-empty"><p class="empty-title">Votre feuille de route, alimentée par Architecture</p><p>Intégrez cette URL dans un widget Grist, ou ouvrez votre CSV pour prévisualiser le résultat.</p></div>';
   return;
  }
@@ -491,9 +560,9 @@ function boot(){
 }
 $('strandTabs').addEventListener('click',e=>{const b=e.target.closest('[data-strand]');if(b){state.filters.strand=b.dataset.strand;render();}});
 $('search').addEventListener('input',e=>{state.filters.search=e.target.value;clearTimeout(renderTimer);renderTimer=setTimeout(render,100);});
-$('clear').addEventListener('click',()=>{state.filters={strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false};$('search').value='';combos.forEach(c=>c.close());render();});
-$('kpiPriority').addEventListener('click',()=>{const val=state.rows.find(r=>r.urgency.id==='high')?.urgency.label||'Prioritaire';state.filters.urgency=state.filters.urgency===val?'':val;render();});
-$('kpiDates').addEventListener('click',()=>{state.filters.incomplete=!state.filters.incomplete;render();});
+function resetFilters(){state.filters={strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false};$('search').value='';combos.forEach(c=>c.close());render();}
+$('clear').addEventListener('click',resetFilters);$('resetQuick').addEventListener('click',resetFilters);
+$('missingEnd').addEventListener('change',e=>{state.filters.incomplete=e.target.checked;render();});
 $('scales').addEventListener('click',e=>{const b=e.target.closest('[data-scale]');if(b){state.scale=b.dataset.scale;render();}});
 $('rangeStart').addEventListener('change',changeRange);$('rangeEnd').addEventListener('change',changeRange);
 $('allDates').addEventListener('click',()=>{state.range=C.rangeFor(state.rows);state.manualRange=false;syncRangeInputs();render();});
@@ -507,10 +576,38 @@ $('roadmap').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e
 $('qualityList').addEventListener('click',e=>{const b=e.target.closest('[data-task-id]');if(b)openDialog(b.dataset.taskId);});
 $('closeDialog').addEventListener('click',closeDialog);$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeDialog();});
 document.addEventListener('keydown',e=>{if(!$('overlay').hidden){if(e.key==='Escape')closeDialog();if(e.key==='Tab'){const fs=[...$('overlay').querySelectorAll('button,a,input,[tabindex="0"]')].filter(x=>!x.disabled);if(fs.length===1){e.preventDefault();fs[0].focus();}else if(e.shiftKey&&document.activeElement===fs[0]){e.preventDefault();fs.at(-1).focus();}else if(!e.shiftKey&&document.activeElement===fs.at(-1)){e.preventDefault();fs[0].focus();}}}});
-$('refresh').addEventListener('click',refresh);$('export').addEventListener('click',exportSVG);
-$('print').addEventListener('click',()=>{state.collapsed.clear();render();window.print();});
+$('refresh').addEventListener('click',refresh);$('export').addEventListener('click',()=>{closePopovers();exportSVG();});
+$('print').addEventListener('click',()=>{closePopovers();state.collapsed.clear();render();window.print();});
 $('importCsv').addEventListener('click',()=>$('csvFile').click());$('csvFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=C.parseCSV(await file.text());ingest(data,'csv');}catch(err){notice('Import CSV : '+err.message,'error');}e.target.value='';});
 let lastWidth=0;new ResizeObserver(entries=>{const width=Math.round(entries[0].contentRect.width);if(Math.abs(width-lastWidth)>1){lastWidth=width;clearTimeout(renderTimer);renderTimer=setTimeout(()=>{if(state.loaded)renderRoadmap(getFiltered());},80);}}).observe($('roadmapScroll'));
+
+const popoverPairs=[['filtersToggle','filtersPanel'],['viewToggle','viewPanel'],['actionsToggle','actionsPanel']];
+let activePopover=null;
+function placePopover(){
+ if(!activePopover)return;
+ const [buttonId,panelId]=activePopover,button=$(buttonId),panel=$(panelId),r=button.getBoundingClientRect();
+ panel.style.maxHeight=Math.max(90,window.innerHeight-r.bottom-18)+'px';
+ const left=Math.max(10,Math.min(window.innerWidth-panel.offsetWidth-12,r.right-panel.offsetWidth));
+ panel.style.left=left+'px';panel.style.top=(r.bottom+7)+'px';
+}
+function closePopovers(restore=false){
+ const prior=activePopover;combos.forEach(c=>c.close());
+ popoverPairs.forEach(([b,p])=>{$(p).hidden=true;$(b).setAttribute('aria-expanded','false');});activePopover=null;
+ if(restore&&prior)$(prior[0]).focus();
+}
+function togglePopover(pair){
+ const was=activePopover&&activePopover[1]===pair[1];closePopovers();if(was)return;
+ activePopover=pair;$(pair[1]).hidden=false;$(pair[0]).setAttribute('aria-expanded','true');placePopover();
+ const first=$(pair[1]).querySelector('button,input');if(first)first.focus({preventScroll:true});
+}
+popoverPairs.forEach(pair=>$(pair[0]).addEventListener('click',()=>togglePopover(pair)));
+document.querySelectorAll('[data-close-popover]').forEach(b=>b.addEventListener('click',()=>closePopovers(true)));
+document.addEventListener('click',e=>{if(activePopover&&!$(activePopover[0]).contains(e.target)&&!$(activePopover[1]).contains(e.target))closePopovers();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&activePopover){e.preventDefault();closePopovers(true);}});
+window.addEventListener('resize',()=>{combos.forEach(c=>c.close());placePopover();if(state.loaded)render();});
+for(const [,p] of popoverPairs)$(p).addEventListener('scroll',()=>combos.forEach(c=>c.close()));
+$('showDetails').addEventListener('change',e=>{state.showDetails=e.target.checked;render();});
+$('export').disabled=true;$('print').disabled=true;
 boot();
 })();
 </script>

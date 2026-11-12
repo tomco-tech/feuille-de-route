@@ -1,169 +1,66 @@
-# Pilotage DT — Feuille de route pôle architecture
+# Pilotage DT — Feuille de route architecture · V1.1
 
-Widget Grist en lecture seule, fondé sur la table **Architecture**.
-Version 1.0 — 12 novembre 2026.
+Widget Grist en lecture seule. Version allégée : le planning occupe toute la largeur et la hauteur restante du widget. Aucune donnée métier n'est intégrée au code.
 
-## Fichiers à publier
+## Mise à jour depuis V1
 
-- `index.html` : code complet HTML, CSS et JavaScript, sans compilation.
-- `.nojekyll` : désactive le traitement Jekyll de GitHub Pages.
-- `README.md` : ce guide.
+Remplacer `index.html` dans le dépôt ou le dossier GitHub Pages existant. Les réglages Grist et le modèle de la table `Architecture` ne changent pas. Ajouter temporairement `?v=1.1` à l'URL du widget pour distinguer cette version.
 
-**Ne publiez pas les exports CSV ni le PDF métier dans le dépôt.** Le code n'embarque aucun chantier, responsable, commentaire ou planning opérationnel. Les intitulés de périmètre utilisés pour leur ordre d'affichage sont configurés dans `SCOPE_ORDER` ; les lignes métier sont toujours lues depuis Grist.
+Le dossier à publier contient uniquement :
 
-## Installation sur GitHub Pages
+- `index.html` : interface, styles et logique de lecture ;
+- `.nojekyll` : fichier vide pour GitHub Pages ;
+- `README.md` : cette documentation.
 
-1. Créer un dépôt ou un dossier dédié à ce nouveau widget, pour ne pas remplacer les dashboards existants.
-2. Placer les trois fichiers à la racine de l'emplacement à publier.
-3. Dans GitHub : **Settings → Pages → Deploy from a branch**, choisir la branche publiée, généralement `main`, et le répertoire approprié.
-4. Utiliser l'URL de la page web publiée, et non l'URL du fichier sur github.com. Exemple de forme :
+Ne pas publier les exports CSV ou les documents métier sur GitHub. Le widget reçoit les données depuis Grist.
 
-   ```text
-   https://VOTRE_COMPTE.github.io/VOTRE_DEPOT/?v=1.0
-   ```
+## Nouvelle interface
 
-## Installation dans Grist
+L'écran conserve en permanence le titre, les trois volets **Tous / Internes DT / Autres directions**, la recherche par mot-clé et les boutons **Filtres** et **Affichage**. Les grands indicateurs, sous-titres, explications permanentes et pieds de page ont été retirés de la vue principale.
 
-1. Ajouter un widget **Personnalisé / Custom**.
-2. Sélectionner la table **Architecture** comme source. Éviter une table de synthèse ou un lien de sélection qui réduirait involontairement le nombre de lignes.
-3. Renseigner l'URL GitHub Pages.
-4. Accorder **Lire la table sélectionnée / Read selected table**. **L'accès complet au document n'est pas nécessaire.**
-5. Dans les paramètres des colonnes du widget, rendre **les 12 colonnes ci-dessous visibles/accessibles**. Elles ne sont pas toutes affichées à l'écran, mais le code en a besoin pour dessiner les barres et les détails.
+Le bouton **Filtres** ouvre un panneau flottant avec les recherches Périmètre, Phase, Urgence et Responsable projet. Une case permet de ne garder que les fins à préciser. Un badge indique le nombre de filtres avancés actifs ; le bouton × près d'Affichage apparaît lorsqu'un filtre ou une recherche est appliqué. Les panneaux ne réduisent pas la hauteur du planning.
 
-Le widget utilise les identifiants des colonnes et leurs alias, sans imposer un type de colonne et sans écran de configuration métier. Il n'exige pas de mapping supplémentaire quand les noms correspondent au modèle fourni.
+Le bouton **Affichage** regroupe l'échelle, la période, la date du repère vertical, les durées consolidées et les commandes pour replier ou déplier les périmètres. L'option **Afficher les phases et les dates sur chaque ligne** restitue la vue détaillée ; elle est désactivée au chargement. La vue d'ensemble adopte des graduations trimestrielles lorsque des mois seraient trop serrés. L'échelle Mois conserve un défilement horizontal pour une lecture plus précise.
 
-| Libellé de l'export | Identifiant reconnu |
-|---|---|
-| Nom | `Nom` |
-| Périmètre | `Perimetre` |
-| Volet | `Volet` |
-| Phase | `Phase` |
-| Urgence | `Urgence` |
-| Responsable Projet | `Responsable_Projet` |
-| Commentaires | `Commentaires` |
-| Date de début | `Date_de_debut` |
-| Précision début | `Precision_debut` |
-| Date de fin | `Date_de_fin` |
-| Précision fin | `Precision_fin` |
-| Ordre | `Ordre` |
+Les lignes sont plus compactes. Les noms de chantiers restent fixés à gauche et l'axe du temps reste visible pendant le défilement. Un clic sur un chantier ou sa barre affiche sa fiche détaillée, avec phase, dates, précision, urgence, responsable et commentaires. Fermer par la croix, par clic à l'extérieur ou avec Échap.
 
-Les noms visibles avec accents et espaces sont également reconnus. La comparaison des noms de colonnes ignore la casse, les accents et la ponctuation. Si un identifiant a été renommé avec un nom différent ou un suffixe, compléter son alias dans `RoadmapCore.FIELDS` au début du JavaScript.
+Le menu **⋯** contient l'export SVG et l'impression. Hors Grist, il propose également l'ouverture d'un CSV local. Cette prévisualisation n'est pas une connexion à Grist et le CSV n'est pas envoyé à un serveur.
 
-Les valeurs de références sont demandées à Grist avec `expandRefs: true` : on lit leur valeur d'affichage, pas un numéro de ligne. Textes, choix et listes de choix sont acceptés. Une référence non développée ou une erreur de formule est signalée, pas interprétée comme un nom ou une urgence valide.
+## Table et accès Grist
 
-## Organisation de la feuille de route
+Table source : `Architecture`. Choisir **Lire la table sélectionnée / Read selected table** et rendre les 12 colonnes accessibles au widget :
 
-Le modèle de présentation reprend le PDF **FeuilleRouteArchi_09102026(1).pdf**, pages 2 à 4 :
+| Nom visible | Identifiant usuel |
+| --- | --- |
+| Nom | Nom |
+| Périmètre | Perimetre |
+| Volet | Volet |
+| Phase | Phase |
+| Urgence | Urgence |
+| Responsable Projet | Responsable_Projet |
+| Commentaires | Commentaires |
+| Date de début | Date_de_debut |
+| Précision début | Precision_debut |
+| Date de fin | Date_de_fin |
+| Précision fin | Precision_fin |
+| Ordre | Ordre |
 
-- premier niveau : `Volet` — Internes DT / Avec les autres directions ;
-- deuxième niveau : `Périmètre` ;
-- une ligne par chantier `Nom` ;
-- tri par `Ordre` à l'intérieur du périmètre ;
-- couleurs des barres fondées sur `Urgence` ;
-- repère vertical de date.
+Le rapprochement des colonnes ignore les accents, la casse, les espaces et les underscores. Le widget conserve la lecture des références développées et des valeurs encodées de Grist, sans écrire dans le document. Il n'a pas besoin de l'accès complet au document.
 
-L'ordre des 13 périmètres de la présentation est conservé grâce à `SCOPE_ORDER`. Les nouveaux périmètres sont ajoutés après les périmètres connus. Les nouveaux volets restent visibles.
+## Règles conservées
 
-Les 39 lignes du CSV de validation sont réparties entre 25 chantiers internes DT et 14 chantiers avec les autres directions. Ces chiffres ne sont pas codés dans le widget.
+- Regroupement par Volet, puis Périmètre ; tri par Ordre à l'intérieur des périmètres.
+- Les couleurs représentent l'urgence, et non le statut d'avancement : Mineur, Intermédiaire, Prioritaire, À qualifier/non renseignée.
+- Les dates au mois et à l'année conservent leur précision. Une année seule est représentée par une zone hachurée.
+- Une date de fin absente reste à préciser ; le widget n'invente aucune date de livraison.
+- Un calendrier absent reste sans barre. Les dates invalides ou incohérentes sont signalées.
+- Le repère vertical indique le jour courant par défaut. Il peut être modifié dans Affichage.
+- Le nombre de lignes, les dates et les calculs ne sont pas altérés par la simplification visuelle.
 
-### Source de vérité
+## Vérifications réalisées
 
-**Architecture est la source des valeurs**, le PDF est la référence de présentation.
+Tests en navigateur Chromium avec l'export Architecture fourni et une API Grist simulée : 39 chantiers, filtres, recherche, volets, fenêtres de détail, groupes repliables, affichage détaillé optionnel, périodes, échelles, export SVG, actualisation des lignes et chargement CSV local.
 
-- La phase n'est pas remplacée par un statut inventé.
-- Une date de fin passée ne signifie pas automatiquement que le chantier est terminé ou en retard.
-- L'urgence « À qualifier » reste neutre, même si le PDF utilise une autre couleur.
-- Un calendrier vide reste « Calendrier à préciser », même si une barre existe dans le PDF.
-- Aucun pourcentage d'avancement n'est calculé à partir du temps écoulé.
+Vérification de la mise en page sur des fenêtres 1920×1080, 1440×900, 1366×768, 1024×768, 768×600, 390×844 et 1440×500. Sur les formats bureau testés, le calendrier occupe environ 80 à 86 % de la hauteur de la fenêtre, en affichage normal et sans message d'erreur. Sur les petits écrans, le défilement reste à l'intérieur du planning.
 
-## Dates et précision
-
-Formats supportés :
-
-- dates Grist et DateTime, horodatages Unix et valeurs encodées `['d', secondes]` / `['D', secondes, ...]` ;
-- textes `JJ/MM/AAAA`, `MM/AAAA`, `AAAA`, `AAAA-MM`, `AAAA-MM-JJ` et ISO avec heure ;
-- espaces ordinaires ou insécables autour des valeurs ;
-- `?`, `tbd`, valeurs vides : date inconnue.
-
-**Un texte JJ/MM sans année n'est pas complété arbitrairement.** Il est signalé comme date à vérifier.
-
-`Précision début` et `Précision fin` sont pris en compte :
-
-- **Jour** : date exacte ;
-- **Mois** : le mois est utilisé comme intervalle graphique, sans afficher un jour fictif ;
-- **Année** : l'année est représentée avec des hachures pour signaler l'imprécision. La fin de l'année n'est pas présentée comme une échéance validée.
-
-Si la valeur source ne contient qu'une année, la précision ne peut pas être artificiellement affinée en mois ou en jour.
-
-Les mois de fin sont inclus dans l'affichage de la barre. Une fin antérieure au début entraîne « Dates à vérifier » ; le widget n'inverse pas les dates.
-
-### Dates manquantes
-
-- Début connu, fin absente : marqueur de début, petit trait pointillé indicatif et « fin à préciser ». Ce trait **ne représente pas une durée estimée**.
-- Fin connue, début absent : marqueur de fin et « Début à préciser ».
-- Aucune date : le chantier reste visible, sans barre de durée.
-
-La période initiale couvre les années connues de toute la table (2025 à 2028 dans l'export fourni). Modifier un filtre ne change pas automatiquement cette échelle. Les dates de période, le bouton ↔ et les modes d'échelle permettent de changer la fenêtre affichée.
-
-Le repère vertical est la date du jour à l'ouverture, calculée dans le navigateur. Le champ **Repère** peut être placé au **08/10/2026** pour comparer à la présentation jointe. Il n'est pas figé sur cette date historique.
-
-### Durées consolidées
-
-Option désactivée par défaut. Les pointillés des en-têtes représentent l'enveloppe **calculée à partir des dates connues des chantiers visibles** : premier début et dernière fin connus. Un `?` signale que certaines dates manquent. Ce n'est ni un engagement de livraison supplémentaire, ni une colonne à créer dans Grist.
-
-## Interactions
-
-- Switchs Tous les chantiers / Internes DT / Autres directions.
-- Recherche textuelle insensible aux accents et à la casse, couvrant nom, périmètre, phase, responsable et commentaires.
-- Recherches avec suggestions pour Périmètre, Phase, Urgence et Responsable projet. Les options se croisent avec les autres filtres. Flèches, Entrée et Échap sont disponibles.
-- Compteurs : chantiers, périmètres, prioritaires, fins à préciser. Les deux derniers sont cliquables.
-- Groupes repliables et boutons Tout déplier / Tout replier.
-- Vue d'ensemble, échelle par mois, échelle par trimestres, période personnalisée.
-- Clic sur un libellé ou une barre : fiche du chantier en lecture seule. Fermeture par ×, clic extérieur ou Échap.
-- En-têtes et libellés fixés pendant le défilement du planning. Sur petit écran, le calendrier défile horizontalement.
-- Les données se mettent à jour à réception de `grist.onRecords` ; Actualiser force une relecture.
-- Aucune API de modification de données n'est utilisée.
-
-## Export
-
-**Exporter SVG** enregistre les chantiers correspondant aux filtres, tous les groupes dépliés, pour la période affichée. Le fichier inclut le repère et les dates connues, et peut être inséré dans une présentation. L'export contient naturellement les données visibles : le diffuser avec les précautions habituelles.
-
-**Imprimer** prépare une version paysage. Choisir A3 paysage et l'option d'impression des arrière-plans/couleurs dans le navigateur. Le rendu exact dépend des réglages du navigateur ; l'export SVG est préférable pour une reprise dans une diapositive.
-
-## Aperçu hors Grist
-
-À l'ouverture de `index.html` en dehors d'une iframe, le widget propose **Ouvrir un export Architecture (.csv)**. La lecture se fait localement, sans upload et sans modification du CSV. Les CSV à virgules ou points-virgules, champs entre guillemets et commentaires multilignes sont acceptés.
-
-Aucun CSV d'exemple contenant les données du projet n'est inclus dans ce dépôt. L'aperçu CSV est clairement signalé et ne se présente pas comme une connexion Grist en direct.
-
-## Confidentialité et dépendances
-
-- Aucun token/API key à mettre dans GitHub.
-- Aucun envoi des données métier vers GitHub, un service graphique ou un serveur tiers par le code.
-- Pas de bibliothèque de graphique, pas de police distante, pas de télémétrie.
-- Seul script externe chargé dans Grist : `https://docs.getgrist.com/grist-plugin-api.js`.
-- Aucun stockage des données métier dans localStorage ou dans des cookies.
-- Les valeurs métier sont échappées avant affichage HTML/SVG.
-- L'autorisation minimale requise est la lecture de la table sélectionnée. Comme pour tout widget personnalisé, le propriétaire du code doit être de confiance.
-
-## Contrôles effectués avant livraison
-
-Tests sur l'export Architecture fourni et dans Chromium avec l'API Grist simulée :
-
-- 39 chantiers / 13 périmètres / 2 volets ;
-- 9 urgences Prioritaire ; 6 fins manquantes ;
-- dates françaises, années seules, dates Grist encodées, références et listes développées ;
-- recherche, filtres croisés, volets, réinitialisation et repli des groupes ;
-- panneau de détail et fermeture clavier ;
-- export SVG avec contrôle XML ;
-- rendu sur des largeurs de 1600, 1366, 1024, 768 et 390 pixels ;
-- absence d'erreur JavaScript pendant ces tests ;
-- mise à jour après notification `onRecords` et relecture manuelle.
-
-Le widget n'a pas été connecté au document Grist de production de l'utilisateur. Une vérification d'intégration est donc à faire dans ce document après publication, notamment des colonnes visibles, des permissions et des filtres Grist amont.
-
-## Références techniques
-
-- Widgets personnalisés et niveaux d'accès : https://support.getgrist.com/widget-custom/
-- API `onRecords`, `ready`, `fetchSelectedTable` : https://support.getgrist.com/code/modules/grist_plugin_api/
-- Formats des données et développement des références : https://support.getgrist.com/code/interfaces/grist_plugin_api.FetchSelectedOptions/
+Le moteur de normalisation des données et des dates est identique à V1. Pas de validation directe dans votre document Grist de production.
