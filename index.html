@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<title>Revue architecture DT — Feuille de route</title>
+<title>Feuille de route DT</title>
 <style>
+
 :root{
  --bg:#f4f6f9;--paper:#fff;--ink:#233349;--muted:#738197;--line:#dfe5ed;
  --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#accce7;--medium:#5795c5;
@@ -66,54 +67,73 @@ main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;displa
 @media print{@page{size:A3 landscape;margin:10mm}html,body{height:auto;overflow:visible;background:white}main{height:auto;display:block;padding:0;max-width:none}.main-controls,.header-right,.notice,.popover,.overlay{display:none!important}.app-header{margin-bottom:10px}.roadmap-card{height:auto;display:block;overflow:visible;box-shadow:none;border-radius:0}.roadmap-scroll{display:block;overflow:visible;max-height:none;height:auto;min-height:0}.roadmap-inner,.gantt-row,.axis{width:100%!important;min-width:0!important}.axis,.gantt-row{grid-template-columns:30% 70%}.label-cell,.axis{position:static!important}.gantt-row{break-inside:avoid}.gantt-row.scope,.gantt-row.strand{break-after:avoid}.roadmap-legend{font-size:9px}.task-title{font-size:10px}.task-meta{font-size:9px}.period-caption{display:block}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 
 
-/* v1.2 — Revue guidée. Les repères de séance ne sont pas des statuts métier. */
+
+/* v1.3 — Une navigation unique, sans suivi de séance. */
 :root{--name-width:340px;--meeting-accent:#315d7b}
-header .title-group{gap:16px}h1{font-size:20px}.mode-switch button{padding:6px 10px;font-size:11px}
-.meeting-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0}
-.meeting-heading h2{font-size:25px;line-height:1.15;letter-spacing:-.6px;font-weight:700;overflow-wrap:anywhere}
-.meeting-heading .eyebrow{font-size:10px;color:#738499;letter-spacing:.8px;margin-bottom:6px;font-weight:600}
-.scope-pager{display:flex;gap:8px;align-items:center;flex-shrink:0}.scope-pager .btn{height:36px}.scope-pager .next-name{font-size:10px;color:#8391a3;max-width:160px;line-height:1.35;text-align:right;display:none}
-.meeting-mode .task-title{font-size:14px;font-weight:550;line-height:1.35}.meeting-mode .task-meta{display:none!important}
-.meeting-mode .task-name{padding-left:18px;padding-right:13px;gap:0;flex-direction:row;justify-content:flex-start;align-items:center}
-.task-dot{font-size:10px;display:inline-grid;place-items:center;width:23px;height:23px;border:1px solid #d7e0e9;border-radius:50%;color:#7c8da1;flex-shrink:0;margin-right:11px;font-variant-numeric:tabular-nums;background:white}
-.task-dot.reviewed{background:#edf3f5;color:#45636f;border-color:#bacdd1}
+.title-group{display:flex;flex-direction:column;align-items:flex-start;gap:3px!important;min-width:0}
+h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;line-height:1.3}
+.main-controls{gap:18px}.control-right{margin-left:auto}.portfolio-toggle{font-size:12px;min-height:35px;padding:8px 12px;gap:8px}
+.meeting-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 20px;border-bottom:1px solid var(--line);flex-shrink:0}
+.heading-context{min-width:0}.meeting-heading h2{font-size:25px;line-height:1.2;letter-spacing:-.6px;font-weight:700;overflow-wrap:anywhere}
+.meeting-heading .eyebrow{font-size:10px;color:#738499;letter-spacing:.8px;margin-bottom:6px;font-weight:600;text-transform:uppercase}
+.subject-navigation{display:flex;align-items:center;gap:8px;flex-shrink:0}.subject-navigation .btn{height:35px}.subject-navigation .back{width:35px;padding:6px;font-size:18px}
+.btn.primary{background:#315b77;border-color:#315b77;color:white}.btn.primary:hover:not(:disabled){background:#244b66}.subject-detail{margin-left:3px;font-size:11px}
+.meeting-mode .task-title{font-size:14px;font-weight:550;line-height:1.35}.meeting-mode .task-name{padding:8px 15px 8px 18px;gap:5px}
 .meeting-mode .gantt-row.task.selected>.label-cell,.meeting-mode .gantt-row.task.selected>.track{background:#ebf2f8}
 .meeting-mode .gantt-row.task.selected>.label-cell{box-shadow:inset 3px 0 #315d7b}
 .meeting-mode .gantt-row.task.selected .task-title{font-weight:650;color:#23445d}
-.meeting-mode .task-name .task-title{min-width:0}.meeting-mode .axis-label{padding-left:20px;font-size:10px}
-.meeting-mode .axis-year{font-size:13px}.meeting-mode .axis-unit{font-size:11px}
+.meeting-mode .axis-label{padding-left:20px;font-size:10px}.meeting-mode .axis-year{font-size:13px}.meeting-mode .axis-unit{font-size:11px}
 .meeting-mode .roadmap-card{border-radius:12px}.meeting-mode .roadmap-legend{padding:9px 20px;font-size:11px}
-.meeting-mode .roadmap-inner{min-height:100%}
-.focus-strip{padding:12px 20px;background:#fcfdfe;border-top:1px solid var(--line);flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:83px}
-.focus-body{min-width:0}.focus-caption{font-size:9px;text-transform:uppercase;letter-spacing:.9px;color:#7c8a9d;margin-bottom:5px;font-weight:700}
-.focus-title{font-size:15px;font-weight:680;line-height:1.35;overflow-wrap:anywhere;color:#304c65}
-.focus-meta{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;font-size:11px;color:#687f93;margin-top:5px}
+.focus-strip{padding:14px 20px;background:#fcfdfe;border-top:1px solid var(--line);flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px}
+.focus-body{min-width:0}.focus-title{font-size:17px;font-weight:650;line-height:1.35;overflow-wrap:anywhere;color:#304c65}
+.focus-meta{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;font-size:12px;color:#687f93;margin-top:6px}
 .focus-meta strong{font-weight:650;color:#476176}.focus-meta .dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px}
 .focus-comment{margin-top:6px;font-size:12px;color:#566d83;line-height:1.4;max-width:1080px;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.focus-buttons{display:flex;gap:7px;align-items:center;flex-shrink:0}.focus-detail{font-size:11px}.review-mark{min-width:137px;border-color:#cad7df;background:white;color:#36576d;font-size:12px;height:34px}
-.review-mark[aria-pressed=true]{background:#eaf1f4;border-color:#aebfc9}.review-mark svg{width:14px;height:14px}
-.meeting-footer{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:10px 18px;border-top:1px solid var(--line);flex-shrink:0;background:white;min-height:55px}
-.review-progress{min-width:120px;max-width:235px;flex:1}.progress-caption{display:flex;gap:10px;align-items:baseline;font-size:11px;color:#5b7084}.progress-caption strong{font-weight:650}.progress-caption span{color:#8a96a7;font-size:10px}.progress-track{margin-top:6px;height:3px;background:#edf1f5;border-radius:4px;overflow:hidden}.progress-fill{height:100%;width:0;background:#718e9f;border-radius:4px;transition:width .2s ease}
-.meeting-navigation{display:flex;align-items:center;gap:10px}.meeting-navigation .btn{height:35px}.btn.primary{background:#315b77;border-color:#315b77;color:white}.btn.primary:hover{background:#244b66}.point-position{font-size:11px;color:#8090a3;white-space:nowrap;min-width:60px;text-align:center;font-variant-numeric:tabular-nums}.keyboard-hint{font-size:10px;color:#8998a9}.keyboard-hint kbd{font:inherit;border:1px solid #dae2eb;border-radius:3px;padding:1px 4px;background:#fafbfd}
-.agenda-panel{width:440px;padding:0}.agenda-panel .popover-head{margin:0;padding:14px 15px;border-bottom:1px solid var(--line)}.agenda-intro{padding:11px 16px;font-size:11px;line-height:1.4;color:#7e8d9e;border-bottom:1px solid #edf1f5}.agenda-group{padding:13px 15px 6px;font-size:9px;letter-spacing:.8px;color:#8292a3;text-transform:uppercase;font-weight:700}.agenda-items{padding:0 7px 8px}.agenda-entry{display:flex;align-items:center;gap:10px;background:white;border:0;border-radius:7px;padding:10px 8px;width:100%;text-align:left;min-height:44px}.agenda-entry:hover{background:#f5f8fb}.agenda-entry[aria-current=true]{background:#eaf1f7}.agenda-n{width:24px;height:24px;display:grid;place-items:center;font-size:10px;border:1px solid #d9e2ea;border-radius:5px;flex-shrink:0;color:#8192a4}.agenda-entry[aria-current=true] .agenda-n{border-color:#9bb4c8;color:#315775;background:white}.agenda-text{flex:1;font-size:12px;font-weight:570;line-height:1.35}.agenda-count{font-size:10px;color:#8394a4;white-space:nowrap}.agenda-entry.complete .agenda-n{color:#566d75;background:#edf3f5}
-.agenda-bottom{padding:10px 15px;border-top:1px solid var(--line);color:#8191a3;font-size:10px;line-height:1.5}
-.overview-mode .gantt-row.scope{height:36px}.overview-mode .gantt-row.task.selected .label-cell{box-shadow:inset 3px 0 #315d7b}
-.projection .sync,.projection #refresh,.projection .main-controls{display:none!important}.projection .app-header{min-height:37px}.projection main{padding:10px 14px}.projection .meeting-heading{padding-top:14px}.projection .task-title{font-size:16px}.projection h1{font-size:18px}.projection .focus-title{font-size:17px}.projection .focus-meta{font-size:12px}
-.checksum-report{font-size:12px;line-height:1.6;color:#677f91;padding:0 2px 5px}.session-group{padding:14px 0;border-bottom:1px solid #e1e8ee}.session-group h3{font-size:13px;margin-bottom:8px}.session-row{display:flex;gap:9px;align-items:flex-start;padding:6px 0;font-size:12px;line-height:1.4}.session-status{font-size:10px;white-space:nowrap;min-width:58px;color:#7b8fa1}.session-row.done .session-status{color:#416273}.session-row button{background:none;border:0;text-align:left;color:#395874;padding:0;font:inherit}.session-note{font-size:11px;color:#7e8f9e;margin-top:10px;line-height:1.5}
-@media(min-width:1700px){.meeting-mode{--name-width:410px}.meeting-mode .task-title{font-size:16px}.meeting-heading h2{font-size:28px}.meeting-mode .roadmap-legend{font-size:12px}.focus-title{font-size:17px}.focus-meta{font-size:12px}.scope-pager .next-name{display:block}}
-@media(max-width:1100px){.meeting-mode{--name-width:300px}.title-group h1{font-size:18px}.title-group{gap:10px!important}.sync{display:none}.search-field{width:190px;min-width:120px}.meeting-heading{padding:13px 16px}.meeting-heading h2{font-size:22px}.focus-strip{padding:10px 16px}.keyboard-hint{display:none}.focus-buttons{flex-direction:column;align-items:stretch}.focus-meta{gap:5px 10px}.mode-switch button{font-size:10px}.meeting-mode .task-title{font-size:13px}}
-@media(max-width:760px){.app-header{flex-wrap:wrap;gap:8px}.app-header .title-group{flex:1;flex-wrap:wrap;gap:6px!important}.title-group h1{font-size:17px}.header-right{gap:2px}.main-controls{flex-wrap:wrap;gap:7px}.control-right{width:100%;justify-content:flex-start}.control-right .search-field{flex:1;width:auto}.meeting-mode{--name-width:230px}.meeting-heading h2{font-size:20px}.scope-pager .btn span{display:none}.scope-pager .btn{width:31px;padding:4px}.meeting-heading .eyebrow{font-size:9px}.meeting-mode .roadmap-legend{padding:8px 11px;gap:10px;font-size:10px}.meeting-mode .task-title{font-size:12px}.meeting-mode .task-name{padding-left:10px}.task-dot{width:18px;height:18px;font-size:9px;margin-right:7px}.focus-strip{min-height:95px;align-items:flex-start;padding:10px}.focus-title{font-size:13px}.focus-meta{font-size:10px}.focus-buttons{gap:4px}.review-mark{min-width:102px;font-size:10px;padding:5px}.focus-detail{font-size:10px;padding:5px;min-height:26px}.focus-caption{font-size:8px}.focus-comment{font-size:11px}.meeting-footer{gap:8px;padding:9px 10px}.meeting-navigation{gap:5px}.meeting-navigation .btn{font-size:10px;padding:6px 8px}.point-position{display:none}.progress-caption span{display:none}.review-progress{max-width:110px;min-width:70px}.progress-caption{font-size:10px}.projection .task-title{font-size:13px}.projection .focus-title{font-size:14px}.agenda-panel{max-width:calc(100vw - 20px)}}
-@media(max-width:460px){.title-group{width:calc(100% - 90px)}.title-group .mode-switch{margin-top:3px}.header-right{align-self:flex-start}.search-field{display:none}.main-controls .control-right{width:auto}.main-controls .segmented button{font-size:10px;padding:7px 9px}.control-right .btn{font-size:10px;padding:6px 8px}.meeting-mode{--name-width:185px}.meeting-heading{padding:11px}.meeting-heading h2{font-size:18px}.meeting-heading .eyebrow{font-size:8px}.scope-pager{gap:4px}.focus-strip{gap:8px}.review-mark{min-width:91px}.focus-meta .owner{display:none}.progress-caption{font-size:9px;line-height:1.3}.meeting-navigation .btn{font-size:10px}.meeting-mode .roadmap-legend{font-size:9px;gap:7px}.meeting-mode .task-title{font-size:11px}.meeting-mode .axis-unit{font-size:10px}.focus-comment{display:none}}
-@media print{html,body,main{height:auto!important;overflow:visible!important}.mode-switch,#presentationToggle,.meeting-footer,.focus-buttons,.scope-pager{display:none!important}.meeting-heading{break-after:avoid;padding:15px 0}.meeting-heading h2{font-size:22px}.focus-strip{display:block;break-inside:avoid}.roadmap-card{display:block!important}.roadmap-inner{min-height:0!important}.meeting-mode .gantt-row.task{height:58px!important}.meeting-mode .task-title{font-size:11px}.meeting-mode .roadmap-scroll{overflow:visible!important}.focus-title{font-size:12px}.focus-meta{font-size:10px}}
+.focus-buttons{display:flex;gap:7px;align-items:center;flex-shrink:0}.focus-detail{font-size:11px}
+/* Portefeuille : Pôle > Volet > Périmètre > Chantier. */
+.portfolio-panel{width:500px;padding:0;overflow:auto;overscroll-behavior:contain}
+.portfolio-panel .popover-head{margin:0;padding:15px 17px;border-bottom:1px solid var(--line);position:sticky;top:0;background:white;z-index:2}
+.portfolio-panel .popover-head h2{font-size:15px}.portfolio-note{padding:11px 17px;color:#7d8b9e;font-size:11px;line-height:1.5}
+.portfolio-pole{border-top:1px solid #e5ebf1}.portfolio-pole>summary{display:flex;align-items:center;gap:9px;list-style:none;cursor:pointer;padding:14px 17px;background:#f8fafc;color:#3c556e;min-height:47px}
+.portfolio-pole>summary::-webkit-details-marker,.portfolio-scope>summary::-webkit-details-marker{display:none}
+.portfolio-pole>summary:before{content:'›';font-size:17px;line-height:1;width:11px;transition:transform .15s}
+.portfolio-pole[open]>summary:before{transform:rotate(90deg)}.portfolio-pole>summary strong{font-size:13px;font-weight:700;flex:1}
+.portfolio-count{font-size:10px;color:#7e8fa1;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:450}
+.portfolio-pole.is-current>summary{background:#edf3f8;color:#2d4f6b}.portfolio-pole.empty>summary{background:#fcfdfe;color:#8392a4}
+.portfolio-pole.empty p{padding:12px 22px 15px;color:#8996a6;font-size:11px;line-height:1.5}
+.portfolio-volet{margin:15px 19px 7px;color:#8796a6;font-size:10px;letter-spacing:.7px;text-transform:uppercase;font-weight:650}
+.portfolio-scopes{padding:0 10px 11px}.portfolio-scope{border-radius:7px;margin:2px 0}.portfolio-scope>summary{list-style:none;display:flex;gap:8px;align-items:center;border-radius:7px;padding:0 7px;cursor:pointer}
+.portfolio-scope>summary:hover{background:#f2f6f9}.portfolio-scope.is-current>summary{background:#eaf1f7}
+.portfolio-open{border:0;background:transparent;text-align:left;padding:10px 3px;display:flex;gap:8px;align-items:center;flex:1;min-width:0;font-size:12px;font-weight:580;line-height:1.35}
+.portfolio-open .scope-text{flex:1}.portfolio-disclosure{font-size:17px;color:#8294a5;width:13px;display:inline-block;transition:transform .15s;text-align:center}
+.portfolio-scope[open]>summary .portfolio-disclosure{transform:rotate(90deg)}
+.portfolio-tasks{margin:3px 10px 10px 17px;padding-left:13px;border-left:1px solid #dfe7ef;display:grid;gap:2px}
+.portfolio-task{border:0;background:white;text-align:left;font-size:11px;line-height:1.4;padding:8px;border-radius:6px;display:flex;gap:8px;align-items:flex-start;color:#64768b}
+.portfolio-task:hover{background:#f2f6fa}.portfolio-task[aria-current=true]{color:#294e6b;background:#edf4fa;font-weight:650}
+.portfolio-task .urgency-dot{margin-top:5px;width:5px;height:5px}.portfolio-empty{padding:18px;font-size:12px;line-height:1.5;color:var(--muted)}
+.strand-filter{padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid var(--line)}.strand-filter .field-label{display:block;margin-bottom:8px}
+.strand-filter .segmented{width:100%;flex-wrap:wrap}.strand-filter .segmented button{flex:1;font-size:11px;padding:8px 9px}
+.pole-filter{margin-bottom:15px}.dialog-footer{line-height:1.5}
+/* Le portefeuille reste toujours accessible, même en projection. */
+.projection .sync,.projection #refresh,.projection .control-right{display:none!important}
+.projection main{padding:10px 14px}.projection .app-header{min-height:43px}.projection h1{font-size:20px}
+.projection .main-controls{display:flex;min-height:35px;gap:8px}
+.projection .meeting-heading{padding:15px 20px}.projection .meeting-heading h2{font-size:28px}
+.projection .task-title{font-size:16px}.projection .pole-subtitle{font-size:12px}
+@media(min-width:1700px){.meeting-mode{--name-width:410px}.meeting-mode .task-title{font-size:16px}.meeting-heading h2{font-size:28px}.meeting-mode .roadmap-legend{font-size:12px}}
+@media(max-width:1100px){.meeting-mode{--name-width:300px}.title-group h1{font-size:20px}.sync{display:none}.search-field{width:190px;min-width:120px}.meeting-heading{padding:13px 16px}.meeting-heading h2{font-size:22px}.meeting-mode .task-title{font-size:13px}.subject-navigation{gap:6px}}
+@media(max-width:760px){.app-header{gap:10px}.header-right{gap:3px}.main-controls{flex-wrap:wrap;gap:8px}.control-right{flex:0 0 100%;width:100%;margin-left:0;justify-content:flex-start}.control-right .search-field{flex:1;width:auto;min-width:0;display:block}.meeting-mode{--name-width:230px}.meeting-heading{padding:12px;align-items:flex-start;gap:12px}.meeting-heading h2{font-size:20px}.subject-navigation{flex-wrap:wrap;justify-content:flex-end;max-width:170px}.subject-detail{font-size:10px;min-height:27px!important;height:27px!important}.meeting-mode .roadmap-legend{padding:8px 11px;gap:10px;font-size:10px}.meeting-mode .task-title{font-size:12px}.meeting-mode .task-name{padding-left:12px}.focus-strip{padding:11px;align-items:flex-start;gap:10px}.focus-title{font-size:14px}.focus-meta{font-size:10px;gap:6px}.focus-detail{font-size:10px}.projection .meeting-heading h2{font-size:23px}.projection .task-title{font-size:13px}.portfolio-panel{max-width:calc(100vw - 20px)}}
+@media(max-width:460px){.title-group h1{font-size:18px}.title-group .pole-subtitle{font-size:11px}.header-right .btn{font-size:11px;padding:6px}.header-right .icon{width:27px}.meeting-mode{--name-width:185px}.meeting-heading{flex-wrap:wrap;gap:9px}.heading-context{width:100%}.meeting-heading h2{font-size:20px}.subject-navigation{max-width:none;width:100%;justify-content:flex-end}.subject-navigation .subject-detail{margin-right:auto;order:-1}.meeting-mode .task-title{font-size:11px}.meeting-mode .axis-unit{font-size:10px}.focus-meta .owner{display:none}.focus-comment{display:none}.control-right .btn{padding:7px 8px;font-size:11px}.portfolio-pole>summary{padding:13px}.portfolio-open{font-size:11px}.portfolio-count{font-size:9px}}
+@media print{html,body,main{height:auto!important;overflow:visible!important}.subject-navigation,#presentationToggle,.focus-buttons,.main-controls{display:none!important}.meeting-heading{break-after:avoid;padding:15px 0}.meeting-heading h2{font-size:22px}.roadmap-card{display:block!important}.roadmap-inner{min-height:0!important}.meeting-mode .gantt-row.task{height:58px!important}.meeting-mode .task-title{font-size:11px}.meeting-mode .roadmap-scroll{overflow:visible!important}.focus-title{font-size:12px}.focus-meta{font-size:10px}}
 
-.meeting-mode .overview-only{display:none}
 </style>
 </head>
+
 <body class="meeting-mode">
 <noscript><p class="no-script">JavaScript doit être activé pour afficher la feuille de route.</p></noscript>
 <main>
  <header class="app-header">
-  <div class="title-group"><h1>Feuille de route architecture</h1><div class="segmented mode-switch" id="modeSwitch" aria-label="Mode de consultation"><button data-mode="meeting" aria-pressed="true">Réunion</button><button data-mode="overview" aria-pressed="false">Vue d’ensemble</button></div></div>
+  <div class="title-group"><h1>Feuille de route DT</h1><p id="poleSubtitle" class="pole-subtitle">Architecture</p></div>
   <div class="header-right">
    <button class="btn quiet" id="presentationToggle" aria-pressed="false" title="Agrandir la présentation dans le widget">⤢ <span>Projection</span></button>
    <span class="sync" id="sync" role="status">Connexion à Grist…</span>
@@ -122,78 +142,67 @@ header .title-group{gap:16px}h1{font-size:20px}.mode-switch button{padding:6px 1
   </div>
  </header>
  <nav class="main-controls" aria-label="Navigation de la feuille de route">
-  <div class="segmented" id="strandTabs" aria-label="Volet"><button data-strand="" aria-pressed="true">Tous</button><button data-strand="Internes DT" aria-pressed="false">Internes DT</button><button data-strand="Avec les autres directions" aria-pressed="false">Autres directions</button></div>
+  <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
   <div class="control-right">
    <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
-   <button class="btn" id="agendaToggle" aria-expanded="false" aria-controls="agendaPanel">☷ <span>Ordre du jour</span></button>
    <button class="btn" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtres<span id="filterCount" class="badge" hidden></span></button>
    <button class="btn" id="viewToggle" aria-expanded="false" aria-controls="viewPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>Affichage</button>
    <button class="btn icon quiet" id="resetQuick" title="Effacer tous les filtres" aria-label="Effacer tous les filtres" hidden>×</button>
   </div>
  </nav>
  <div id="notice" class="notice info" role="status" hidden></div>
- <section class="roadmap-card" aria-label="Feuille de route architecture">
+ <section class="roadmap-card" aria-label="Feuille de route DT">
   <div class="meeting-heading" id="meetingHeading">
-   <div><div class="eyebrow" id="meetingCrumb">REVUE DES CHANTIERS</div><h2 id="meetingScope">Chargement du périmètre…</h2></div>
-   <div class="scope-pager"><span class="next-name" id="nextScopeName"></span><button class="btn icon" id="prevScope" aria-label="Périmètre précédent" title="Périmètre précédent">‹</button><button class="btn" id="nextScope" aria-label="Périmètre suivant" title="Périmètre suivant"><span>Périmètre suivant</span> ›</button></div>
+   <div class="heading-context"><div class="eyebrow" id="meetingCrumb">Internes DT</div><h2 id="meetingScope">Chargement du périmètre…</h2></div>
+   <div class="subject-navigation"><button class="btn quiet subject-detail" id="selectedDetails" title="Ouvrir le détail du sujet sélectionné">Détail ↗</button><button class="btn back" id="prevTask" aria-label="Sujet précédent" title="Sujet précédent">←</button><button class="btn primary" id="nextTask" title="Sujet suivant">Sujet suivant →</button></div>
   </div>
-
   <div class="roadmap-legend" aria-label="Couleurs par niveau d’urgence">
    <span class="legend-label">Urgence</span>
    <span class="legend-item"><i class="swatch" style="background:var(--minor)"></i>Mineur</span>
    <span class="legend-item"><i class="swatch" style="background:var(--medium)"></i>Intermédiaire</span>
    <span class="legend-item"><i class="swatch" style="background:var(--high)"></i>Prioritaire</span>
    <span class="legend-item" title="Urgence à qualifier ou non renseignée"><i class="swatch" style="background:var(--unknown)"></i>À qualifier</span>
-   <span class="legend-spacer"></span>
-   <span class="period-caption" id="periodCaption"></span>
+   <span class="legend-spacer"></span><span class="period-caption" id="periodCaption"></span>
    <span class="legend-item legend-date" title="Date du repère vertical"><i class="marker-symbol"></i><span id="referenceLabel"></span></span>
   </div>
-  <div class="roadmap-scroll" id="roadmapScroll" tabindex="0" aria-label="Feuille de route ; flèches gauche et droite pour parcourir les sujets"><div class="roadmap-inner" id="roadmap"><div class="roadmap-empty"><p class="empty-title">Connexion à la table Architecture</p><p>Les chantiers apparaîtront ici dès que Grist transmettra les données.</p></div></div></div>
-
-  <section class="focus-strip" id="focusStrip" aria-label="Sujet présenté" hidden>
-   <div class="focus-body"><div class="focus-caption" id="focusCaption"></div><h3 class="focus-title" id="focusTitle"></h3><div class="focus-meta" id="focusMeta"></div><p class="focus-comment" id="focusComment" hidden></p></div>
-   <div class="focus-buttons"><button class="btn focus-detail" id="focusDetails">Voir le détail ↗</button><button class="btn review-mark" id="reviewMark" aria-pressed="false" title="Repère de séance uniquement ; aucune modification du chantier">○ Marquer abordé</button></div>
+  <div class="roadmap-scroll" id="roadmapScroll" tabindex="0" aria-label="Feuille de route ; flèches gauche et droite pour parcourir les sujets"><div class="roadmap-inner" id="roadmap"><div class="roadmap-empty"><p class="empty-title">Connexion à la table Grist</p><p>Les chantiers apparaîtront ici dès réception des données.</p></div></div></div>
+  <section class="focus-strip" id="focusStrip" aria-label="Détail du sujet en projection" hidden>
+   <div class="focus-body"><h3 class="focus-title" id="focusTitle"></h3><div class="focus-meta" id="focusMeta"></div><p class="focus-comment" id="focusComment" hidden></p></div>
+   <div class="focus-buttons"><button class="btn focus-detail" id="focusDetails">Voir le détail ↗</button></div>
   </section>
-  <footer class="meeting-footer" id="meetingFooter" hidden>
-   <div class="review-progress" title="Sujets marqués abordés pendant cette séance, pas avancement des travaux"><div class="progress-caption"><strong id="reviewProgress"></strong><span>dans la séance</span></div><div class="progress-track"><div class="progress-fill" id="reviewProgressFill"></div></div></div>
-   <span class="keyboard-hint"><kbd>←</kbd> <kbd>→</kbd> changer de sujet · <kbd>Entrée</kbd> détail</span>
-   <div class="meeting-navigation"><button class="btn" id="prevTask">← Précédent</button><span class="point-position" id="pointPosition"></span><button class="btn primary" id="nextTask">Suivant →</button></div>
-  </footer>
  </section>
 </main>
-
-<section class="popover agenda-panel" id="agendaPanel" role="dialog" aria-label="Ordre du jour de la revue" hidden>
- <div class="popover-head"><h2>Ordre du jour</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer l’ordre du jour">×</button></div>
- <p class="agenda-intro" id="agendaIntro"></p><div id="agendaList"></div><div class="agenda-bottom">Un sujet « abordé » signifie uniquement qu’il a été discuté dans cette séance. Aucun statut Grist n’est modifié.</div>
+<section class="popover portfolio-panel" id="portfolioPanel" role="dialog" aria-label="Portefeuille des chantiers" hidden>
+ <div class="popover-head"><h2>Portefeuille des chantiers</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer le portefeuille">×</button></div>
+ <div class="portfolio-note" id="portfolioNote"></div><div id="portfolioList"></div>
 </section>
 <section class="popover" id="filtersPanel" role="dialog" aria-label="Filtres de la feuille de route" hidden>
  <div class="popover-head"><h2>Filtres</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer les filtres">×</button></div>
+ <div class="field combo pole-filter" id="poleCombo" hidden></div>
+ <div class="strand-filter"><span class="field-label">Volet</span><div class="segmented" id="strandTabs" aria-label="Volet"><button data-strand="" aria-pressed="true">Tous</button><button data-strand="Internes DT" aria-pressed="false">Internes DT</button><button data-strand="Avec les autres directions" aria-pressed="false">Autres directions</button></div></div>
  <div class="filter-grid"><div class="field combo" id="scopeCombo"></div><div class="field combo" id="urgencyCombo"></div><div class="field combo" id="phaseCombo"></div><div class="field combo" id="ownerCombo"></div></div>
  <div class="popover-footer"><label class="small-toggle"><input id="missingEnd" type="checkbox">Fins à préciser uniquement</label><button id="clear" class="btn quiet">Effacer</button></div>
 </section>
 <section class="popover" id="viewPanel" role="dialog" aria-label="Affichage du planning" hidden>
  <div class="popover-head"><h2>Affichage du planning</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer les réglages d’affichage">×</button></div>
- <div class="segmented scale-buttons" id="scales" aria-label="Échelle de temps"><button data-scale="fit" aria-pressed="true">Vue d’ensemble</button><button data-scale="month" aria-pressed="false">Mois</button><button data-scale="quarter" aria-pressed="false">Trimestres</button></div>
+ <div class="segmented scale-buttons" id="scales" aria-label="Échelle de temps"><button data-scale="fit" aria-pressed="true">Ajuster à l’écran</button><button data-scale="month" aria-pressed="false">Mois</button><button data-scale="quarter" aria-pressed="false">Trimestres</button></div>
  <div class="options-block"><div class="options-label">Période affichée</div><div class="date-fields"><label class="field">De<input type="month" id="rangeStart" aria-label="Début de la période affichée"></label><label class="field">À<input type="month" id="rangeEnd" aria-label="Fin de la période affichée"></label><button class="btn icon" id="allDates" title="Afficher toute la période" aria-label="Afficher toute la période">↔</button></div></div>
  <div class="options-block"><div class="options-label">Repère vertical</div><div class="date-fields"><label class="field"><span class="visually-hidden">Date du repère</span><input type="date" id="referenceDate" aria-label="Date du repère vertical"></label><button class="btn" id="today">Aujourd’hui</button></div></div>
- <div class="options-block"><label class="small-toggle"><input type="checkbox" id="showDetails">Afficher les détails sur les lignes</label><label class="small-toggle overview-only"><input type="checkbox" id="consolidated">Afficher les durées consolidées par périmètre</label><p class="option-hint">Hachures : date connue à l’année. Pointillés : date à préciser. La couleur indique l’urgence, pas l’avancement.</p></div>
- <div class="popover-footer overview-only"><button class="btn quiet" id="expand">Tout déplier</button><button class="btn quiet" id="collapse">Tout replier</button></div>
+ <div class="options-block"><label class="small-toggle"><input type="checkbox" id="showDetails">Afficher les détails sur les lignes</label><p class="option-hint">Hachures : date connue à l’année. Pointillés : date à préciser. La couleur indique l’urgence, pas l’avancement.</p></div>
  <details id="qualityPanel" class="quality-panel" hidden><summary id="qualitySummary"></summary><div id="qualityList" class="quality-list"></div></details>
 </section>
 <section class="popover actions-popover" id="actionsPanel" role="dialog" aria-label="Actions" hidden>
- <button class="menu-item" id="sessionSummary">✓ Bilan de la séance</button>
- <button class="menu-item" id="newSession">↺ Nouvelle séance</button>
- <button class="menu-item" id="export"><span aria-hidden="true">↓</span>Exporter la vue en SVG</button>
+ <button class="menu-item" id="export"><span aria-hidden="true">↓</span>Exporter le périmètre en SVG</button>
  <button class="menu-item" id="print"><span aria-hidden="true">⎙</span>Imprimer</button>
  <div id="localActions" hidden><button class="menu-item" id="importCsv">Ouvrir un CSV local</button><input type="file" id="csvFile" accept=".csv,text/csv" hidden></div>
 </section>
-<div class="overlay" id="overlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="heading"><div class="eyebrow">Détail du chantier</div><h2 id="dialogTitle"></h2></div><button class="btn icon" id="closeDialog" aria-label="Fermer la fenêtre">✕</button></div><div class="dialog-body" id="dialogBody"></div><div class="dialog-footer">Lecture seule · Les modifications s’effectuent dans la table Architecture.</div></section></div>
+<div class="overlay" id="overlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="heading"><div class="eyebrow">Détail du chantier</div><h2 id="dialogTitle"></h2></div><button class="btn icon" id="closeDialog" aria-label="Fermer la fenêtre">✕</button></div><div class="dialog-body" id="dialogBody"></div><div class="dialog-footer">Lecture seule · Les modifications s’effectuent dans la table source Grist.</div></section></div>
 <script>/* Modèle de lecture de la table Architecture. Aucun appel d'écriture. */
 const RoadmapCore = (() => {
   'use strict';
   const DAY = 86400000;
   const FIELDS = {
-    name: ['Nom','Intitule','Sujet'], scope: ['Perimetre'], strand: ['Volet'],
+    pole: ['Pole','Pôle'], name: ['Nom','Intitule','Sujet'], scope: ['Perimetre'], strand: ['Volet'],
     phase: ['Phase'], urgency: ['Urgence'], owner: ['Responsable_Projet','Responsable Projet'],
     comment: ['Commentaires','Commentaire'], start: ['Date_de_debut','Date de début'],
     startPrecision: ['Precision_debut','Précision début'], end: ['Date_de_fin','Date de fin'],
@@ -206,6 +215,8 @@ const RoadmapCore = (() => {
     'DT / DUD : conception et raccordements', 'Interconnexion SI communautés',
     'Traitement des Wifi spécifiques', 'Grist et RTU'
   ];
+  const DEFAULT_POLE = 'Architecture';
+  const PLANNED_POLES = ['Architecture','Lot 1','Lot 2','Lot 3'];
   const COLORS = {minor:'#accce7', medium:'#5795c5', high:'#285e88', unknown:'#bdc5ce'};
   function norm(v) { return String(v ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim().toLowerCase(); }
   function key(v) { return norm(v).replace(/[^a-z0-9]/g,''); }
@@ -308,18 +319,41 @@ const RoadmapCore = (() => {
       if(chronology)issues.push('La fin précède le début');
       if(s.kind==='empty')issues.push('Date de début à préciser');
       if(e.kind==='empty')issues.push('Date de fin à préciser');
-      rows.push({id:String(r.id??('csv-'+(i+1))),name,scope:text(get('scope'))||'Périmètre non renseigné',strand:text(get('strand'))||'Volet non renseigné',phase:text(get('phase'))||'Non renseignée',urgency:urgency(get('urgency')),owner:text(get('owner'))||'Non renseigné',comment:text(get('comment')),start:s,end:e,order,index:i,invalid:chronology||s.kind==='invalid'||e.kind==='invalid',issues});
+      rows.push({id:String(r.id??('csv-'+(i+1))),name,pole:poleName(get('pole')),scope:text(get('scope'))||'Périmètre non renseigné',strand:text(get('strand'))||'Volet non renseigné',phase:text(get('phase'))||'Non renseignée',urgency:urgency(get('urgency')),owner:text(get('owner'))||'Non renseigné',comment:text(get('comment')),start:s,end:e,order,index:i,invalid:chronology||s.kind==='invalid'||e.kind==='invalid',issues});
     });
     return {rows,map,keys,skipped};
   }
+  function poleName(value, fallback=DEFAULT_POLE) {
+    const raw=text(value).trim();
+    if(!raw)return fallback;
+    const cleaned=raw.replace(/^p[oô]le\s*[-:–—]?\s*/i,'').trim();
+    if(norm(cleaned)==='architecture')return 'Architecture';
+    const lot=norm(cleaned).match(/^lot\s*(\d+)$/);
+    return lot?'Lot '+Number(lot[1]):cleaned||fallback;
+  }
+  function poleRank(name){const i=PLANNED_POLES.indexOf(name);return i<0?100:i;}
   function grouped(rows) {
-    const strands=new Map(),known=SCOPE_ORDER.map(norm);
-    for(const r of rows){if(!strands.has(r.strand))strands.set(r.strand,new Map());const scopes=strands.get(r.strand);if(!scopes.has(r.scope))scopes.set(r.scope,[]);scopes.get(r.scope).push(r);}
+    const poles=new Map(),known=SCOPE_ORDER.map(norm);
+    for(const r of rows){
+      if(!poles.has(r.pole))poles.set(r.pole,new Map());
+      const strands=poles.get(r.pole);
+      if(!strands.has(r.strand))strands.set(r.strand,new Map());
+      const scopes=strands.get(r.strand);
+      if(!scopes.has(r.scope))scopes.set(r.scope,[]);
+      scopes.get(r.scope).push(r);
+    }
     const rank=v=>norm(v)==='internes dt'?0:norm(v)==='avec les autres directions'?1:2;
-    return [...strands].sort((a,b)=>rank(a[0])-rank(b[0])).map(([strand,scopes])=>({strand,groups:[...scopes].sort((a,b)=>{
-      const ai=known.indexOf(norm(a[0])),bi=known.indexOf(norm(b[0]));
-      return (ai<0?999:ai)-(bi<0?999:bi);
-    }).map(([scope,items])=>({scope,id:strand+'\u241f'+scope,items:items.sort((a,b)=>a.order-b.order||a.index-b.index)}))}));
+    const result=[];
+    for(const [pole,strands] of [...poles].sort((a,b)=>poleRank(a[0])-poleRank(b[0])||a[0].localeCompare(b[0],'fr',{numeric:true}))){
+      for(const [strand,scopes] of [...strands].sort((a,b)=>rank(a[0])-rank(b[0]))){
+        result.push({pole,strand,groups:[...scopes].sort((a,b)=>{
+          if(pole!==DEFAULT_POLE)return 0;
+          const ai=known.indexOf(norm(a[0])),bi=known.indexOf(norm(b[0]));
+          return (ai<0?999:ai)-(bi<0?999:bi);
+        }).map(([scope,items])=>({scope,id:[pole,strand,scope].join('\u241f'),items:[...items].sort((a,b)=>a.order-b.order||a.index-b.index)}))});
+      }
+    }
+    return result;
   }
   function rangeFor(rows) {
     const dates=rows.flatMap(r=>[r.start,r.end].filter(d=>d.kind==='valid').flatMap(d=>[d.lo,d.hi]));
@@ -347,7 +381,7 @@ const RoadmapCore = (() => {
     const headers=lines.shift()||[];
     return lines.map((l,i)=>({...Object.fromEntries(headers.map((h,j)=>[h.trim(),l[j]??''])),id:'csv-'+(i+1)}));
   }
-  return {DAY,FIELDS,COLORS,norm,key,text,utc,iso,prettyDay,today,parseDate,precisionName,urgency,columnMap,toRows,normalizeRows,grouped,rangeFor,monthsBetween,parseCSV};
+  return {DAY,FIELDS,COLORS,DEFAULT_POLE,PLANNED_POLES,poleName,poleRank,norm,key,text,utc,iso,prettyDay,today,parseDate,precisionName,urgency,columnMap,toRows,normalizeRows,grouped,rangeFor,monthsBetween,parseCSV};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=RoadmapCore;
 </script>
@@ -356,8 +390,8 @@ if(typeof module!=='undefined'&&module.exports)module.exports=RoadmapCore;
 const C=RoadmapCore, $=id=>document.getElementById(id);
 const MONTHS=['Jan.','Fév.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
 const INITIALS=['J','F','M','A','M','J','J','A','S','O','N','D'];
-const LABELS={name:'Nom',scope:'Périmètre',strand:'Volet',phase:'Phase',urgency:'Urgence',owner:'Responsable Projet',comment:'Commentaires',start:'Date de début',startPrecision:'Précision début',end:'Date de fin',endPrecision:'Précision fin',order:'Ordre'};
-const state={rows:[],loaded:false,source:'',map:{},filters:{strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false},range:null,manualRange:false,scale:'fit',width:800,reference:C.today(),collapsed:new Set(),selected:null,showConsolidated:false,showDetails:false,mode:'meeting',scopeId:null,reviewed:new Set(),presentation:false,dialogId:null,dialogType:'task'};
+const LABELS={pole:'Pôle',name:'Nom',scope:'Périmètre',strand:'Volet',phase:'Phase',urgency:'Urgence',owner:'Responsable Projet',comment:'Commentaires',start:'Date de début',startPrecision:'Précision début',end:'Date de fin',endPrecision:'Précision fin',order:'Ordre'};
+const state={rows:[],loaded:false,source:'',map:{},filters:{pole:'',strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false},range:null,manualRange:false,scale:'fit',width:800,reference:C.today(),selected:null,showDetails:false,scopeId:null,presentation:false,dialogId:null};
 let lastFocus=null,renderTimer=null,loadingTimer=null,refreshing=false;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function notice(message,kind='info'){const el=$('notice');el.textContent=message;el.className='notice '+kind;el.hidden=!message;}
@@ -365,13 +399,14 @@ function liveStatus(msg){$('sync').textContent=msg;}
 function getFiltered(except=''){
  const f=state.filters;
  return state.rows.filter(r=>{
+   if(except!=='pole'&&f.pole&&r.pole!==f.pole)return false;
    if(except!=='strand'&&f.strand&&r.strand!==f.strand)return false;
    if(except!=='scope'&&f.scope&&r.scope!==f.scope)return false;
    if(except!=='phase'&&f.phase&&r.phase!==f.phase)return false;
    if(except!=='urgency'&&f.urgency&&r.urgency.label!==f.urgency)return false;
    if(except!=='owner'&&f.owner&&r.owner!==f.owner)return false;
    if(f.incomplete&&r.end.kind==='valid')return false;
-   if(f.search){const hay=C.norm([r.name,r.scope,r.strand,r.phase,r.urgency.label,r.owner,r.comment].join(' '));if(!C.norm(f.search).split(' ').every(s=>hay.includes(s)))return false;}
+   if(f.search){const hay=C.norm([r.name,r.pole,r.scope,r.strand,r.phase,r.urgency.label,r.owner,r.comment].join(' '));if(!C.norm(f.search).split(' ').every(s=>hay.includes(s)))return false;}
    return true;
  });
 }
@@ -401,10 +436,11 @@ class Combo {
  choose(v){state.filters[this.field]=v;this.close();render();}
  sync(){if(!this.opened)this.input.value=state.filters[this.field];this.clear.hidden=!state.filters[this.field]&&!this.input.value;}
 }
-const combos=[new Combo('scopeCombo','scope','Périmètre','Tous les périmètres'),new Combo('phaseCombo','phase','Phase','Toutes les phases'),new Combo('urgencyCombo','urgency','Urgence','Tous les niveaux'),new Combo('ownerCombo','owner','Responsable projet','Tous les responsables')];
+const combos=[new Combo('poleCombo','pole','Pôle','Tous les pôles'),new Combo('scopeCombo','scope','Périmètre','Tous les périmètres'),new Combo('phaseCombo','phase','Phase','Toutes les phases'),new Combo('urgencyCombo','urgency','Urgence','Tous les niveaux'),new Combo('ownerCombo','owner','Responsable projet','Tous les responsables')];
 document.addEventListener('click',e=>combos.forEach(c=>{if(!c.root.contains(e.target))c.close();}));
 function renderTabs(){
- const vals=[...new Set(state.rows.map(r=>r.strand))];
+ const vals=[...new Set(getFiltered('strand').map(r=>r.strand))];
+ if(state.filters.strand&&!vals.includes(state.filters.strand))vals.push(state.filters.strand);
  const rank=v=>C.norm(v)==='internes dt'?0:C.norm(v)==='avec les autres directions'?1:2;
  vals.sort((a,b)=>rank(a)-rank(b));
  $('strandTabs').innerHTML=[['','Tous'],...vals.map(v=>[v,v==='Avec les autres directions'?'Autres directions':v])].map(([v,label])=>`<button data-strand="${esc(v)}" aria-pressed="${state.filters.strand===v}">${esc(label)}</button>`).join('');
@@ -431,7 +467,7 @@ function titleText(r){return [r.name,r.scope,'Phase : '+r.phase,'Urgence : '+r.u
 function trackContent(r,h,exportMode=false){
  const W=state.width,{lo,hi}=state.range,{x}=axisGeometry();let out=gridSvg(h);
  const detailed=state.showDetails||exportMode;
- const pad=7,bh=(!exportMode&&state.mode==='meeting')?18:14,y=detailed?Math.round(h/2)+4:Math.round((h-bh)/2),validStart=r.start.kind==='valid',validEnd=r.end.kind==='valid';
+ const pad=7,bh=(!exportMode)?18:14,y=detailed?Math.round(h/2)+4:Math.round((h-bh)/2),validStart=r.start.kind==='valid',validEnd=r.end.kind==='valid';
  const close=()=> exportMode?'':`</g>`;
  if(!exportMode)out+=`<g class="bar-hit" tabindex="0" role="button" aria-label="${esc('Voir '+r.name)}" data-task-id="${esc(r.id)}"><title>${esc(titleText(r))}</title><rect x="0" y="0" width="${W}" height="${h}" fill="transparent"/>`;
  if(r.invalid){return out+`<text x="14" y="${h/2+4}" fill="#9a5d35" font-size="11">Dates à vérifier</text>`+close();}
@@ -466,15 +502,6 @@ function trackContent(r,h,exportMode=false){
  }
  return out+close();
 }
-function groupTrack(g,h=30,exportMode=false){
- let out=gridSvg(h);if(!state.showConsolidated)return out;
- const ss=g.items.filter(r=>r.start.kind==='valid'&&!r.invalid).map(r=>r.start.lo),ee=g.items.filter(r=>r.end.kind==='valid'&&!r.invalid).map(r=>r.end.hi+C.DAY);
- if(!ss.length||!ee.length)return out;
- const a=Math.min(...ss),b=Math.max(...ee);if(a>b||b<=state.range.lo||a>=state.range.hi)return out;
- const {x}=axisGeometry(),sx=Math.max(4,x(a)),ex=Math.min(state.width-4,x(b)),incomplete=g.items.some(r=>r.start.kind!=='valid'||r.end.kind!=='valid');
- out+=`<g><title>${esc('Durée consolidée : enveloppe des dates connues des chantiers visibles. '+(incomplete?'Périmètre incomplet : certaines dates restent à préciser.':'Ce calcul n’est pas un engagement supplémentaire.'))}</title><path d="M${sx} ${h/2-5} V${h/2+5} M${sx} ${h/2} H${ex} M${ex} ${h/2-5} V${h/2+5}" fill="none" stroke="#c17e52" stroke-width="1.4" stroke-dasharray="4 3"/>${incomplete?`<text x="${Math.min(ex+6,state.width-10)}" y="${h/2+4}" fill="#8b6b51" font-size="11">?</text>`:''}</g>`;
- return out;
-}
 function sizeChart(){
  const nameWidth=parseFloat(getComputedStyle($('roadmap')).getPropertyValue('--name-width'))||390;
  const available=Math.max(360,$('roadmapScroll').clientWidth-nameWidth-2);
@@ -483,86 +510,78 @@ function sizeChart(){
  document.documentElement.style.setProperty('--chart-width',state.width+'px');
  return nameWidth;
 }
-function agendaGroups(rows=getFiltered()){
- return C.grouped(rows).flatMap(s=>s.groups.map(g=>({...g,strand:s.strand})));
+function portfolioGroups(rows=getFiltered()){
+ return C.grouped(rows).flatMap(s=>s.groups.map(g=>({...g,pole:s.pole,strand:s.strand})));
 }
 function meetingContext(rows=getFiltered()){
- const groups=agendaGroups(rows);
+ const groups=portfolioGroups(rows);
  let group=groups.find(g=>g.id===state.scopeId);
  if(!group){group=groups[0]||null;state.scopeId=group?.id||null;}
  if(group&&!group.items.some(r=>r.id===state.selected))state.selected=group.items[0]?.id||null;
  if(!group)state.selected=null;
  return {groups,group,items:groups.flatMap(g=>g.items),rows:group?.items||[]};
 }
-function getShownRows(){return state.mode==='meeting'?meetingContext().rows:getFiltered();}
-function reviewCount(rows){return rows.filter(r=>state.reviewed.has(r.id)).length;}
-function renderAgenda(rows){
- const groups=agendaGroups(rows),total=rows.length,seen=reviewCount(rows);
- $('agendaIntro').textContent=`${groups.length} périmètres · ${total} sujets · ${seen} abordé${seen>1?'s':''} dans cette séance`;
- let strand=null,html='';
- groups.forEach((g,i)=>{
-  if(strand!==g.strand){if(strand!==null)html+='</div>';html+=`<div class="agenda-group">${esc(g.strand)}</div><div class="agenda-items">`;strand=g.strand;}
-  const n=reviewCount(g.items),complete=n===g.items.length;
-  html+=`<button class="agenda-entry ${complete?'complete':''}" data-agenda-id="${esc(g.id)}" aria-current="${state.scopeId===g.id&&state.mode==='meeting'}"><span class="agenda-n">${complete?'✓':String(i+1).padStart(2,'0')}</span><span class="agenda-text">${esc(g.scope)}</span><span class="agenda-count">${n} / ${g.items.length}</span></button>`;
- });
- if(strand!==null)html+='</div>';
- $('agendaList').innerHTML=html||'<div class="agenda-intro">Aucun sujet dans cette sélection.</div>';
+function getShownRows(){return meetingContext().rows;}
+function renderPortfolio(rows){
+ const groups=portfolioGroups(rows),current=groups.find(g=>g.id===state.scopeId);
+ const oldPoles=new Map([...$('portfolioList').querySelectorAll('[data-pole-section]')].map(d=>[d.dataset.poleSection,d.open]));
+ const oldScopes=new Map([...$('portfolioList').querySelectorAll('[data-scope-section]')].map(d=>[d.dataset.scopeSection,d.open]));
+ const poles=[...new Set([...C.PLANNED_POLES,...state.rows.map(r=>r.pole)])].sort((a,b)=>C.poleRank(a)-C.poleRank(b)||a.localeCompare(b,'fr',{numeric:true}));
+ const anyFilter=Object.values(state.filters).some(Boolean);
+ $('portfolioNote').textContent=anyFilter?'Portefeuille limité aux filtres actifs.':'Pôles, volets et périmètres des chantiers.';
+ let html='';
+ for(const pole of poles){
+  const pg=groups.filter(g=>g.pole===pole),all=state.rows.filter(r=>r.pole===pole),count=pg.reduce((n,g)=>n+g.items.length,0);
+  const active=current?.pole===pole;
+  // Empty future poles are honest placeholders; no synthetic rows or volumes.
+  const expanded=active||oldPoles.get(pole)||false;
+  html+=`<details class="portfolio-pole ${active?'is-current':''} ${!pg.length?'empty':''}" data-pole-section="${esc(pole)}" ${expanded?'open':''}><summary><strong>Pôle ${esc(pole)}</strong><span class="portfolio-count">${!all.length?'Non alimenté':count+' chantier'+(count>1?'s':'')}</span></summary>`;
+  if(!pg.length){html+=`<p>${all.length?'Aucun chantier ne correspond aux filtres actifs.':'Aucun chantier renseigné pour ce pôle.'}</p></details>`;continue;}
+  let strand=null;
+  for(const g of pg){
+   if(strand!==g.strand){if(strand!==null)html+='</div>';html+=`<h3 class="portfolio-volet">${esc(g.strand)}</h3><div class="portfolio-scopes">`;strand=g.strand;}
+   const selected=g.id===state.scopeId,isOpen=oldScopes.get(g.id)||false;
+   html+=`<details class="portfolio-scope ${selected?'is-current':''}" data-scope-section="${esc(g.id)}" ${isOpen?'open':''}><summary title="Déplier les chantiers"><span class="portfolio-disclosure" aria-hidden="true">›</span><button class="portfolio-open" data-portfolio-id="${esc(g.id)}" aria-current="${selected}" title="Afficher ce périmètre"><span class="scope-text">${esc(g.scope)}</span><span class="portfolio-count">${g.items.length}</span></button></summary><div class="portfolio-tasks">`;
+   html+=g.items.map(r=>`<button class="portfolio-task" data-portfolio-task="${esc(r.id)}" aria-current="${r.id===state.selected}"><i class="urgency-dot" style="background:${r.urgency.color}" aria-hidden="true"></i><span>${esc(r.name)}</span></button>`).join('');
+   html+='</div></details>';
+  }
+  if(strand!==null)html+='</div>';html+='</details>';
+ }
+ $('portfolioList').innerHTML=html||'<div class="portfolio-empty">Aucun chantier dans la sélection.</div>';
 }
 function renderMeetingControls(rows){
- const isMeeting=state.mode==='meeting';
- document.body.classList.toggle('meeting-mode',isMeeting);document.body.classList.toggle('overview-mode',!isMeeting);
- $('meetingHeading').hidden=!isMeeting;$('meetingFooter').hidden=!isMeeting;$('focusStrip').hidden=!isMeeting;
- document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===state.mode));
- if(!isMeeting){renderAgenda(rows);return;}
- const {groups,group,items}=meetingContext(rows),idx=groups.findIndex(g=>g.id===state.scopeId),r=group?.items.find(x=>x.id===state.selected),pos=items.findIndex(x=>x.id===state.selected);
- $('meetingScope').textContent=group?.scope||'Aucun sujet dans la sélection';
- $('meetingCrumb').textContent=group?`${group.strand} · Périmètre ${String(idx+1).padStart(2,'0')} / ${groups.length}`:'REVUE DES CHANTIERS';
- $('prevScope').disabled=idx<=0;$('nextScope').disabled=idx<0||idx>=groups.length-1;
- $('nextScopeName').textContent=groups[idx+1]?'À suivre : '+groups[idx+1].scope:'';
- $('nextScope').title=groups[idx+1]?'Périmètre suivant : '+groups[idx+1].scope:'Dernier périmètre';
- $('focusStrip').hidden=!r;
+ const {group,items}=meetingContext(rows),r=group?.items.find(x=>x.id===state.selected),pos=items.findIndex(x=>x.id===state.selected);
+ $('meetingScope').textContent=group?.scope||'Aucun chantier dans la sélection';
+ $('meetingCrumb').textContent=group?.strand||'';
+ const pole=group?.pole||state.filters.pole||'';
+ $('poleSubtitle').textContent=pole;$('poleSubtitle').hidden=!pole;
+ $('prevTask').disabled=pos<=0;
+ $('nextTask').disabled=pos<0||pos>=items.length-1;
+ $('nextTask').title=pos>=items.length-1?'Dernier sujet du portefeuille sélectionné':'Sujet suivant';
+ $('selectedDetails').disabled=!r;
+ // No bottom focus banner in normal mode. Projection retains details only.
+ $('focusStrip').hidden=!state.presentation||!r;
  if(r){
-  $('focusCaption').textContent=`Sujet ${group.items.indexOf(r)+1} / ${group.items.length} dans ce périmètre`;
   $('focusTitle').textContent=r.name;
   $('focusMeta').innerHTML=`<span><i class="dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span><span><strong>Phase :</strong> ${esc(r.phase)}</span><span class="owner">${esc(r.owner)}</span><span>${esc(dateText(r))}</span>`;
   $('focusComment').textContent=r.comment;$('focusComment').hidden=!r.comment;
-  const seen=state.reviewed.has(r.id);$('reviewMark').setAttribute('aria-pressed',String(seen));$('reviewMark').textContent=seen?'✓ Abordé en séance':'○ Marquer abordé';
  }
- const seen=reviewCount(rows);
- $('reviewProgress').textContent=`${seen} / ${rows.length} sujets abordés`;
- $('reviewProgressFill').style.width=(rows.length?100*seen/rows.length:0)+'%';
- $('pointPosition').textContent=pos>=0?`${pos+1} / ${items.length}`:'';
- $('prevTask').disabled=pos<=0;$('nextTask').disabled=!items.length;
- $('nextTask').textContent=pos===items.length-1?'Bilan de la séance →':'Suivant →';
- $('nextTask').title=pos<items.length-1?'Sujet suivant (sans marquer automatiquement le sujet actuel)':'Voir le bilan de la revue';
- renderAgenda(rows);
+ renderPortfolio(rows);
 }
-function makeTaskRow(r,rowH,index){
- const seen=state.reviewed.has(r.id),meeting=state.mode==='meeting';
- return `<div class="gantt-row task ${state.selected===r.id?'selected':''}" data-row-id="${esc(r.id)}"><div class="label-cell"><button class="task-name" data-task-id="${esc(r.id)}" aria-current="${state.selected===r.id}" title="${esc(titleText(r))}">${meeting?`<span class="task-dot ${seen?'reviewed':''}" title="${seen?'Abordé en séance':'À aborder en séance'}">${seen?'✓':String(index+1).padStart(2,'0')}</span>`:''}<span class="task-title">${esc(r.name)}</span><span class="task-meta"><i class="urgency-dot" style="background:${r.urgency.color}"></i><span class="phase-label">${esc(r.phase)}</span></span></button></div><div class="track"><svg viewBox="0 0 ${state.width} ${rowH}" role="group" aria-label="${esc(r.name+' : '+dateText(r))}">${trackContent(r,rowH)}</svg></div></div>`;
+function makeTaskRow(r,rowH){
+ return `<div class="gantt-row task ${state.selected===r.id?'selected':''}" data-row-id="${esc(r.id)}"><div class="label-cell"><button class="task-name" data-task-id="${esc(r.id)}" aria-current="${state.selected===r.id}" title="${esc(titleText(r))}"><span class="task-title">${esc(r.name)}</span><span class="task-meta"><i class="urgency-dot" style="background:${r.urgency.color}"></i><span class="phase-label">${esc(r.phase)}</span></span></button></div><div class="track"><svg viewBox="0 0 ${state.width} ${rowH}" role="group" aria-label="${esc(r.name+' : '+dateText(r))}">${trackContent(r,rowH)}</svg></div></div>`;
 }
 function renderRoadmap(allRows){
- const el=$('roadmap'),scroller=$('roadmapScroll');
- if(!state.range)return;
- const meeting=state.mode==='meeting',rows=meeting?meetingContext(allRows).rows:allRows;
- const oldTop=scroller.scrollTop,oldLeft=scroller.scrollLeft;
+ const el=$('roadmap'),scroller=$('roadmapScroll');if(!state.range)return;
+ const rows=meetingContext(allRows).rows,oldTop=scroller.scrollTop,oldLeft=scroller.scrollLeft;
  sizeChart();const {x,years,units}=axisGeometry();
  const available=scroller.clientHeight-53;
- const rowH=meeting?Math.max(48,Math.min(state.presentation?94:78,Math.floor(available/Math.max(1,rows.length)))):(state.showDetails?64:(window.innerWidth<=560?46:42));
+ const rowH=Math.max(state.showDetails?66:48,Math.min(state.presentation?94:78,Math.floor(available/Math.max(1,rows.length))));
  document.documentElement.style.setProperty('--row-height',rowH+'px');
  const refVisible=state.reference>=state.range.lo&&state.reference<state.range.hi;
- const axis=`<div class="axis"><div class="label-cell axis-label"><span>Chantiers</span><span class="rows-count">${rows.length} sujet${rows.length>1?'s':''}</span></div><div class="axis-track">${years.map(y=>`<div class="axis-year" style="left:${x(y.t)}px;width:${x(y.end)-x(y.t)}px">${y.year}</div>`).join('')}${units.map(u=>`<div class="axis-unit ${state.reference>=u.t&&state.reference<u.end?'current':''}" style="left:${x(u.t)}px;width:${x(u.end)-x(u.t)}px">${u.label}</div>`).join('')}${refVisible?`<div class="axis-reference" style="left:${x(state.reference)}px" title="Repère ${C.prettyDay(state.reference)}"></div>`:''}</div></div>`;
- let html=axis;
- if(!rows.length)html+=`<div class="roadmap-empty"><p class="empty-title">${state.rows.length?'Aucun chantier ne correspond aux filtres':'Aucun chantier à afficher'}</p><p>${state.rows.length?'Effacez les filtres pour retrouver la feuille de route.':'Vérifiez les lignes visibles de la table Architecture.'}</p></div>`;
- if(meeting){html+=rows.map((r,i)=>makeTaskRow(r,rowH,i)).join('');}
- else for(const s of C.grouped(rows)){
-  html+=`<div class="gantt-row strand"><div class="label-cell strand-title">${esc(s.strand)}</div><div class="track"></div></div>`;
-  for(const g of s.groups){
-   const isCollapsed=state.collapsed.has(g.id);
-   html+=`<div class="gantt-row scope"><div class="label-cell"><button class="scope-button" data-collapse="${esc(g.id)}" aria-expanded="${!isCollapsed}"><span class="chevron">›</span><span class="scope-name">${esc(g.scope)}</span><span class="group-count">${g.items.length}</span></button></div><div class="track"><svg viewBox="0 0 ${state.width} 30" aria-hidden="true">${groupTrack(g,30)}</svg></div></div>`;
-   if(!isCollapsed)html+=g.items.map((r,i)=>makeTaskRow(r,rowH,i)).join('');
-  }
- }
+ let html=`<div class="axis"><div class="label-cell axis-label"><span>Chantiers</span><span class="rows-count">${rows.length} chantier${rows.length>1?'s':''}</span></div><div class="axis-track">${years.map(y=>`<div class="axis-year" style="left:${x(y.t)}px;width:${x(y.end)-x(y.t)}px">${y.year}</div>`).join('')}${units.map(u=>`<div class="axis-unit ${state.reference>=u.t&&state.reference<u.end?'current':''}" style="left:${x(u.t)}px;width:${x(u.end)-x(u.t)}px">${u.label}</div>`).join('')}${refVisible?`<div class="axis-reference" style="left:${x(state.reference)}px" title="Repère ${C.prettyDay(state.reference)}"></div>`:''}</div></div>`;
+ if(!rows.length)html+=`<div class="roadmap-empty"><p class="empty-title">${state.rows.length?'Aucun chantier ne correspond aux filtres':'Aucun chantier à afficher'}</p><p>${state.rows.length?'Effacez les filtres pour retrouver la feuille de route.':'Vérifiez les lignes visibles de la table source.'}</p></div>`;
+ html+=rows.map(r=>makeTaskRow(r,rowH)).join('');
  el.innerHTML=html;scroller.scrollTop=oldTop;scroller.scrollLeft=oldLeft;
  $('periodCaption').textContent=`${MONTHS[new Date(state.range.lo).getUTCMonth()]} ${new Date(state.range.lo).getUTCFullYear()} — ${MONTHS[new Date(state.range.hi-C.DAY).getUTCMonth()]} ${new Date(state.range.hi-C.DAY).getUTCFullYear()}`;
  $('referenceLabel').textContent=C.prettyDay(state.reference)+(refVisible?'':' · hors période');
@@ -577,7 +596,8 @@ function render(){
  if(!state.loaded)return;
  const rows=getFiltered();
  renderTabs();combos.forEach(c=>c.sync());
- const filterCount=['scope','phase','urgency','owner'].filter(k=>state.filters[k]).length+Number(state.filters.incomplete);
+ $('poleCombo').hidden=new Set(state.rows.map(r=>r.pole)).size<2&&!state.filters.pole;
+ const filterCount=['pole','strand','scope','phase','urgency','owner'].filter(k=>state.filters[k]).length+Number(state.filters.incomplete);
  $('filterCount').textContent=filterCount;$('filterCount').hidden=!filterCount;
  $('filtersToggle').classList.toggle('active',filterCount>0);
  $('resetQuick').hidden=!(filterCount||state.filters.strand||state.filters.search);
@@ -590,23 +610,22 @@ function render(){
 }
 function ingest(data,source){
  const result=C.normalizeRows(data);if(result.keys.length&&!result.map.name){notice('La colonne « Nom » n’est pas accessible. Sélectionnez la table Architecture et ajoutez ses colonnes dans « Colonnes visibles » du widget.','error');return;}
- if(state.loaded && state.source!==source){state.reviewed.clear();state.selected=null;state.scopeId=null;}
+ if(state.loaded && state.source!==source){state.selected=null;state.scopeId=null;}
  state.rows=result.rows;state.loaded=true;state.source=source;state.map=result.map;
- const ids=new Set(state.rows.map(r=>r.id));state.reviewed=new Set([...state.reviewed].filter(id=>ids.has(id)));
  if(!state.manualRange||!state.range){state.range=C.rangeFor(state.rows);syncRangeInputs();}
  if(state.selected&&!state.rows.some(r=>r.id===state.selected))state.selected=null;
  if(state.dialogId&&!state.rows.some(r=>r.id===state.dialogId))closeDialog();
  clearTimeout(loadingTimer);
- const missing=Object.keys(C.FIELDS).filter(f=>!result.map[f]);
- const formulaErrors=state.rows.filter(r=>[r.name,r.scope,r.strand,r.phase,r.owner,r.urgency.label].some(v=>v.includes('Erreur de formule')||v==='Référence non développée'));
+ const missing=Object.keys(C.FIELDS).filter(f=>f!=='pole'&&!result.map[f]);
+ const formulaErrors=state.rows.filter(r=>[r.name,r.pole,r.scope,r.strand,r.phase,r.owner,r.urgency.label].some(v=>v.includes('Erreur de formule')||v==='Référence non développée'));
  if(result.keys.length&&missing.length)notice('Colonnes non transmises : '+missing.map(f=>LABELS[f]).join(', ')+'. Dans Grist, rendez les 12 colonnes de la table accessibles au widget.','error');
  else if(formulaErrors.length)notice('Certaines valeurs contiennent une erreur de formule ou une référence non développée. Vérifiez les cellules correspondantes dans Grist.','error');
  else if(source==='csv')notice('');
  else notice('');
  const time=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
- liveStatus((source==='csv'?'Aperçu CSV · ':'Actualisé à ')+time);$('sync').title=source==='csv'?'Fichier lu localement, sans synchronisation Grist.':'Données Architecture en lecture seule';
+ liveStatus((source==='csv'?'Aperçu CSV · ':'Actualisé à ')+time);$('sync').title=source==='csv'?'Fichier lu localement, sans synchronisation Grist.':'Données Grist en lecture seule';
  render();
- if(!$('overlay').hidden){if(state.dialogType==='session')fillSessionSummary();else fillDialog(state.rows.find(r=>r.id===state.dialogId));}
+ if(!$('overlay').hidden){fillDialog(state.rows.find(r=>r.id===state.dialogId));}
 }
 function syncRangeInputs(){ $('rangeStart').value=C.iso(state.range.lo).slice(0,7);$('rangeEnd').value=C.iso(state.range.hi-C.DAY).slice(0,7); }
 function changeRange(){
@@ -620,13 +639,12 @@ function fillDialog(r){
  $('dialogTitle').textContent=r.name;
  const detail=(label,val,wide=false)=>`<div class="detail ${wide?'wide':''}"><dt>${esc(label)}</dt><dd>${val}</dd></div>`;
  const dateDetail=(label,d)=>detail(label,esc(d.kind==='valid'?d.label:d.kind==='empty'?'À préciser':d.raw)+`<div class="precision">${d.kind==='valid'?'Précision : '+C.precisionName(d.precision):d.kind==='invalid'?'Valeur source non exploitable':'Aucune date déduite'}</div>`);
- $('dialogBody').innerHTML=(r.issues.length?`<div class="dialog-warnings">${r.issues.map(esc).join('<br>')}</div>`:'')+`<dl class="detail-grid">`+detail('Volet',esc(r.strand),true)+detail('Périmètre',esc(r.scope),true)+detail('Phase',esc(r.phase))+detail('Urgence',`<span class="urgency-tag"><i class="urgency-dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span>`)+detail('Responsable Projet',esc(r.owner),true)+dateDetail('Date de début',r.start)+dateDetail('Date de fin',r.end)+detail('Commentaires',r.comment?`<div class="comment">${esc(r.comment)}</div>`:'<span class="no-comment">Aucun commentaire renseigné.</span>',true)+detail('Ordre dans le périmètre',r.order===Number.MAX_SAFE_INTEGER?'Non renseigné':String(r.order))+'</dl>';
+ $('dialogBody').innerHTML=(r.issues.length?`<div class="dialog-warnings">${r.issues.map(esc).join('<br>')}</div>`:'')+`<dl class="detail-grid">`+detail('Pôle',esc(r.pole),true)+detail('Volet',esc(r.strand),true)+detail('Périmètre',esc(r.scope),true)+detail('Phase',esc(r.phase))+detail('Urgence',`<span class="urgency-tag"><i class="urgency-dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span>`)+detail('Responsable Projet',esc(r.owner),true)+dateDetail('Date de début',r.start)+dateDetail('Date de fin',r.end)+detail('Commentaires',r.comment?`<div class="comment">${esc(r.comment)}</div>`:'<span class="no-comment">Aucun commentaire renseigné.</span>',true)+detail('Ordre dans le périmètre',r.order===Number.MAX_SAFE_INTEGER?'Non renseigné':String(r.order))+'</dl>';
 }
 function selectTask(id,scroll=true){
  const rows=getFiltered(),r=rows.find(r=>r.id===String(id));if(!r)return;
  state.selected=r.id;
- const g=agendaGroups(rows).find(g=>g.items.some(x=>x.id===r.id));if(g)state.scopeId=g.id;
- if(state.mode==='overview'){state.mode='meeting';state.collapsed.clear();}
+ const g=portfolioGroups(rows).find(g=>g.items.some(x=>x.id===r.id));if(g)state.scopeId=g.id;
  render();
  if(scroll){requestAnimationFrame(()=>{
   const el=[...document.querySelectorAll('[data-row-id]')].find(el=>el.dataset.rowId===id),scroller=$('roadmapScroll');
@@ -637,32 +655,22 @@ function selectTask(id,scroll=true){
 }
 function moveSubject(delta){
  const {items}=meetingContext();let p=items.findIndex(r=>r.id===state.selected);
- if(!items.length)return;if(delta>0&&p===items.length-1){openSessionSummary();return;}
+ if(!items.length)return;if(delta>0&&p===items.length-1)return;
  const r=items[Math.max(0,Math.min(items.length-1,p+delta))];if(r)selectTask(r.id);
 }
 function selectGroup(id){
- const group=agendaGroups().find(g=>g.id===id);if(!group)return;
- closePopovers();state.mode='meeting';state.scopeId=id;state.selected=group.items[0]?.id||null;
+ const group=portfolioGroups().find(g=>g.id===id);if(!group)return;
+ closePopovers();state.scopeId=id;state.selected=group.items[0]?.id||null;
  $('roadmapScroll').scrollTop=0;render();
 }
-function moveGroup(delta){const groups=agendaGroups(),p=groups.findIndex(g=>g.id===state.scopeId);if(groups[p+delta])selectGroup(groups[p+delta].id);}
-function markSubject(){
- if(!state.selected||!state.rows.some(r=>r.id===state.selected))return;
- state.reviewed.has(state.selected)?state.reviewed.delete(state.selected):state.reviewed.add(state.selected);render();
-}
+function moveGroup(delta){const groups=portfolioGroups(),p=groups.findIndex(g=>g.id===state.scopeId);if(groups[p+delta])selectGroup(groups[p+delta].id);}
 function openDialog(id){
  closePopovers(false);const r=state.rows.find(r=>r.id===id);if(!r)return;
- lastFocus=document.activeElement;state.dialogId=id;state.dialogType='task';fillDialog(r);
+ lastFocus=document.activeElement;state.dialogId=id;fillDialog(r);
  $('overlay').querySelector('.eyebrow').textContent='Détail du chantier';
  $('overlay').hidden=false;document.body.style.overflow='hidden';$('closeDialog').focus();
 }
 function closeDialog(){const wasOpen=!$('overlay').hidden;$('overlay').hidden=true;state.dialogId=null;document.body.style.overflow='';if(wasOpen&&lastFocus?.isConnected)lastFocus.focus();}
-function fillSessionSummary(){
- const rows=getFiltered(),seen=reviewCount(rows);$('dialogTitle').textContent='Bilan de la séance';
- $('overlay').querySelector('.eyebrow').textContent='Suivi de la revue uniquement';
- $('dialogBody').innerHTML=`<p class="checksum-report"><strong>${seen} sujet${seen>1?'s':''} abordé${seen>1?'s':''}</strong> sur ${rows.length} dans la sélection actuelle. ${rows.length-seen} reste${rows.length-seen>1?'nt':''} à parcourir.</p>`+agendaGroups(rows).map(g=>`<section class="session-group"><h3>${esc(g.scope)}</h3>${g.items.map(r=>`<div class="session-row ${state.reviewed.has(r.id)?'done':''}"><span class="session-status">${state.reviewed.has(r.id)?'✓ Abordé':'○ À aborder'}</span><button data-session-task="${esc(r.id)}">${esc(r.name)}</button></div>`).join('')}</section>`).join('')+`<p class="session-note">Ces marques ne signifient ni « validé » ni « terminé ». Elles restent en mémoire dans cette page jusqu’au rechargement ou à « Nouvelle séance ». Aucun compte rendu ni aucune modification des données n’est enregistré dans Grist.</p>`;
-}
-function openSessionSummary(){closePopovers();lastFocus=document.activeElement;state.dialogType='session';state.dialogId=null;fillSessionSummary();$('overlay').hidden=false;$('closeDialog').focus();}
 function wrapText(s,max=51){
  const words=String(s).split(/\s+/),lines=[];let line='';
  for(const word of words){if(line&&(line+' '+word).length>max){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);return lines;
@@ -672,21 +680,21 @@ function exportSVG(){
  const rows=getShownRows(),L=430,W=state.width,total=L+W,oldWidth=state.width;
  const {x,years,units}=axisGeometry();let y=144;
  const svgText=(xx,yy,s,size=12,fill='#273b50',weight=400)=>`<text x="${xx}" y="${yy}" font-size="${size}" fill="${fill}" font-weight="${weight}">${esc(s)}</text>`;
- let out=`<rect width="100%" height="100%" fill="white"/>`+svgText(20,33,'Feuille de route pôle architecture',24,'#20394e',700);
- const active=[state.filters.strand,state.filters.scope,state.filters.phase,state.filters.urgency,state.filters.owner,state.filters.search].filter(Boolean);
- out+=svgText(20,55,(active.length?active.join(' · '):'Tous les chantiers')+' · '+rows.length+' chantiers · Repère '+C.prettyDay(state.reference),11,'#687f92');
+ let out=`<rect width="100%" height="100%" fill="white"/>`+svgText(20,33,'Feuille de route DT — '+(rows[0]?.pole||''),24,'#20394e',700);
+ const active=[state.filters.pole,state.filters.strand,state.filters.scope,state.filters.phase,state.filters.urgency,state.filters.owner,state.filters.search].filter(Boolean);
+ out+=svgText(20,55,[rows[0]?.scope,...active].filter(Boolean).join(' · ')+' · '+rows.length+' chantiers · Repère '+C.prettyDay(state.reference),11,'#687f92');
  let legendX=20;for(const [label,color] of [['Mineur',C.COLORS.minor],['Intermédiaire',C.COLORS.medium],['Prioritaire',C.COLORS.high],['À qualifier',C.COLORS.unknown]]){out+=`<rect x="${legendX}" y="72" width="20" height="8" rx="2" fill="${color}"/>`+svgText(legendX+27,80,label,10,'#62778a');legendX+=label.length*6+60;}
  out+=svgText(legendX+5,80,'Hachures = année seule · Pointillés = fin inconnue',10,'#62778a');
  out+=`<rect x="0" y="94" width="${total}" height="50" fill="#f0f4f8"/>`+svgText(20,124,'CHANTIER / PHASE',11,'#62778a',700);
  for(const yr of years)out+=svgText(L+x(yr.t)+(x(yr.end)-x(yr.t))/2-15,112,String(yr.year),12,'#3d5a72',700);
  for(const u of units)out+=svgText(L+x(u.t)+3,134,u.label,9,'#75889a');
  for(const s of C.grouped(rows)){
-   out+=svgText(16,y+28,s.strand.toUpperCase(),13,'#3e6079',700);y+=44;
+   out+=svgText(16,y+28,(s.pole+' · '+s.strand).toUpperCase(),13,'#3e6079',700);y+=44;
    for(const g of s.groups){
     const glines=wrapText(g.scope.toUpperCase(),50);const gh=Math.max(42,glines.length*14+15);
     out+=`<rect x="0" y="${y}" width="${total}" height="${gh}" fill="#eaf0f5" stroke="#d3dfe9"/>`;
     glines.forEach((l,i)=>{out+=svgText(16,y+20+i*14,l,11,'#3f5871',700);});
-    out+=`<svg x="${L}" y="${y}" width="${W}" height="${gh}" viewBox="0 0 ${W} ${gh}">${groupTrack(g,gh,true)}</svg>`;y+=gh;
+    y+=gh;
     for(const r of g.items){
       const lines=wrapText(r.name,57),h=Math.max(65,lines.length*15+33);
       out+=`<rect x="0" y="${y}" width="${total}" height="${h}" fill="${r.index%2?'#f6f8fa':'white'}"/>`;
@@ -695,9 +703,9 @@ function exportSVG(){
     }
    }
  }
- out+=svgText(20,y+27,'Données Architecture — couleur = urgence. Les dates absentes restent à préciser. Les années seules ne sont pas des dates exactes.',10,'#7c8ea0');
+ out+=svgText(20,y+27,'Données Grist — couleur = urgence. Les dates absentes restent à préciser. Les années seules ne sont pas des dates exactes.',10,'#7c8ea0');
  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${total}" height="${y+49}" viewBox="0 0 ${total} ${y+49}"><style>text{font-family:Arial,Helvetica,sans-serif}</style>${out}</svg>`;
- const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='feuille_route_architecture_'+C.iso(state.reference)+'.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);state.width=oldWidth;
+ const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='feuille_route_DT_'+C.iso(state.reference)+'.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);state.width=oldWidth;
 }
 async function refresh(){
  if(!window.grist||state.source==='csv'){if(state.loaded)render();return;}
@@ -728,7 +736,7 @@ function boot(){
 }
 $('strandTabs').addEventListener('click',e=>{const b=e.target.closest('[data-strand]');if(b){state.filters.strand=b.dataset.strand;render();}});
 $('search').addEventListener('input',e=>{state.filters.search=e.target.value;clearTimeout(renderTimer);renderTimer=setTimeout(render,100);});
-function resetFilters(){state.filters={strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false};$('search').value='';combos.forEach(c=>c.close());render();}
+function resetFilters(){state.filters={pole:'',strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false};$('search').value='';combos.forEach(c=>c.close());render();}
 $('clear').addEventListener('click',resetFilters);$('resetQuick').addEventListener('click',resetFilters);
 $('missingEnd').addEventListener('change',e=>{state.filters.incomplete=e.target.checked;render();});
 $('scales').addEventListener('click',e=>{const b=e.target.closest('[data-scale]');if(b){state.scale=b.dataset.scale;render();}});
@@ -736,26 +744,27 @@ $('rangeStart').addEventListener('change',changeRange);$('rangeEnd').addEventLis
 $('allDates').addEventListener('click',()=>{state.range=C.rangeFor(state.rows);state.manualRange=false;syncRangeInputs();render();});
 $('referenceDate').addEventListener('change',e=>{const d=C.parseDate(e.target.value,'Jour');if(d.kind==='valid'){state.reference=d.lo;render();}});
 $('today').addEventListener('click',()=>{state.reference=C.today();$('referenceDate').value=C.iso(state.reference);render();if(state.range&&state.reference>=state.range.lo&&state.reference<state.range.hi)$('roadmapScroll').scrollLeft=Math.max(0,axisGeometry().x(state.reference)-250);});
-$('consolidated').addEventListener('change',e=>{state.showConsolidated=e.target.checked;render();});
-$('expand').addEventListener('click',()=>{state.collapsed.clear();render();});
-$('collapse').addEventListener('click',()=>{C.grouped(getFiltered()).forEach(s=>s.groups.forEach(g=>state.collapsed.add(g.id)));render();});
-$('roadmap').addEventListener('click',e=>{const c=e.target.closest('[data-collapse]');if(c){const id=c.dataset.collapse;state.collapsed.has(id)?state.collapsed.delete(id):state.collapsed.add(id);render();return;}const r=e.target.closest('[data-task-id]');if(r)selectTask(r.dataset.taskId);});
+
+
+
+$('roadmap').addEventListener('click',e=>{const r=e.target.closest('[data-task-id]');if(r)selectTask(r.dataset.taskId);});
+$('roadmap').addEventListener('dblclick',e=>{const r=e.target.closest('[data-task-id]');if(r)openDialog(r.dataset.taskId);});
 $('roadmap').addEventListener('keydown',e=>{const hit=e.target.closest('[data-task-id]');if(!hit)return;if(e.key==='Enter'){e.preventDefault();openDialog(hit.dataset.taskId);}else if(e.key===' '&&e.target.matches('g[data-task-id]')){e.preventDefault();selectTask(hit.dataset.taskId);}});
 $('qualityList').addEventListener('click',e=>{const b=e.target.closest('[data-task-id]');if(b)openDialog(b.dataset.taskId);});
 $('closeDialog').addEventListener('click',closeDialog);$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeDialog();});
 document.addEventListener('keydown',e=>{if(!$('overlay').hidden){if(e.key==='Escape')closeDialog();if(e.key==='Tab'){const fs=[...$('overlay').querySelectorAll('button,a,input,[tabindex="0"]')].filter(x=>!x.disabled);if(fs.length===1){e.preventDefault();fs[0].focus();}else if(e.shiftKey&&document.activeElement===fs[0]){e.preventDefault();fs.at(-1).focus();}else if(!e.shiftKey&&document.activeElement===fs.at(-1)){e.preventDefault();fs[0].focus();}}}});
 $('refresh').addEventListener('click',refresh);$('export').addEventListener('click',()=>{closePopovers();exportSVG();});
 $('print').addEventListener('click',()=>{closePopovers();window.print();});
-$('importCsv').addEventListener('click',()=>$('csvFile').click());$('csvFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=C.parseCSV(await file.text());state.reviewed.clear();state.selected=null;state.scopeId=null;ingest(data,'csv');}catch(err){notice('Import CSV : '+err.message,'error');}e.target.value='';});
+$('importCsv').addEventListener('click',()=>$('csvFile').click());$('csvFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=C.parseCSV(await file.text());state.selected=null;state.scopeId=null;ingest(data,'csv');}catch(err){notice('Import CSV : '+err.message,'error');}e.target.value='';});
 let lastSize='';new ResizeObserver(entries=>{const r=entries[0].contentRect,k=Math.round(r.width)+'x'+Math.round(r.height);if(k!==lastSize){lastSize=k;clearTimeout(renderTimer);renderTimer=setTimeout(()=>{if(state.loaded)renderRoadmap(getFiltered());},80);}}).observe($('roadmapScroll'));
 
-const popoverPairs=[['filtersToggle','filtersPanel'],['viewToggle','viewPanel'],['actionsToggle','actionsPanel'],['agendaToggle','agendaPanel']];
+const popoverPairs=[['filtersToggle','filtersPanel'],['viewToggle','viewPanel'],['actionsToggle','actionsPanel'],['portfolioToggle','portfolioPanel']];
 let activePopover=null;
 function placePopover(){
  if(!activePopover)return;
  const [buttonId,panelId]=activePopover,button=$(buttonId),panel=$(panelId),r=button.getBoundingClientRect();
  panel.style.maxHeight=Math.max(90,window.innerHeight-r.bottom-18)+'px';
- const left=Math.max(10,Math.min(window.innerWidth-panel.offsetWidth-12,r.right-panel.offsetWidth));
+ const left=Math.max(10,Math.min(window.innerWidth-panel.offsetWidth-12,panelId==='portfolioPanel'?r.left:r.right-panel.offsetWidth));
  panel.style.left=left+'px';panel.style.top=(r.bottom+7)+'px';
 }
 function closePopovers(restore=false){
@@ -770,33 +779,28 @@ function togglePopover(pair){
 }
 popoverPairs.forEach(pair=>$(pair[0]).addEventListener('click',()=>togglePopover(pair)));
 document.querySelectorAll('[data-close-popover]').forEach(b=>b.addEventListener('click',()=>closePopovers(true)));
-document.addEventListener('click',e=>{if(activePopover&&!$(activePopover[0]).contains(e.target)&&!$(activePopover[1]).contains(e.target))closePopovers();});
+document.addEventListener('click',e=>{if(!activePopover)return;const path=e.composedPath();if(!path.includes($(activePopover[0]))&&!path.includes($(activePopover[1])))closePopovers();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&activePopover){e.preventDefault();closePopovers(true);}});
 window.addEventListener('resize',()=>{combos.forEach(c=>c.close());placePopover();if(state.loaded)render();});
 for(const [,p] of popoverPairs)$(p).addEventListener('scroll',()=>combos.forEach(c=>c.close()));
 $('showDetails').addEventListener('change',e=>{state.showDetails=e.target.checked;render();});
 
-$('modeSwitch').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b)return;if(b.dataset.mode==='overview'&&state.presentation)$('presentationToggle').click();closePopovers();state.mode=b.dataset.mode;render();});
-$('prevScope').addEventListener('click',()=>moveGroup(-1));$('nextScope').addEventListener('click',()=>moveGroup(1));
 $('prevTask').addEventListener('click',()=>moveSubject(-1));$('nextTask').addEventListener('click',()=>moveSubject(1));
 $('focusDetails').addEventListener('click',()=>{if(state.selected)openDialog(state.selected);});
-$('reviewMark').addEventListener('click',markSubject);
-$('agendaList').addEventListener('click',e=>{const b=e.target.closest('[data-agenda-id]');if(b)selectGroup(b.dataset.agendaId);});
-$('sessionSummary').addEventListener('click',openSessionSummary);
-$('dialogBody').addEventListener('click',e=>{const b=e.target.closest('[data-session-task]');if(b){closeDialog();state.mode='meeting';selectTask(b.dataset.sessionTask);}});
-$('newSession').addEventListener('click',()=>{
- if(state.reviewed.size&&!window.confirm('Effacer uniquement les repères de cette séance ? Aucune donnée Grist ne sera modifiée.'))return;
- closePopovers();state.reviewed.clear();state.selected=null;state.scopeId=null;state.mode='meeting';$('roadmapScroll').scrollTop=0;render();
+$('selectedDetails').addEventListener('click',()=>{if(state.selected)openDialog(state.selected);});
+$('portfolioList').addEventListener('click',e=>{
+ const g=e.target.closest('[data-portfolio-id]');if(g){e.preventDefault();selectGroup(g.dataset.portfolioId);return;}
+ const t=e.target.closest('[data-portfolio-task]');if(t){closePopovers();selectTask(t.dataset.portfolioTask);}
 });
 $('presentationToggle').addEventListener('click',()=>{
- state.presentation=!state.presentation;if(state.presentation)state.mode='meeting';
+ state.presentation=!state.presentation;
  document.body.classList.toggle('projection',state.presentation);$('presentationToggle').setAttribute('aria-pressed',String(state.presentation));$('presentationToggle').innerHTML=state.presentation?'⤡ <span>Quitter la projection</span>':'⤢ <span>Projection</span>';closePopovers();render();
 });
 document.addEventListener('keydown',e=>{
  if(e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey||activePopover||!$('overlay').hidden)return;
  if(e.target.closest('input,textarea,select,[contenteditable=true]'))return;
  if(e.key==='Escape'&&state.presentation){e.preventDefault();$('presentationToggle').click();return;}
- if(state.mode!=='meeting'||!state.loaded)return;
+ if(!state.loaded)return;
  if(e.key==='ArrowRight'){e.preventDefault();moveSubject(1);}
  else if(e.key==='ArrowLeft'){e.preventDefault();moveSubject(-1);}
  else if(e.key==='PageDown'){e.preventDefault();moveGroup(1);}
