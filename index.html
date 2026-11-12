@@ -8,8 +8,8 @@
 
 :root{
  --bg:#f4f6f9;--paper:#fff;--ink:#233349;--muted:#738197;--line:#dfe5ed;
- --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#accce7;--medium:#5795c5;
- --high:#285e88;--unknown:#bdc5ce;--name-width:310px;--chart-width:900px;
+ --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#a6bfae;--medium:#d7b67a;
+ --high:#ab98bc;--unknown:#bdc5ce;--name-width:310px;--chart-width:900px;
  --row-height:42px;--head-height:52px;
  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
  font-size:13px;color:var(--ink);color-scheme:light
@@ -115,7 +115,7 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
 .strand-filter .segmented{width:100%;flex-wrap:wrap}.strand-filter .segmented button{flex:1;font-size:11px;padding:8px 9px}
 .pole-filter{margin-bottom:15px}.dialog-footer{line-height:1.5}
 /* Le portefeuille reste toujours accessible, même en projection. */
-.projection .sync,.projection #refresh,.projection .control-right{display:none!important}
+
 .projection main{padding:10px 14px}.projection .app-header{min-height:43px}.projection h1{font-size:20px}
 .projection .main-controls{display:flex;min-height:35px;gap:8px}
 .projection .meeting-heading{padding:15px 20px}.projection .meeting-heading h2{font-size:28px}
@@ -126,6 +126,77 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
 @media(max-width:460px){.title-group h1{font-size:18px}.title-group .pole-subtitle{font-size:11px}.header-right .btn{font-size:11px;padding:6px}.header-right .icon{width:27px}.meeting-mode{--name-width:185px}.meeting-heading{flex-wrap:wrap;gap:9px}.heading-context{width:100%}.meeting-heading h2{font-size:20px}.subject-navigation{max-width:none;width:100%;justify-content:flex-end}.subject-navigation .subject-detail{margin-right:auto;order:-1}.meeting-mode .task-title{font-size:11px}.meeting-mode .axis-unit{font-size:10px}.focus-meta .owner{display:none}.focus-comment{display:none}.control-right .btn{padding:7px 8px;font-size:11px}.portfolio-pole>summary{padding:13px}.portfolio-open{font-size:11px}.portfolio-count{font-size:9px}}
 @media print{html,body,main{height:auto!important;overflow:visible!important}.subject-navigation,#presentationToggle,.focus-buttons,.main-controls{display:none!important}.meeting-heading{break-after:avoid;padding:15px 0}.meeting-heading h2{font-size:22px}.roadmap-card{display:block!important}.roadmap-inner{min-height:0!important}.meeting-mode .gantt-row.task{height:58px!important}.meeting-mode .task-title{font-size:11px}.meeting-mode .roadmap-scroll{overflow:visible!important}.focus-title{font-size:12px}.focus-meta{font-size:10px}}
 
+
+/* V1.4 — En-tête unifié, navigation directe et urgences distinctes. */
+.app-header{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:nowrap;min-height:46px}
+.header-identity{flex:0 0 auto;min-width:0}
+.title-line{display:flex;align-items:baseline;gap:12px;min-width:0}
+.title-line h1{font-size:21px;letter-spacing:-.65px;line-height:1.2;white-space:nowrap}
+.title-line .sync{display:inline-block;margin:0;font-size:10px;font-weight:450;letter-spacing:0;color:#77869a;line-height:1.4;white-space:nowrap;font-variant-numeric:tabular-nums}
+.header-identity .pole-subtitle{margin-top:4px;font-size:12px;line-height:1.25;color:#77869a}
+.header-toolbar{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:1 1 auto;min-width:0}
+.header-toolbar>.btn,.header-toolbar .search-field input{height:34px;min-height:34px}
+.header-toolbar>.btn{flex:0 0 auto;box-sizing:border-box}
+.header-toolbar .search-field{flex:0 1 225px;width:225px;min-width:175px;max-width:245px;margin-right:2px}
+.header-toolbar .search-field input{padding-right:8px}
+.header-toolbar .input-wrap>svg{top:9px}
+.header-toolbar>.btn.icon{width:34px;padding:7px}
+.header-toolbar>.portfolio-toggle{margin-left:8px;background:#ece8f3;border-color:#d4cbdf;color:#5c4a73;font-weight:650;padding:7px 12px;gap:7px}
+.header-toolbar>.portfolio-toggle:hover{background:#e3dced;border-color:#bfb2cf}
+.header-toolbar>.portfolio-toggle[aria-expanded=true]{background:#ded5e9;border-color:#b5a4c9;color:#514064}
+.meeting-heading{padding:15px 20px;min-height:74px}
+.focus-strip{align-items:flex-start}.focus-body{width:100%}
+.legend-hatching{color:#65768b}.legend-hatching .swatch{width:21px;height:10px;flex:none}
+.projection .app-header{display:flex;min-height:46px;gap:20px}
+.projection .header-toolbar .search-field,.projection #filtersToggle,.projection #viewToggle,.projection #resetQuick,.projection #refresh{display:none!important}
+.projection .header-toolbar{flex:1;justify-content:flex-end}
+.projection .title-line .sync{display:inline-block!important}
+.projection .title-line h1{font-size:21px}
+.projection .header-toolbar>.portfolio-toggle{margin-left:8px}
+@media(min-width:1700px){.title-line h1{font-size:23px}.header-toolbar .search-field{flex-basis:245px}.title-line .sync{font-size:11px}}
+@media(max-width:1320px) and (min-width:1151px){
+ .app-header{gap:12px}.title-line{gap:9px}.title-line h1{font-size:20px}
+ .header-toolbar{gap:5px}.header-toolbar>.btn{font-size:11px;padding:7px 9px}
+ .header-toolbar .search-field{width:185px;flex-basis:185px;min-width:170px}
+ .header-toolbar>.portfolio-toggle{margin-left:4px;padding:7px 10px}
+}
+@media(max-width:1150px){
+ .app-header{flex-wrap:wrap;gap:10px}.header-identity{flex-basis:100%}
+ .header-toolbar{flex:1 1 100%;justify-content:flex-start;gap:7px}
+ .header-toolbar .search-field{flex:1 1 210px;width:auto;max-width:320px;min-width:170px}
+ .header-toolbar>.portfolio-toggle{margin-left:auto}
+ .projection .app-header{flex-wrap:nowrap}.projection .header-identity{flex-basis:auto}
+ .projection .header-toolbar{flex:1 1 auto;justify-content:flex-end}
+ .title-line .sync{display:inline-block}
+}
+@media(max-width:760px){
+ .app-header{gap:9px}.title-line h1{font-size:20px}.title-line .sync{font-size:10px}
+ .header-toolbar{flex-wrap:wrap;gap:6px;justify-content:flex-start}
+ .header-toolbar .search-field{flex:1 1 calc(100% - 200px);min-width:130px;width:auto;max-width:none;margin-right:0}
+ .header-toolbar>.btn{font-size:11px;padding:7px 9px}
+ .header-toolbar>.portfolio-toggle{margin-left:auto}
+ .meeting-heading{padding:13px 14px;min-height:68px}
+ .legend-hatching{font-size:10px}
+ .projection .app-header{flex-wrap:wrap;gap:8px}
+ .projection .header-identity{flex:1 1 100%}
+ .projection .header-toolbar{flex:1 1 100%;justify-content:flex-start}
+ .projection .header-toolbar>.portfolio-toggle{margin-left:auto}
+}
+@media(max-width:460px){
+ .title-line{gap:9px;flex-wrap:wrap}.title-line h1{font-size:20px}.title-line .sync{font-size:10px}
+ .header-toolbar .search-field{flex:1 1 calc(100% - 185px);min-width:120px}
+ .header-toolbar>.btn{font-size:11px;padding:7px 7px;gap:4px}
+ .header-toolbar>.btn.icon{width:30px;padding:6px}
+ .header-toolbar>.portfolio-toggle{padding:7px 9px;gap:6px;margin-left:auto;font-size:11px}
+ .projection .header-toolbar>.portfolio-toggle{padding:7px 9px;gap:6px}
+ .meeting-heading{min-height:66px}.meeting-heading h2{font-size:20px}
+}
+@media print{
+ .app-header{display:block}.header-toolbar{display:none!important}
+ .title-line .sync{display:inline-block}.header-identity{width:100%}
+ .legend-hatching{display:inline-flex}.meeting-heading{min-height:0}
+}
+
 </style>
 </head>
 
@@ -133,28 +204,25 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
 <noscript><p class="no-script">JavaScript doit être activé pour afficher la feuille de route.</p></noscript>
 <main>
  <header class="app-header">
-  <div class="title-group"><h1>Feuille de route DT</h1><p id="poleSubtitle" class="pole-subtitle">Architecture</p></div>
-  <div class="header-right">
-   <button class="btn quiet" id="presentationToggle" aria-pressed="false" title="Agrandir la présentation dans le widget">⤢ <span>Projection</span></button>
-   <span class="sync" id="sync" role="status">Connexion à Grist…</span>
-   <button class="btn icon quiet" id="refresh" title="Actualiser les données" aria-label="Actualiser les données"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7v5h-5"/><path d="M20 12a8 8 0 1 0-2.3 5.7M20 7v5l-4-4"/></svg></button>
-   <button class="btn icon quiet" id="actionsToggle" title="Exporter ou imprimer" aria-label="Plus d’actions" aria-expanded="false" aria-controls="actionsPanel"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+  <div class="header-identity">
+   <div class="title-line"><h1>Feuille de route DT</h1><span class="sync" id="sync" role="status" aria-live="polite">Connexion à Grist…</span></div>
+   <p id="poleSubtitle" class="pole-subtitle">Architecture</p>
   </div>
- </header>
- <nav class="main-controls" aria-label="Navigation de la feuille de route">
-  <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
-  <div class="control-right">
+  <nav class="header-toolbar" aria-label="Commandes de la feuille de route">
    <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
    <button class="btn" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtres<span id="filterCount" class="badge" hidden></span></button>
    <button class="btn" id="viewToggle" aria-expanded="false" aria-controls="viewPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>Affichage</button>
    <button class="btn icon quiet" id="resetQuick" title="Effacer tous les filtres" aria-label="Effacer tous les filtres" hidden>×</button>
-  </div>
- </nav>
+   <button class="btn quiet" id="presentationToggle" aria-pressed="false" title="Agrandir la présentation dans le widget">⤢ <span>Projection</span></button>
+   <button class="btn icon quiet" id="refresh" title="Actualiser les données" aria-label="Actualiser les données"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7v5h-5"/><path d="M20 12a8 8 0 1 0-2.3 5.7M20 7v5l-4-4"/></svg></button>
+   <button class="btn icon quiet" id="actionsToggle" title="Exporter ou imprimer" aria-label="Plus d’actions" aria-expanded="false" aria-controls="actionsPanel"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+   <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
+  </nav>
+ </header>
  <div id="notice" class="notice info" role="status" hidden></div>
  <section class="roadmap-card" aria-label="Feuille de route DT">
   <div class="meeting-heading" id="meetingHeading">
    <div class="heading-context"><div class="eyebrow" id="meetingCrumb">Internes DT</div><h2 id="meetingScope">Chargement du périmètre…</h2></div>
-   <div class="subject-navigation"><button class="btn quiet subject-detail" id="selectedDetails" title="Ouvrir le détail du sujet sélectionné">Détail ↗</button><button class="btn back" id="prevTask" aria-label="Sujet précédent" title="Sujet précédent">←</button><button class="btn primary" id="nextTask" title="Sujet suivant">Sujet suivant →</button></div>
   </div>
   <div class="roadmap-legend" aria-label="Couleurs par niveau d’urgence">
    <span class="legend-label">Urgence</span>
@@ -162,13 +230,13 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
    <span class="legend-item"><i class="swatch" style="background:var(--medium)"></i>Intermédiaire</span>
    <span class="legend-item"><i class="swatch" style="background:var(--high)"></i>Prioritaire</span>
    <span class="legend-item" title="Urgence à qualifier ou non renseignée"><i class="swatch" style="background:var(--unknown)"></i>À qualifier</span>
+   <span class="legend-item legend-hatching" title="La date de début ou de fin est renseignée à l’année : sa position précise dans l’année reste inconnue."><i class="swatch hatched" aria-hidden="true"></i>Hachures : date connue à l’année</span>
    <span class="legend-spacer"></span><span class="period-caption" id="periodCaption"></span>
    <span class="legend-item legend-date" title="Date du repère vertical"><i class="marker-symbol"></i><span id="referenceLabel"></span></span>
   </div>
   <div class="roadmap-scroll" id="roadmapScroll" tabindex="0" aria-label="Feuille de route ; flèches gauche et droite pour parcourir les sujets"><div class="roadmap-inner" id="roadmap"><div class="roadmap-empty"><p class="empty-title">Connexion à la table Grist</p><p>Les chantiers apparaîtront ici dès réception des données.</p></div></div></div>
   <section class="focus-strip" id="focusStrip" aria-label="Détail du sujet en projection" hidden>
    <div class="focus-body"><h3 class="focus-title" id="focusTitle"></h3><div class="focus-meta" id="focusMeta"></div><p class="focus-comment" id="focusComment" hidden></p></div>
-   <div class="focus-buttons"><button class="btn focus-detail" id="focusDetails">Voir le détail ↗</button></div>
   </section>
  </section>
 </main>
@@ -217,7 +285,7 @@ const RoadmapCore = (() => {
   ];
   const DEFAULT_POLE = 'Architecture';
   const PLANNED_POLES = ['Architecture','Lot 1','Lot 2','Lot 3'];
-  const COLORS = {minor:'#accce7', medium:'#5795c5', high:'#285e88', unknown:'#bdc5ce'};
+  const COLORS = {minor:'#a6bfae', medium:'#d7b67a', high:'#ab98bc', unknown:'#bdc5ce'};
   function norm(v) { return String(v ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim().toLowerCase(); }
   function key(v) { return norm(v).replace(/[^a-z0-9]/g,''); }
   function text(v) {
@@ -550,15 +618,11 @@ function renderPortfolio(rows){
  $('portfolioList').innerHTML=html||'<div class="portfolio-empty">Aucun chantier dans la sélection.</div>';
 }
 function renderMeetingControls(rows){
- const {group,items}=meetingContext(rows),r=group?.items.find(x=>x.id===state.selected),pos=items.findIndex(x=>x.id===state.selected);
+ const {group}=meetingContext(rows),r=group?.items.find(x=>x.id===state.selected);
  $('meetingScope').textContent=group?.scope||'Aucun chantier dans la sélection';
  $('meetingCrumb').textContent=group?.strand||'';
  const pole=group?.pole||state.filters.pole||'';
  $('poleSubtitle').textContent=pole;$('poleSubtitle').hidden=!pole;
- $('prevTask').disabled=pos<=0;
- $('nextTask').disabled=pos<0||pos>=items.length-1;
- $('nextTask').title=pos>=items.length-1?'Dernier sujet du portefeuille sélectionné':'Sujet suivant';
- $('selectedDetails').disabled=!r;
  // No bottom focus banner in normal mode. Projection retains details only.
  $('focusStrip').hidden=!state.presentation||!r;
  if(r){
@@ -623,7 +687,7 @@ function ingest(data,source){
  else if(source==='csv')notice('');
  else notice('');
  const time=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
- liveStatus((source==='csv'?'Aperçu CSV · ':'Actualisé à ')+time);$('sync').title=source==='csv'?'Fichier lu localement, sans synchronisation Grist.':'Données Grist en lecture seule';
+ liveStatus('Actualisé à '+time);$('sync').title=source==='csv'?'Fichier lu localement, sans synchronisation Grist.':'Données Grist en lecture seule';
  render();
  if(!$('overlay').hidden){fillDialog(state.rows.find(r=>r.id===state.dialogId));}
 }
@@ -643,9 +707,19 @@ function fillDialog(r){
 }
 function selectTask(id,scroll=true){
  const rows=getFiltered(),r=rows.find(r=>r.id===String(id));if(!r)return;
- state.selected=r.id;
- const g=portfolioGroups(rows).find(g=>g.items.some(x=>x.id===r.id));if(g)state.scopeId=g.id;
- render();
+ const g=portfolioGroups(rows).find(g=>g.items.some(x=>x.id===r.id));
+ const changedGroup=g&&g.id!==state.scopeId;
+ state.selected=r.id;if(g)state.scopeId=g.id;
+ if(changedGroup)render();
+ else {
+  // Keep row nodes stable so a double-click can open the detail without a toolbar button.
+  renderMeetingControls(rows);
+  document.querySelectorAll('[data-row-id]').forEach(el=>{
+   const selected=el.dataset.rowId===r.id;
+   el.classList.toggle('selected',selected);
+   el.querySelector('.task-name')?.setAttribute('aria-current',String(selected));
+  });
+ }
  if(scroll){requestAnimationFrame(()=>{
   const el=[...document.querySelectorAll('[data-row-id]')].find(el=>el.dataset.rowId===id),scroller=$('roadmapScroll');
   if(!el)return;const rect=el.getBoundingClientRect(),vp=scroller.getBoundingClientRect();
@@ -764,7 +838,7 @@ function placePopover(){
  if(!activePopover)return;
  const [buttonId,panelId]=activePopover,button=$(buttonId),panel=$(panelId),r=button.getBoundingClientRect();
  panel.style.maxHeight=Math.max(90,window.innerHeight-r.bottom-18)+'px';
- const left=Math.max(10,Math.min(window.innerWidth-panel.offsetWidth-12,panelId==='portfolioPanel'?r.left:r.right-panel.offsetWidth));
+ const left=Math.max(10,Math.min(window.innerWidth-panel.offsetWidth-12,r.right-panel.offsetWidth));
  panel.style.left=left+'px';panel.style.top=(r.bottom+7)+'px';
 }
 function closePopovers(restore=false){
@@ -785,9 +859,6 @@ window.addEventListener('resize',()=>{combos.forEach(c=>c.close());placePopover(
 for(const [,p] of popoverPairs)$(p).addEventListener('scroll',()=>combos.forEach(c=>c.close()));
 $('showDetails').addEventListener('change',e=>{state.showDetails=e.target.checked;render();});
 
-$('prevTask').addEventListener('click',()=>moveSubject(-1));$('nextTask').addEventListener('click',()=>moveSubject(1));
-$('focusDetails').addEventListener('click',()=>{if(state.selected)openDialog(state.selected);});
-$('selectedDetails').addEventListener('click',()=>{if(state.selected)openDialog(state.selected);});
 $('portfolioList').addEventListener('click',e=>{
  const g=e.target.closest('[data-portfolio-id]');if(g){e.preventDefault();selectGroup(g.dataset.portfolioId);return;}
  const t=e.target.closest('[data-portfolio-task]');if(t){closePopovers();selectTask(t.dataset.portfolioTask);}

@@ -1,126 +1,69 @@
-# Feuille de route DT — V1.3
+# Feuille de route DT — V1.4
 
-Widget Grist en lecture seule, destiné à parcourir les chantiers par périmètre.
+Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version reprend la V1.3 et simplifie son interface sans changer le modèle de données.
 
-## Contenu à publier
+## Fichiers à publier
 
-- `index.html` : interface, styles, traitement des données et connexion Grist.
-- `.nojekyll` : désactive le traitement Jekyll sur GitHub Pages.
-- `README.md` : ce guide ; aucune donnée de test n'est intégrée au widget.
+- `index.html` : code complet du widget (HTML, CSS, JavaScript).
+- `.nojekyll` : fichier vide à conserver.
+- `README.md` : documentation ; aucune donnée métier n'est embarquée dans le code.
 
-Remplacer le `index.html` du widget précédent. Aucun fichier `app.js`, aucune compilation et aucune nouvelle bibliothèque ne sont nécessaires. Utiliser temporairement `?v=1.3` dans l'URL configurée dans Grist pour éviter de charger une ancienne copie.
+Remplacer `index.html` dans le même dossier GitHub Pages. Aucune compilation ni nouveau fichier JavaScript n'est nécessaire. Dans l'URL du widget, remplacer le paramètre de version précédent par `?v=1.4` (ou `&v=1.4` si un autre paramètre existe déjà).
 
-## Changements de cette version
+## Modifications V1.4
 
-- Titre : **Feuille de route DT**.
-- Sous-titre correspondant au pôle du périmètre affiché : **Architecture**, puis **Lot 1**, **Lot 2**, etc. lorsque leurs données sont présentes.
-- Une seule présentation : un périmètre à la fois, avec sélection du sujet et navigation séquentielle.
-- Suppression du commutateur Réunion / Vue d'ensemble et de tout le suivi de séance : sujets abordés, marques, compteurs, bilan, réinitialisation de séance.
-- Le bouton **Portefeuille des chantiers** remplace l'ordre du jour. Il reste visible et utilisable en projection.
-- Les filtres **Internes DT / Autres directions** sont placés dans le menu **Filtres**.
-- Les commandes **←** et **Sujet suivant →** sont placées dans l'en-tête du périmètre. Le passage entre périmètres se fait automatiquement en parcourant les sujets. Le dernier sujet désactive « Sujet suivant », sans ouvrir de bilan.
-- Suppression du bandeau inférieur en mode normal. En projection uniquement, une fiche compacte du chantier sélectionné reste affichée, sans suivi de séance ni compteur.
-- Les informations complètes restent disponibles via **Détail**, un double-clic sur la ligne ou la touche Entrée.
+- Suppression des boutons **Sujet suivant**, **Retour**, **Détail** et **Voir le détail**, en vue normale comme en projection.
+- En-tête unique : recherche, Filtres, Affichage, Projection, Actualiser, menu ⋯ et Portefeuille sont alignés sur la même ligne et ont une hauteur de 34 px sur les écrans bureau. Sur un petit écran, les commandes passent à la ligne plutôt que d'être tronquées.
+- Bouton **Portefeuille des chantiers** à droite, sur un fond lavande discret.
+- **Actualisé à HH:MM** à gauche, à côté du titre. L'heure correspond à la réception des données ; elle n'est pas modifiée par une simple sélection, un filtre ou un changement d'affichage. En aperçu CSV, le survol précise l'origine locale des données.
+- Nouvelles couleurs d'urgence, communes au calendrier, aux pastilles, à la légende et à l'export SVG :
+  - Mineur : vert sauge `#A6BFAE`.
+  - Intermédiaire : ambre doux `#D7B67A`.
+  - Prioritaire : mauve discret `#AB98BC`.
+  - À qualifier : gris `#BDC5CE`.
+- Définition visible dans la légende : **Hachures : date connue à l’année**. Une hachure signale une précision annuelle du début ou de la fin, pas un état d'avancement.
+- Les lignes restent stables lors de la sélection, pour que le double-clic sur un chantier ouvre correctement sa fiche sans bouton Détail.
 
-## Structuration du portefeuille
+## Navigation conservée
 
-```text
-Pôle Architecture
-    Internes DT
-        Périmètre
-            Chantier
-    Avec les autres directions
-        Périmètre
-            Chantier
-Pôle Lot 1
-Pôle Lot 2
-Pôle Lot 3
-...
-```
+Le portefeuille reste organisé en **Pôle → Volet → Périmètre → Chantier**. Cliquer sur un périmètre affiche sa roadmap ; son chevron déplie les chantiers.
 
-Cliquer sur le nom d'un périmètre affiche sa roadmap. Le chevron déplie la liste de ses chantiers ; cliquer sur un chantier le sélectionne directement. Les totaux indiquent des volumes de chantiers, jamais un avancement de séance.
+Le bouton Portefeuille reste disponible en projection. La projection conserve le résumé du chantier sélectionné en bas, mais aucun bouton Détail. Les outils secondaires (recherche, filtres, affichage, actualisation) sont masqués en projection ; l'heure de dernière actualisation, le portefeuille, la sortie de projection et le menu ⋯ restent accessibles.
 
-**Tous les chantiers de la source Architecture actuelle restent dans le Pôle Architecture**, y compris le périmètre nommé « Chantier DT lot 3 ». Aucun pôle n'est déduit des mots « Lot 1 », « Lot 2 » ou « Lot 3 » dans un nom ou un périmètre.
+Un clic sur un chantier le met en évidence. Un double-clic ou Entrée ouvre la fiche complète. Échap ferme les menus ou la fiche ; hors des panneaux, Échap quitte la projection. Les raccourcis clavier antérieurs restent disponibles : flèches gauche/droite pour les sujets, Page précédente/suivante pour les périmètres. Aucune notion de séance, de sujet abordé ou de bilan n'est réintroduite.
 
-Les pôles Lot 1, Lot 2 et Lot 3 sont préparés dans l'arborescence. Tant qu'ils n'ont pas de lignes, ils portent la mention **Non alimenté** et ne produisent aucune barre ni aucun volume de travail fictif.
+## Configuration Grist inchangée
 
-### Alimenter les autres pôles
+Conserver la table source **Architecture** et l'autorisation **Lire la table sélectionnée** (`read table`). Rendre accessibles les colonnes suivantes dans les colonnes visibles du widget :
 
-Le widget fonctionne immédiatement avec les 12 colonnes actuelles de la table Architecture. La colonne supplémentaire **Pôle** (identifiant `Pole`) est **facultative** pour cette version.
-
-Pour gérer plusieurs pôles dans la même source :
-
-1. Ajouter une colonne `Pôle` à la table transmise au widget.
-2. La rendre accessible parmi les colonnes visibles du widget Grist.
-3. Renseigner `Architecture`, `Lot 1`, `Lot 2`, `Lot 3`, ou un autre nom de pôle. Les libellés `Pôle Architecture`, `Pôle Lot 3` sont également reconnus.
-
-Les valeurs absentes sont rattachées par défaut à `Architecture`, pour la compatibilité avec la table existante. Lors de la mise en place d'une source multi-pôles, il faut donc renseigner `Pôle` sur les lignes qui n'appartiennent pas à Architecture. Le nom par défaut et les pôles préparés sont définis par `DEFAULT_POLE` et `PLANNED_POLES` dans le code.
-
-Un filtre Pôle est proposé dans le menu Filtres dès que plusieurs pôles possèdent des données. La recherche inclut aussi le nom du pôle.
-
-**Le widget lit uniquement la table sélectionnée dans Grist** : il ne va pas chercher automatiquement des données dans d'autres tables Lot 1 / Lot 2 / Lot 3. Si les futurs pôles sont stockés dans des tables séparées, une source consolidée ou une évolution de la connexion sera nécessaire.
-
-## Configuration Grist
-
-Conserver la configuration du widget précédent :
-
-- Type de widget : Personnalisé.
-- Table source actuelle : Architecture.
-- Autorisation : **Lire la table sélectionnée** (`read table`).
-- Colonnes transmises : les 12 colonnes existantes ; ajouter `Pôle` lorsqu'elle est créée.
-
-| Colonne | Fonction |
+| Colonne | Rôle |
 | --- | --- |
 | Nom | Intitulé du chantier |
-| Périmètre | Regroupement affiché dans la roadmap |
+| Périmètre | Regroupement dans le portefeuille |
 | Volet | Internes DT / Avec les autres directions |
-| Phase | Détail du chantier et filtre |
-| Urgence | Couleur de la barre et filtre |
-| Responsable Projet | Détail et filtre |
-| Commentaires | Détail ; résumé en projection lorsque renseigné |
-| Date de début | Début de la barre |
-| Précision début | Jour, Mois ou Année |
-| Date de fin | Fin de la barre |
-| Précision fin | Jour, Mois ou Année |
-| Ordre | Ordre dans un périmètre |
-| Pôle — facultative | Niveau de regroupement supérieur |
+| Phase | Fiche de détail et filtres |
+| Urgence | Couleur de la barre |
+| Responsable Projet | Fiche de détail et filtres |
+| Commentaires | Fiche de détail ; résumé en projection |
+| Date de début | Début |
+| Précision début | Jour, Mois, Année |
+| Date de fin | Fin |
+| Précision fin | Jour, Mois, Année |
+| Ordre | Ordre au sein d'un périmètre |
+| Pôle (facultative) | Architecture, Lot 1, Lot 2, Lot 3… |
 
-Les libellés accentués et les identifiants techniques usuels sont reconnus. La connexion conserve `keepEncoded: true`, `expandRefs: true` et `includeColumns: 'shown'`. Ne pas envoyer uniquement les colonnes Nom et Périmètre : les autres champs sont nécessaires au calendrier et aux filtres.
+Les noms visibles accentués et les identifiants techniques usuels restent reconnus. La colonne Pôle est facultative : une valeur absente signifie Architecture. Aucun pôle n'est inféré d'un intitulé contenant « Lot 3 ».
 
-Documentation de l'API de lecture : https://support.getgrist.com/code/interfaces/grist_plugin_api.FetchSelectedOptions/
+Les pôles prévus sans données sont indiqués comme **Non alimenté**. Le widget ne lit que la table sélectionnée, pas d'autres tables de lots automatiquement.
 
-## Navigation
+## Règles et sécurité
 
-- **Portefeuille des chantiers** : accès direct à un pôle, un volet, un périmètre et un chantier.
-- **← / Sujet suivant →** : sélection du sujet précédent / suivant dans le portefeuille filtré, avec passage au périmètre suivant si nécessaire.
-- **Flèches gauche / droite** : même navigation, lorsque le focus est dans le widget et non dans un champ.
-- **Page précédente / Page suivante** (Page Up / Page Down) : changer de périmètre.
-- **Entrée**, **Détail** ou double-clic : ouvrir la fiche du chantier.
-- **Échap** : fermer la fiche ou le menu ; hors de ces panneaux, quitter la projection.
-- **Projection** : agrandir la lecture en masquant les outils secondaires. Le portefeuille reste accessible.
+La couleur représente l'urgence, pas la phase ou l'avancement. Les dates absentes ne sont pas inventées ; une date à l'année reste imprécise. La période affichée reste commune aux périmètres. Les données de Grist ne sont jamais écrites par le widget.
 
-Le mode Projection est une adaptation de la mise en page à l'intérieur du widget, pas un appel au plein écran du navigateur.
+Le calendrier, les filtres, le portefeuille, l'export SVG et l'impression conservent leur fonctionnement. Hors Grist, le menu ⋯ permet de charger un CSV local ; son contenu n'est envoyé à aucun serveur et n'est pas intégré aux fichiers à publier.
 
-## Filtres et affichage
+## Vérifications de cette livraison
 
-Le menu Filtres contient le volet, le périmètre, l'urgence, la phase, le responsable et la restriction aux fins à préciser ; Pôle apparaît si plusieurs pôles sont alimentés. Tous les filtres se combinent. Le portefeuille est limité aux filtres en cours ; les pôles sans données correspondant aux filtres sont explicitement signalés.
+Tests locaux avec Chromium et une API Grist simulée, sur les 39 chantiers de l'export : chargement, alignement des commandes et absence de débordement à 1920, 1440, 1366, 1280, 1152, 1024, 820, 760 et 390 px ; portefeuille et regroupements ; filtres ; recherche ; projection ; double-clic et fermeture du détail ; actualisation ; notification de nouvelles données ; export SVG et nouvelle palette. Contrôle de la syntaxe JavaScript avec Node.
 
-Le menu Affichage conserve l'échelle ajustée à l'écran, mensuelle ou trimestrielle, la période, le repère de date et le détail des lignes. La période reste commune lorsque l'on parcourt les périmètres : elle ne change pas silencieusement à chaque sujet.
-
-Le menu ⋯ conserve l'export du périmètre visible en SVG et l'impression. Hors de Grist, il propose aussi l'ouverture locale d'un CSV ; ce fichier n'est envoyé à aucun serveur.
-
-## Règles conservées
-
-- La couleur d'une barre indique l'urgence, pas l'avancement.
-- Une fin passée ne permet pas de déclarer automatiquement un chantier terminé ou en retard.
-- Les dates manquantes restent à préciser ; aucune fin n'est inventée.
-- Une date à l'année représente une précision annuelle, affichée par hachures.
-- Un début connu sans fin comporte un marqueur et une portion pointillée, pas une durée supposée.
-- Le widget n'écrit ni dans Grist, ni dans le stockage local ; il ne stocke plus de suivi de séance.
-- Les textes métier injectés dans l'interface sont échappés avant affichage.
-
-## Vérifications effectuées
-
-Contrôles avec Chromium et une API Grist simulée : lecture des 39 lignes de l'export, navigation entre sujets et périmètres, filtres de volet, portefeuille, mode projection, popups, absence de commandes de séance, API en lecture seule, export SVG, import CSV, dimensions 1920 / 1440 / 1366 / 1024 / 390 px, ajout simulé des pôles Lot 1 / Lot 2 / Lot 3, regroupements homonymes séparés par pôle, dates typées Grist et échappement HTML.
-
-Les tests ont été effectués localement ; aucun accès au document Grist de production n'a été utilisé. Les lignes artificielles de test ne sont pas présentes dans les fichiers livrés.
+Ces vérifications ne constituent pas un test dans le document Grist de production. Aucun enregistrement d'essai, CSV ou capture métier n'est inclus dans l'archive à publier.
