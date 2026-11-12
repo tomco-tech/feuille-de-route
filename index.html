@@ -141,9 +141,9 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
 .header-toolbar .search-field input{padding-right:8px}
 .header-toolbar .input-wrap>svg{top:9px}
 .header-toolbar>.btn.icon{width:34px;padding:7px}
-.header-toolbar>.portfolio-toggle{margin-left:8px;background:#ece8f3;border-color:#d4cbdf;color:#5c4a73;font-weight:650;padding:7px 12px;gap:7px}
-.header-toolbar>.portfolio-toggle:hover{background:#e3dced;border-color:#bfb2cf}
-.header-toolbar>.portfolio-toggle[aria-expanded=true]{background:#ded5e9;border-color:#b5a4c9;color:#514064}
+.header-toolbar>.portfolio-toggle{margin-left:0;background:#244d70;border-color:#244d70;color:#fff;font-weight:650;padding:7px 12px;gap:7px}
+.header-toolbar>.portfolio-toggle:hover{background:#1c3e5d;border-color:#1c3e5d;color:#fff}
+.header-toolbar>.portfolio-toggle[aria-expanded=true]{background:#183650;border-color:#183650;color:#fff}
 .meeting-heading{padding:15px 20px;min-height:74px}
 .focus-strip{align-items:flex-start}.focus-body{width:100%}
 .legend-hatching{color:#65768b}.legend-hatching .swatch{width:21px;height:10px;flex:none}
@@ -152,19 +152,19 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
 .projection .header-toolbar{flex:1;justify-content:flex-end}
 .projection .title-line .sync{display:inline-block!important}
 .projection .title-line h1{font-size:21px}
-.projection .header-toolbar>.portfolio-toggle{margin-left:8px}
+.projection .header-toolbar>.portfolio-toggle{margin-left:0}
 @media(min-width:1700px){.title-line h1{font-size:23px}.header-toolbar .search-field{flex-basis:245px}.title-line .sync{font-size:11px}}
 @media(max-width:1320px) and (min-width:1151px){
  .app-header{gap:12px}.title-line{gap:9px}.title-line h1{font-size:20px}
  .header-toolbar{gap:5px}.header-toolbar>.btn{font-size:11px;padding:7px 9px}
  .header-toolbar .search-field{width:185px;flex-basis:185px;min-width:170px}
- .header-toolbar>.portfolio-toggle{margin-left:4px;padding:7px 10px}
+ .header-toolbar>.portfolio-toggle{margin-left:0;padding:7px 10px}
 }
 @media(max-width:1150px){
  .app-header{flex-wrap:wrap;gap:10px}.header-identity{flex-basis:100%}
  .header-toolbar{flex:1 1 100%;justify-content:flex-start;gap:7px}
  .header-toolbar .search-field{flex:1 1 210px;width:auto;max-width:320px;min-width:170px}
- .header-toolbar>.portfolio-toggle{margin-left:auto}
+ .header-toolbar>.portfolio-toggle{margin-left:0}
  .projection .app-header{flex-wrap:nowrap}.projection .header-identity{flex-basis:auto}
  .projection .header-toolbar{flex:1 1 auto;justify-content:flex-end}
  .title-line .sync{display:inline-block}
@@ -174,20 +174,20 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
  .header-toolbar{flex-wrap:wrap;gap:6px;justify-content:flex-start}
  .header-toolbar .search-field{flex:1 1 calc(100% - 200px);min-width:130px;width:auto;max-width:none;margin-right:0}
  .header-toolbar>.btn{font-size:11px;padding:7px 9px}
- .header-toolbar>.portfolio-toggle{margin-left:auto}
+ .header-toolbar>.portfolio-toggle{margin-left:0}
  .meeting-heading{padding:13px 14px;min-height:68px}
  .legend-hatching{font-size:10px}
  .projection .app-header{flex-wrap:wrap;gap:8px}
  .projection .header-identity{flex:1 1 100%}
  .projection .header-toolbar{flex:1 1 100%;justify-content:flex-start}
- .projection .header-toolbar>.portfolio-toggle{margin-left:auto}
+ .projection .header-toolbar>.portfolio-toggle{margin-left:0}
 }
 @media(max-width:460px){
  .title-line{gap:9px;flex-wrap:wrap}.title-line h1{font-size:20px}.title-line .sync{font-size:10px}
  .header-toolbar .search-field{flex:1 1 calc(100% - 185px);min-width:120px}
  .header-toolbar>.btn{font-size:11px;padding:7px 7px;gap:4px}
  .header-toolbar>.btn.icon{width:30px;padding:6px}
- .header-toolbar>.portfolio-toggle{padding:7px 9px;gap:6px;margin-left:auto;font-size:11px}
+ .header-toolbar>.portfolio-toggle{padding:7px 9px;gap:6px;margin-left:0;font-size:11px}
  .projection .header-toolbar>.portfolio-toggle{padding:7px 9px;gap:6px}
  .meeting-heading{min-height:66px}.meeting-heading h2{font-size:20px}
 }
@@ -196,6 +196,15 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
  .title-line .sync{display:inline-block}.header-identity{width:100%}
  .legend-hatching{display:inline-flex}.meeting-heading{min-height:0}
 }
+
+/* V1.5 — Portefeuille en premier ; navigation par périmètre. */
+.meeting-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:18px}
+.meeting-heading .heading-context{width:auto;min-width:0}
+.next-scope{height:34px;min-height:34px;justify-self:end;align-self:end;margin-bottom:0;gap:8px}
+.next-scope:disabled{background:#f7f9fb;border-color:#e5eaf0;color:#7f8b99;opacity:.65}
+@media(max-width:760px){.meeting-heading{column-gap:12px}.next-scope{font-size:11px;padding:7px 9px}}
+@media(max-width:460px){.meeting-heading{column-gap:10px}.next-scope{gap:6px}.meeting-heading h2{font-size:19px}}
+@media print{.next-scope{display:none!important}}
 
 </style>
 </head>
@@ -209,6 +218,7 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
    <p id="poleSubtitle" class="pole-subtitle">Architecture</p>
   </div>
   <nav class="header-toolbar" aria-label="Commandes de la feuille de route">
+   <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
    <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
    <button class="btn" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtres<span id="filterCount" class="badge" hidden></span></button>
    <button class="btn" id="viewToggle" aria-expanded="false" aria-controls="viewPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>Affichage</button>
@@ -216,13 +226,13 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
    <button class="btn quiet" id="presentationToggle" aria-pressed="false" title="Agrandir la présentation dans le widget">⤢ <span>Projection</span></button>
    <button class="btn icon quiet" id="refresh" title="Actualiser les données" aria-label="Actualiser les données"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7v5h-5"/><path d="M20 12a8 8 0 1 0-2.3 5.7M20 7v5l-4-4"/></svg></button>
    <button class="btn icon quiet" id="actionsToggle" title="Exporter ou imprimer" aria-label="Plus d’actions" aria-expanded="false" aria-controls="actionsPanel"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
-   <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
   </nav>
  </header>
  <div id="notice" class="notice info" role="status" hidden></div>
  <section class="roadmap-card" aria-label="Feuille de route DT">
   <div class="meeting-heading" id="meetingHeading">
    <div class="heading-context"><div class="eyebrow" id="meetingCrumb">Internes DT</div><h2 id="meetingScope">Chargement du périmètre…</h2></div>
+   <button type="button" class="btn next-scope" id="nextScope" aria-controls="roadmap" title="Passer au périmètre suivant" disabled><span>Périmètre suivant</span><span aria-hidden="true">→</span></button>
   </div>
   <div class="roadmap-legend" aria-label="Couleurs par niveau d’urgence">
    <span class="legend-label">Urgence</span>
@@ -618,7 +628,12 @@ function renderPortfolio(rows){
  $('portfolioList').innerHTML=html||'<div class="portfolio-empty">Aucun chantier dans la sélection.</div>';
 }
 function renderMeetingControls(rows){
- const {group}=meetingContext(rows),r=group?.items.find(x=>x.id===state.selected);
+ const {groups,group}=meetingContext(rows),r=group?.items.find(x=>x.id===state.selected);
+ const groupIndex=groups.findIndex(g=>g.id===group?.id);
+ const nextGroup=groupIndex>=0?groups[groupIndex+1]:null;
+ $('nextScope').disabled=!nextGroup;
+ $('nextScope').title=nextGroup?'Périmètre suivant : '+nextGroup.scope:group?'Dernier périmètre de la sélection':'Aucun périmètre disponible';
+ $('nextScope').setAttribute('aria-label',nextGroup?'Périmètre suivant : '+nextGroup.scope:'Périmètre suivant');
  $('meetingScope').textContent=group?.scope||'Aucun chantier dans la sélection';
  $('meetingCrumb').textContent=group?.strand||'';
  const pole=group?.pole||state.filters.pole||'';
@@ -821,6 +836,8 @@ $('today').addEventListener('click',()=>{state.reference=C.today();$('referenceD
 
 
 
+$('nextScope').addEventListener('click',()=>moveGroup(1));
+
 $('roadmap').addEventListener('click',e=>{const r=e.target.closest('[data-task-id]');if(r)selectTask(r.dataset.taskId);});
 $('roadmap').addEventListener('dblclick',e=>{const r=e.target.closest('[data-task-id]');if(r)openDialog(r.dataset.taskId);});
 $('roadmap').addEventListener('keydown',e=>{const hit=e.target.closest('[data-task-id]');if(!hit)return;if(e.key==='Enter'){e.preventDefault();openDialog(hit.dataset.taskId);}else if(e.key===' '&&e.target.matches('g[data-task-id]')){e.preventDefault();selectTask(hit.dataset.taskId);}});
@@ -838,7 +855,8 @@ function placePopover(){
  if(!activePopover)return;
  const [buttonId,panelId]=activePopover,button=$(buttonId),panel=$(panelId),r=button.getBoundingClientRect();
  panel.style.maxHeight=Math.max(90,window.innerHeight-r.bottom-18)+'px';
- const left=Math.max(10,Math.min(window.innerWidth-panel.offsetWidth-12,r.right-panel.offsetWidth));
+ const anchorLeft=panelId==='portfolioPanel'?r.left:r.right-panel.offsetWidth;
+ const left=Math.max(10,Math.min(window.innerWidth-panel.offsetWidth-12,anchorLeft));
  panel.style.left=left+'px';panel.style.top=(r.bottom+7)+'px';
 }
 function closePopovers(restore=false){

@@ -1,6 +1,6 @@
-# Feuille de route DT — V1.4
+# Feuille de route DT — V1.5
 
-Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version reprend la V1.3 et simplifie son interface sans changer le modèle de données.
+Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version reprend la V1.4 et ajuste la navigation sans changer le modèle de données.
 
 ## Fichiers à publier
 
@@ -8,21 +8,16 @@ Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version repren
 - `.nojekyll` : fichier vide à conserver.
 - `README.md` : documentation ; aucune donnée métier n'est embarquée dans le code.
 
-Remplacer `index.html` dans le même dossier GitHub Pages. Aucune compilation ni nouveau fichier JavaScript n'est nécessaire. Dans l'URL du widget, remplacer le paramètre de version précédent par `?v=1.4` (ou `&v=1.4` si un autre paramètre existe déjà).
+Remplacer `index.html` dans le même dossier GitHub Pages. Aucune compilation ni nouveau fichier JavaScript n'est nécessaire. Dans l'URL du widget, remplacer le paramètre de version précédent par `?v=1.5` (ou `&v=1.5` si un autre paramètre existe déjà).
 
-## Modifications V1.4
+## Modifications V1.5
 
-- Suppression des boutons **Sujet suivant**, **Retour**, **Détail** et **Voir le détail**, en vue normale comme en projection.
-- En-tête unique : recherche, Filtres, Affichage, Projection, Actualiser, menu ⋯ et Portefeuille sont alignés sur la même ligne et ont une hauteur de 34 px sur les écrans bureau. Sur un petit écran, les commandes passent à la ligne plutôt que d'être tronquées.
-- Bouton **Portefeuille des chantiers** à droite, sur un fond lavande discret.
-- **Actualisé à HH:MM** à gauche, à côté du titre. L'heure correspond à la réception des données ; elle n'est pas modifiée par une simple sélection, un filtre ou un changement d'affichage. En aperçu CSV, le survol précise l'origine locale des données.
-- Nouvelles couleurs d'urgence, communes au calendrier, aux pastilles, à la légende et à l'export SVG :
-  - Mineur : vert sauge `#A6BFAE`.
-  - Intermédiaire : ambre doux `#D7B67A`.
-  - Prioritaire : mauve discret `#AB98BC`.
-  - À qualifier : gris `#BDC5CE`.
-- Définition visible dans la légende : **Hachures : date connue à l’année**. Une hachure signale une précision annuelle du début ou de la fin, pas un état d'avancement.
-- Les lignes restent stables lors de la sélection, pour que le double-clic sur un chantier ouvre correctement sa fiche sans bouton Détail.
+- **Portefeuille des chantiers** devient le premier bouton du bandeau de commandes, avant la recherche, les filtres et l'affichage. Le même ordre est conservé en projection.
+- Le bouton utilise un fond **bleu foncé `#244D70`** et un texte blanc. Le survol et l'état ouvert restent bleu foncé.
+- Un bouton **Périmètre suivant →** est placé à droite du titre du périmètre, en mode normal et en projection.
+- Il avance d'un périmètre entier dans l'ordre du portefeuille, en tenant compte des filtres. Le premier chantier du périmètre suivant est sélectionné et le défilement vertical revient en haut. La période et l'échelle du calendrier sont conservées.
+- Il est désactivé pendant le chargement, sans périmètre disponible ou au dernier périmètre de la sélection. Il ne revient pas automatiquement au début.
+- Les boutons Sujet suivant, Retour et Détail ne sont pas réintroduits. Le reste de l'interface V1.4 est conservé : couleurs sauge / ambre / mauve, légende des hachures et heure d'actualisation à côté du titre.
 
 ## Navigation conservée
 
@@ -64,6 +59,4 @@ Le calendrier, les filtres, le portefeuille, l'export SVG et l'impression conser
 
 ## Vérifications de cette livraison
 
-Tests locaux avec Chromium et une API Grist simulée, sur les 39 chantiers de l'export : chargement, alignement des commandes et absence de débordement à 1920, 1440, 1366, 1280, 1152, 1024, 820, 760 et 390 px ; portefeuille et regroupements ; filtres ; recherche ; projection ; double-clic et fermeture du détail ; actualisation ; notification de nouvelles données ; export SVG et nouvelle palette. Contrôle de la syntaxe JavaScript avec Node.
-
-Ces vérifications ne constituent pas un test dans le document Grist de production. Aucun enregistrement d'essai, CSV ou capture métier n'est inclus dans l'archive à publier.
+Vérifications réalisées avec Chromium et une API Grist simulée : navigation sur les 13 périmètres de l’export, respect des filtres, désactivation en fin de parcours ou sans résultat, mode projection, ouverture du portefeuille, réception de nouvelles données et absence d’erreur JavaScript. L’alignement et les débordements ont été contrôlés à 1920, 1440, 1366, 1280, 1152, 1024, 760 et 390 px. Syntaxe JavaScript vérifiée avec Node. Ces vérifications ne constituent pas un test dans le document Grist de production. Aucun enregistrement d’essai ni CSV métier n’est inclus dans l’archive à publier.
