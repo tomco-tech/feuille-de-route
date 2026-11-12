@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<title>Pilotage DT — Feuille de route architecture</title>
+<title>Revue architecture DT — Feuille de route</title>
 <style>
 :root{
  --bg:#f4f6f9;--paper:#fff;--ink:#233349;--muted:#738197;--line:#dfe5ed;
@@ -65,14 +65,57 @@ main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;displa
 @media(max-width:560px){:root{--name-width:200px;--row-height:46px}main{padding:8px;gap:7px}h1{font-size:17px;letter-spacing:-.4px}.header-right{gap:3px}.control-right{width:100%;flex-wrap:nowrap}.search-field{min-width:90px;width:auto}.main-controls>.segmented{width:100%}.main-controls>.segmented button{flex:1;font-size:11px;padding:7px 6px}.roadmap-legend{font-size:9px;gap:8px;padding:7px 9px}.legend-label{display:none}.period-caption{display:none}.task-title{font-size:11px}.gantt-row .task-name{padding:5px 10px 5px 18px}.scope-button{font-size:9px;padding:4px 8px;gap:5px}.strand-title{font-size:9px;padding:5px 8px}.axis-label{padding:8px 10px}.axis-label .rows-count{font-size:8px}.overlay{padding:6px}.dialog-head,.dialog-body{padding:17px}.popover{padding:13px}.detail-grid{gap:14px}}
 @media print{@page{size:A3 landscape;margin:10mm}html,body{height:auto;overflow:visible;background:white}main{height:auto;display:block;padding:0;max-width:none}.main-controls,.header-right,.notice,.popover,.overlay{display:none!important}.app-header{margin-bottom:10px}.roadmap-card{height:auto;display:block;overflow:visible;box-shadow:none;border-radius:0}.roadmap-scroll{display:block;overflow:visible;max-height:none;height:auto;min-height:0}.roadmap-inner,.gantt-row,.axis{width:100%!important;min-width:0!important}.axis,.gantt-row{grid-template-columns:30% 70%}.label-cell,.axis{position:static!important}.gantt-row{break-inside:avoid}.gantt-row.scope,.gantt-row.strand{break-after:avoid}.roadmap-legend{font-size:9px}.task-title{font-size:10px}.task-meta{font-size:9px}.period-caption{display:block}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 
+
+/* v1.2 — Revue guidée. Les repères de séance ne sont pas des statuts métier. */
+:root{--name-width:340px;--meeting-accent:#315d7b}
+header .title-group{gap:16px}h1{font-size:20px}.mode-switch button{padding:6px 10px;font-size:11px}
+.meeting-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0}
+.meeting-heading h2{font-size:25px;line-height:1.15;letter-spacing:-.6px;font-weight:700;overflow-wrap:anywhere}
+.meeting-heading .eyebrow{font-size:10px;color:#738499;letter-spacing:.8px;margin-bottom:6px;font-weight:600}
+.scope-pager{display:flex;gap:8px;align-items:center;flex-shrink:0}.scope-pager .btn{height:36px}.scope-pager .next-name{font-size:10px;color:#8391a3;max-width:160px;line-height:1.35;text-align:right;display:none}
+.meeting-mode .task-title{font-size:14px;font-weight:550;line-height:1.35}.meeting-mode .task-meta{display:none!important}
+.meeting-mode .task-name{padding-left:18px;padding-right:13px;gap:0;flex-direction:row;justify-content:flex-start;align-items:center}
+.task-dot{font-size:10px;display:inline-grid;place-items:center;width:23px;height:23px;border:1px solid #d7e0e9;border-radius:50%;color:#7c8da1;flex-shrink:0;margin-right:11px;font-variant-numeric:tabular-nums;background:white}
+.task-dot.reviewed{background:#edf3f5;color:#45636f;border-color:#bacdd1}
+.meeting-mode .gantt-row.task.selected>.label-cell,.meeting-mode .gantt-row.task.selected>.track{background:#ebf2f8}
+.meeting-mode .gantt-row.task.selected>.label-cell{box-shadow:inset 3px 0 #315d7b}
+.meeting-mode .gantt-row.task.selected .task-title{font-weight:650;color:#23445d}
+.meeting-mode .task-name .task-title{min-width:0}.meeting-mode .axis-label{padding-left:20px;font-size:10px}
+.meeting-mode .axis-year{font-size:13px}.meeting-mode .axis-unit{font-size:11px}
+.meeting-mode .roadmap-card{border-radius:12px}.meeting-mode .roadmap-legend{padding:9px 20px;font-size:11px}
+.meeting-mode .roadmap-inner{min-height:100%}
+.focus-strip{padding:12px 20px;background:#fcfdfe;border-top:1px solid var(--line);flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:83px}
+.focus-body{min-width:0}.focus-caption{font-size:9px;text-transform:uppercase;letter-spacing:.9px;color:#7c8a9d;margin-bottom:5px;font-weight:700}
+.focus-title{font-size:15px;font-weight:680;line-height:1.35;overflow-wrap:anywhere;color:#304c65}
+.focus-meta{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;font-size:11px;color:#687f93;margin-top:5px}
+.focus-meta strong{font-weight:650;color:#476176}.focus-meta .dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px}
+.focus-comment{margin-top:6px;font-size:12px;color:#566d83;line-height:1.4;max-width:1080px;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.focus-buttons{display:flex;gap:7px;align-items:center;flex-shrink:0}.focus-detail{font-size:11px}.review-mark{min-width:137px;border-color:#cad7df;background:white;color:#36576d;font-size:12px;height:34px}
+.review-mark[aria-pressed=true]{background:#eaf1f4;border-color:#aebfc9}.review-mark svg{width:14px;height:14px}
+.meeting-footer{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:10px 18px;border-top:1px solid var(--line);flex-shrink:0;background:white;min-height:55px}
+.review-progress{min-width:120px;max-width:235px;flex:1}.progress-caption{display:flex;gap:10px;align-items:baseline;font-size:11px;color:#5b7084}.progress-caption strong{font-weight:650}.progress-caption span{color:#8a96a7;font-size:10px}.progress-track{margin-top:6px;height:3px;background:#edf1f5;border-radius:4px;overflow:hidden}.progress-fill{height:100%;width:0;background:#718e9f;border-radius:4px;transition:width .2s ease}
+.meeting-navigation{display:flex;align-items:center;gap:10px}.meeting-navigation .btn{height:35px}.btn.primary{background:#315b77;border-color:#315b77;color:white}.btn.primary:hover{background:#244b66}.point-position{font-size:11px;color:#8090a3;white-space:nowrap;min-width:60px;text-align:center;font-variant-numeric:tabular-nums}.keyboard-hint{font-size:10px;color:#8998a9}.keyboard-hint kbd{font:inherit;border:1px solid #dae2eb;border-radius:3px;padding:1px 4px;background:#fafbfd}
+.agenda-panel{width:440px;padding:0}.agenda-panel .popover-head{margin:0;padding:14px 15px;border-bottom:1px solid var(--line)}.agenda-intro{padding:11px 16px;font-size:11px;line-height:1.4;color:#7e8d9e;border-bottom:1px solid #edf1f5}.agenda-group{padding:13px 15px 6px;font-size:9px;letter-spacing:.8px;color:#8292a3;text-transform:uppercase;font-weight:700}.agenda-items{padding:0 7px 8px}.agenda-entry{display:flex;align-items:center;gap:10px;background:white;border:0;border-radius:7px;padding:10px 8px;width:100%;text-align:left;min-height:44px}.agenda-entry:hover{background:#f5f8fb}.agenda-entry[aria-current=true]{background:#eaf1f7}.agenda-n{width:24px;height:24px;display:grid;place-items:center;font-size:10px;border:1px solid #d9e2ea;border-radius:5px;flex-shrink:0;color:#8192a4}.agenda-entry[aria-current=true] .agenda-n{border-color:#9bb4c8;color:#315775;background:white}.agenda-text{flex:1;font-size:12px;font-weight:570;line-height:1.35}.agenda-count{font-size:10px;color:#8394a4;white-space:nowrap}.agenda-entry.complete .agenda-n{color:#566d75;background:#edf3f5}
+.agenda-bottom{padding:10px 15px;border-top:1px solid var(--line);color:#8191a3;font-size:10px;line-height:1.5}
+.overview-mode .gantt-row.scope{height:36px}.overview-mode .gantt-row.task.selected .label-cell{box-shadow:inset 3px 0 #315d7b}
+.projection .sync,.projection #refresh,.projection .main-controls{display:none!important}.projection .app-header{min-height:37px}.projection main{padding:10px 14px}.projection .meeting-heading{padding-top:14px}.projection .task-title{font-size:16px}.projection h1{font-size:18px}.projection .focus-title{font-size:17px}.projection .focus-meta{font-size:12px}
+.checksum-report{font-size:12px;line-height:1.6;color:#677f91;padding:0 2px 5px}.session-group{padding:14px 0;border-bottom:1px solid #e1e8ee}.session-group h3{font-size:13px;margin-bottom:8px}.session-row{display:flex;gap:9px;align-items:flex-start;padding:6px 0;font-size:12px;line-height:1.4}.session-status{font-size:10px;white-space:nowrap;min-width:58px;color:#7b8fa1}.session-row.done .session-status{color:#416273}.session-row button{background:none;border:0;text-align:left;color:#395874;padding:0;font:inherit}.session-note{font-size:11px;color:#7e8f9e;margin-top:10px;line-height:1.5}
+@media(min-width:1700px){.meeting-mode{--name-width:410px}.meeting-mode .task-title{font-size:16px}.meeting-heading h2{font-size:28px}.meeting-mode .roadmap-legend{font-size:12px}.focus-title{font-size:17px}.focus-meta{font-size:12px}.scope-pager .next-name{display:block}}
+@media(max-width:1100px){.meeting-mode{--name-width:300px}.title-group h1{font-size:18px}.title-group{gap:10px!important}.sync{display:none}.search-field{width:190px;min-width:120px}.meeting-heading{padding:13px 16px}.meeting-heading h2{font-size:22px}.focus-strip{padding:10px 16px}.keyboard-hint{display:none}.focus-buttons{flex-direction:column;align-items:stretch}.focus-meta{gap:5px 10px}.mode-switch button{font-size:10px}.meeting-mode .task-title{font-size:13px}}
+@media(max-width:760px){.app-header{flex-wrap:wrap;gap:8px}.app-header .title-group{flex:1;flex-wrap:wrap;gap:6px!important}.title-group h1{font-size:17px}.header-right{gap:2px}.main-controls{flex-wrap:wrap;gap:7px}.control-right{width:100%;justify-content:flex-start}.control-right .search-field{flex:1;width:auto}.meeting-mode{--name-width:230px}.meeting-heading h2{font-size:20px}.scope-pager .btn span{display:none}.scope-pager .btn{width:31px;padding:4px}.meeting-heading .eyebrow{font-size:9px}.meeting-mode .roadmap-legend{padding:8px 11px;gap:10px;font-size:10px}.meeting-mode .task-title{font-size:12px}.meeting-mode .task-name{padding-left:10px}.task-dot{width:18px;height:18px;font-size:9px;margin-right:7px}.focus-strip{min-height:95px;align-items:flex-start;padding:10px}.focus-title{font-size:13px}.focus-meta{font-size:10px}.focus-buttons{gap:4px}.review-mark{min-width:102px;font-size:10px;padding:5px}.focus-detail{font-size:10px;padding:5px;min-height:26px}.focus-caption{font-size:8px}.focus-comment{font-size:11px}.meeting-footer{gap:8px;padding:9px 10px}.meeting-navigation{gap:5px}.meeting-navigation .btn{font-size:10px;padding:6px 8px}.point-position{display:none}.progress-caption span{display:none}.review-progress{max-width:110px;min-width:70px}.progress-caption{font-size:10px}.projection .task-title{font-size:13px}.projection .focus-title{font-size:14px}.agenda-panel{max-width:calc(100vw - 20px)}}
+@media(max-width:460px){.title-group{width:calc(100% - 90px)}.title-group .mode-switch{margin-top:3px}.header-right{align-self:flex-start}.search-field{display:none}.main-controls .control-right{width:auto}.main-controls .segmented button{font-size:10px;padding:7px 9px}.control-right .btn{font-size:10px;padding:6px 8px}.meeting-mode{--name-width:185px}.meeting-heading{padding:11px}.meeting-heading h2{font-size:18px}.meeting-heading .eyebrow{font-size:8px}.scope-pager{gap:4px}.focus-strip{gap:8px}.review-mark{min-width:91px}.focus-meta .owner{display:none}.progress-caption{font-size:9px;line-height:1.3}.meeting-navigation .btn{font-size:10px}.meeting-mode .roadmap-legend{font-size:9px;gap:7px}.meeting-mode .task-title{font-size:11px}.meeting-mode .axis-unit{font-size:10px}.focus-comment{display:none}}
+@media print{html,body,main{height:auto!important;overflow:visible!important}.mode-switch,#presentationToggle,.meeting-footer,.focus-buttons,.scope-pager{display:none!important}.meeting-heading{break-after:avoid;padding:15px 0}.meeting-heading h2{font-size:22px}.focus-strip{display:block;break-inside:avoid}.roadmap-card{display:block!important}.roadmap-inner{min-height:0!important}.meeting-mode .gantt-row.task{height:58px!important}.meeting-mode .task-title{font-size:11px}.meeting-mode .roadmap-scroll{overflow:visible!important}.focus-title{font-size:12px}.focus-meta{font-size:10px}}
+
+.meeting-mode .overview-only{display:none}
 </style>
 </head>
-<body>
+<body class="meeting-mode">
 <noscript><p class="no-script">JavaScript doit être activé pour afficher la feuille de route.</p></noscript>
 <main>
  <header class="app-header">
-  <div class="title-group"><h1>Feuille de route pôle architecture</h1></div>
+  <div class="title-group"><h1>Feuille de route architecture</h1><div class="segmented mode-switch" id="modeSwitch" aria-label="Mode de consultation"><button data-mode="meeting" aria-pressed="true">Réunion</button><button data-mode="overview" aria-pressed="false">Vue d’ensemble</button></div></div>
   <div class="header-right">
+   <button class="btn quiet" id="presentationToggle" aria-pressed="false" title="Agrandir la présentation dans le widget">⤢ <span>Projection</span></button>
    <span class="sync" id="sync" role="status">Connexion à Grist…</span>
    <button class="btn icon quiet" id="refresh" title="Actualiser les données" aria-label="Actualiser les données"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7v5h-5"/><path d="M20 12a8 8 0 1 0-2.3 5.7M20 7v5l-4-4"/></svg></button>
    <button class="btn icon quiet" id="actionsToggle" title="Exporter ou imprimer" aria-label="Plus d’actions" aria-expanded="false" aria-controls="actionsPanel"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
@@ -82,6 +125,7 @@ main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;displa
   <div class="segmented" id="strandTabs" aria-label="Volet"><button data-strand="" aria-pressed="true">Tous</button><button data-strand="Internes DT" aria-pressed="false">Internes DT</button><button data-strand="Avec les autres directions" aria-pressed="false">Autres directions</button></div>
   <div class="control-right">
    <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
+   <button class="btn" id="agendaToggle" aria-expanded="false" aria-controls="agendaPanel">☷ <span>Ordre du jour</span></button>
    <button class="btn" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtres<span id="filterCount" class="badge" hidden></span></button>
    <button class="btn" id="viewToggle" aria-expanded="false" aria-controls="viewPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>Affichage</button>
    <button class="btn icon quiet" id="resetQuick" title="Effacer tous les filtres" aria-label="Effacer tous les filtres" hidden>×</button>
@@ -89,6 +133,11 @@ main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;displa
  </nav>
  <div id="notice" class="notice info" role="status" hidden></div>
  <section class="roadmap-card" aria-label="Feuille de route architecture">
+  <div class="meeting-heading" id="meetingHeading">
+   <div><div class="eyebrow" id="meetingCrumb">REVUE DES CHANTIERS</div><h2 id="meetingScope">Chargement du périmètre…</h2></div>
+   <div class="scope-pager"><span class="next-name" id="nextScopeName"></span><button class="btn icon" id="prevScope" aria-label="Périmètre précédent" title="Périmètre précédent">‹</button><button class="btn" id="nextScope" aria-label="Périmètre suivant" title="Périmètre suivant"><span>Périmètre suivant</span> ›</button></div>
+  </div>
+
   <div class="roadmap-legend" aria-label="Couleurs par niveau d’urgence">
    <span class="legend-label">Urgence</span>
    <span class="legend-item"><i class="swatch" style="background:var(--minor)"></i>Mineur</span>
@@ -99,9 +148,24 @@ main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;displa
    <span class="period-caption" id="periodCaption"></span>
    <span class="legend-item legend-date" title="Date du repère vertical"><i class="marker-symbol"></i><span id="referenceLabel"></span></span>
   </div>
-  <div class="roadmap-scroll" id="roadmapScroll" tabindex="0" aria-label="Feuille de route défilante"><div class="roadmap-inner" id="roadmap"><div class="roadmap-empty"><p class="empty-title">Connexion à la table Architecture</p><p>Les chantiers apparaîtront ici dès que Grist transmettra les données.</p></div></div></div>
+  <div class="roadmap-scroll" id="roadmapScroll" tabindex="0" aria-label="Feuille de route ; flèches gauche et droite pour parcourir les sujets"><div class="roadmap-inner" id="roadmap"><div class="roadmap-empty"><p class="empty-title">Connexion à la table Architecture</p><p>Les chantiers apparaîtront ici dès que Grist transmettra les données.</p></div></div></div>
+
+  <section class="focus-strip" id="focusStrip" aria-label="Sujet présenté" hidden>
+   <div class="focus-body"><div class="focus-caption" id="focusCaption"></div><h3 class="focus-title" id="focusTitle"></h3><div class="focus-meta" id="focusMeta"></div><p class="focus-comment" id="focusComment" hidden></p></div>
+   <div class="focus-buttons"><button class="btn focus-detail" id="focusDetails">Voir le détail ↗</button><button class="btn review-mark" id="reviewMark" aria-pressed="false" title="Repère de séance uniquement ; aucune modification du chantier">○ Marquer abordé</button></div>
+  </section>
+  <footer class="meeting-footer" id="meetingFooter" hidden>
+   <div class="review-progress" title="Sujets marqués abordés pendant cette séance, pas avancement des travaux"><div class="progress-caption"><strong id="reviewProgress"></strong><span>dans la séance</span></div><div class="progress-track"><div class="progress-fill" id="reviewProgressFill"></div></div></div>
+   <span class="keyboard-hint"><kbd>←</kbd> <kbd>→</kbd> changer de sujet · <kbd>Entrée</kbd> détail</span>
+   <div class="meeting-navigation"><button class="btn" id="prevTask">← Précédent</button><span class="point-position" id="pointPosition"></span><button class="btn primary" id="nextTask">Suivant →</button></div>
+  </footer>
  </section>
 </main>
+
+<section class="popover agenda-panel" id="agendaPanel" role="dialog" aria-label="Ordre du jour de la revue" hidden>
+ <div class="popover-head"><h2>Ordre du jour</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer l’ordre du jour">×</button></div>
+ <p class="agenda-intro" id="agendaIntro"></p><div id="agendaList"></div><div class="agenda-bottom">Un sujet « abordé » signifie uniquement qu’il a été discuté dans cette séance. Aucun statut Grist n’est modifié.</div>
+</section>
 <section class="popover" id="filtersPanel" role="dialog" aria-label="Filtres de la feuille de route" hidden>
  <div class="popover-head"><h2>Filtres</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer les filtres">×</button></div>
  <div class="filter-grid"><div class="field combo" id="scopeCombo"></div><div class="field combo" id="urgencyCombo"></div><div class="field combo" id="phaseCombo"></div><div class="field combo" id="ownerCombo"></div></div>
@@ -112,16 +176,18 @@ main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;displa
  <div class="segmented scale-buttons" id="scales" aria-label="Échelle de temps"><button data-scale="fit" aria-pressed="true">Vue d’ensemble</button><button data-scale="month" aria-pressed="false">Mois</button><button data-scale="quarter" aria-pressed="false">Trimestres</button></div>
  <div class="options-block"><div class="options-label">Période affichée</div><div class="date-fields"><label class="field">De<input type="month" id="rangeStart" aria-label="Début de la période affichée"></label><label class="field">À<input type="month" id="rangeEnd" aria-label="Fin de la période affichée"></label><button class="btn icon" id="allDates" title="Afficher toute la période" aria-label="Afficher toute la période">↔</button></div></div>
  <div class="options-block"><div class="options-label">Repère vertical</div><div class="date-fields"><label class="field"><span class="visually-hidden">Date du repère</span><input type="date" id="referenceDate" aria-label="Date du repère vertical"></label><button class="btn" id="today">Aujourd’hui</button></div></div>
- <div class="options-block"><label class="small-toggle"><input type="checkbox" id="showDetails">Afficher les phases et les dates sur chaque ligne</label><label class="small-toggle"><input type="checkbox" id="consolidated">Afficher les durées consolidées par périmètre</label><p class="option-hint">Hachures : date connue à l’année. Pointillés : date à préciser. La couleur indique l’urgence, pas l’avancement.</p></div>
- <div class="popover-footer"><button class="btn quiet" id="expand">Tout déplier</button><button class="btn quiet" id="collapse">Tout replier</button></div>
+ <div class="options-block"><label class="small-toggle"><input type="checkbox" id="showDetails">Afficher les détails sur les lignes</label><label class="small-toggle overview-only"><input type="checkbox" id="consolidated">Afficher les durées consolidées par périmètre</label><p class="option-hint">Hachures : date connue à l’année. Pointillés : date à préciser. La couleur indique l’urgence, pas l’avancement.</p></div>
+ <div class="popover-footer overview-only"><button class="btn quiet" id="expand">Tout déplier</button><button class="btn quiet" id="collapse">Tout replier</button></div>
  <details id="qualityPanel" class="quality-panel" hidden><summary id="qualitySummary"></summary><div id="qualityList" class="quality-list"></div></details>
 </section>
 <section class="popover actions-popover" id="actionsPanel" role="dialog" aria-label="Actions" hidden>
- <button class="menu-item" id="export"><span aria-hidden="true">↓</span>Exporter SVG</button>
+ <button class="menu-item" id="sessionSummary">✓ Bilan de la séance</button>
+ <button class="menu-item" id="newSession">↺ Nouvelle séance</button>
+ <button class="menu-item" id="export"><span aria-hidden="true">↓</span>Exporter la vue en SVG</button>
  <button class="menu-item" id="print"><span aria-hidden="true">⎙</span>Imprimer</button>
  <div id="localActions" hidden><button class="menu-item" id="importCsv">Ouvrir un CSV local</button><input type="file" id="csvFile" accept=".csv,text/csv" hidden></div>
 </section>
-<div class="overlay" id="overlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="heading"><div class="eyebrow">Détail du chantier</div><h2 id="dialogTitle"></h2></div><button class="btn icon" id="closeDialog" aria-label="Fermer le détail">✕</button></div><div class="dialog-body" id="dialogBody"></div><div class="dialog-footer">Lecture seule · Les modifications s’effectuent dans la table Architecture.</div></section></div>
+<div class="overlay" id="overlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="heading"><div class="eyebrow">Détail du chantier</div><h2 id="dialogTitle"></h2></div><button class="btn icon" id="closeDialog" aria-label="Fermer la fenêtre">✕</button></div><div class="dialog-body" id="dialogBody"></div><div class="dialog-footer">Lecture seule · Les modifications s’effectuent dans la table Architecture.</div></section></div>
 <script>/* Modèle de lecture de la table Architecture. Aucun appel d'écriture. */
 const RoadmapCore = (() => {
   'use strict';
@@ -291,7 +357,7 @@ const C=RoadmapCore, $=id=>document.getElementById(id);
 const MONTHS=['Jan.','Fév.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
 const INITIALS=['J','F','M','A','M','J','J','A','S','O','N','D'];
 const LABELS={name:'Nom',scope:'Périmètre',strand:'Volet',phase:'Phase',urgency:'Urgence',owner:'Responsable Projet',comment:'Commentaires',start:'Date de début',startPrecision:'Précision début',end:'Date de fin',endPrecision:'Précision fin',order:'Ordre'};
-const state={rows:[],loaded:false,source:'',map:{},filters:{strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false},range:null,manualRange:false,scale:'fit',width:800,reference:C.today(),collapsed:new Set(),selected:null,showConsolidated:false,showDetails:false};
+const state={rows:[],loaded:false,source:'',map:{},filters:{strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false},range:null,manualRange:false,scale:'fit',width:800,reference:C.today(),collapsed:new Set(),selected:null,showConsolidated:false,showDetails:false,mode:'meeting',scopeId:null,reviewed:new Set(),presentation:false,dialogId:null,dialogType:'task'};
 let lastFocus=null,renderTimer=null,loadingTimer=null,refreshing=false;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function notice(message,kind='info'){const el=$('notice');el.textContent=message;el.className='notice '+kind;el.hidden=!message;}
@@ -365,7 +431,7 @@ function titleText(r){return [r.name,r.scope,'Phase : '+r.phase,'Urgence : '+r.u
 function trackContent(r,h,exportMode=false){
  const W=state.width,{lo,hi}=state.range,{x}=axisGeometry();let out=gridSvg(h);
  const detailed=state.showDetails||exportMode;
- const pad=7,bh=14,y=detailed?Math.round(h/2)+4:Math.round((h-bh)/2),validStart=r.start.kind==='valid',validEnd=r.end.kind==='valid';
+ const pad=7,bh=(!exportMode&&state.mode==='meeting')?18:14,y=detailed?Math.round(h/2)+4:Math.round((h-bh)/2),validStart=r.start.kind==='valid',validEnd=r.end.kind==='valid';
  const close=()=> exportMode?'':`</g>`;
  if(!exportMode)out+=`<g class="bar-hit" tabindex="0" role="button" aria-label="${esc('Voir '+r.name)}" data-task-id="${esc(r.id)}"><title>${esc(titleText(r))}</title><rect x="0" y="0" width="${W}" height="${h}" fill="transparent"/>`;
  if(r.invalid){return out+`<text x="14" y="${h/2+4}" fill="#9a5d35" font-size="11">Dates à vérifier</text>`+close();}
@@ -410,31 +476,91 @@ function groupTrack(g,h=30,exportMode=false){
  return out;
 }
 function sizeChart(){
- const nameWidth=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--name-width'))||390;
- const available=Math.max(430,$('roadmapScroll').clientWidth-nameWidth-2);
+ const nameWidth=parseFloat(getComputedStyle($('roadmap')).getPropertyValue('--name-width'))||390;
+ const available=Math.max(360,$('roadmapScroll').clientWidth-nameWidth-2);
  const months=C.monthsBetween(state.range.lo,state.range.hi).length;
  state.width=state.scale==='fit'?available:Math.max(available,months*(state.scale==='month'?46:30));
  document.documentElement.style.setProperty('--chart-width',state.width+'px');
  return nameWidth;
 }
-function renderRoadmap(rows){
+function agendaGroups(rows=getFiltered()){
+ return C.grouped(rows).flatMap(s=>s.groups.map(g=>({...g,strand:s.strand})));
+}
+function meetingContext(rows=getFiltered()){
+ const groups=agendaGroups(rows);
+ let group=groups.find(g=>g.id===state.scopeId);
+ if(!group){group=groups[0]||null;state.scopeId=group?.id||null;}
+ if(group&&!group.items.some(r=>r.id===state.selected))state.selected=group.items[0]?.id||null;
+ if(!group)state.selected=null;
+ return {groups,group,items:groups.flatMap(g=>g.items),rows:group?.items||[]};
+}
+function getShownRows(){return state.mode==='meeting'?meetingContext().rows:getFiltered();}
+function reviewCount(rows){return rows.filter(r=>state.reviewed.has(r.id)).length;}
+function renderAgenda(rows){
+ const groups=agendaGroups(rows),total=rows.length,seen=reviewCount(rows);
+ $('agendaIntro').textContent=`${groups.length} périmètres · ${total} sujets · ${seen} abordé${seen>1?'s':''} dans cette séance`;
+ let strand=null,html='';
+ groups.forEach((g,i)=>{
+  if(strand!==g.strand){if(strand!==null)html+='</div>';html+=`<div class="agenda-group">${esc(g.strand)}</div><div class="agenda-items">`;strand=g.strand;}
+  const n=reviewCount(g.items),complete=n===g.items.length;
+  html+=`<button class="agenda-entry ${complete?'complete':''}" data-agenda-id="${esc(g.id)}" aria-current="${state.scopeId===g.id&&state.mode==='meeting'}"><span class="agenda-n">${complete?'✓':String(i+1).padStart(2,'0')}</span><span class="agenda-text">${esc(g.scope)}</span><span class="agenda-count">${n} / ${g.items.length}</span></button>`;
+ });
+ if(strand!==null)html+='</div>';
+ $('agendaList').innerHTML=html||'<div class="agenda-intro">Aucun sujet dans cette sélection.</div>';
+}
+function renderMeetingControls(rows){
+ const isMeeting=state.mode==='meeting';
+ document.body.classList.toggle('meeting-mode',isMeeting);document.body.classList.toggle('overview-mode',!isMeeting);
+ $('meetingHeading').hidden=!isMeeting;$('meetingFooter').hidden=!isMeeting;$('focusStrip').hidden=!isMeeting;
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===state.mode));
+ if(!isMeeting){renderAgenda(rows);return;}
+ const {groups,group,items}=meetingContext(rows),idx=groups.findIndex(g=>g.id===state.scopeId),r=group?.items.find(x=>x.id===state.selected),pos=items.findIndex(x=>x.id===state.selected);
+ $('meetingScope').textContent=group?.scope||'Aucun sujet dans la sélection';
+ $('meetingCrumb').textContent=group?`${group.strand} · Périmètre ${String(idx+1).padStart(2,'0')} / ${groups.length}`:'REVUE DES CHANTIERS';
+ $('prevScope').disabled=idx<=0;$('nextScope').disabled=idx<0||idx>=groups.length-1;
+ $('nextScopeName').textContent=groups[idx+1]?'À suivre : '+groups[idx+1].scope:'';
+ $('nextScope').title=groups[idx+1]?'Périmètre suivant : '+groups[idx+1].scope:'Dernier périmètre';
+ $('focusStrip').hidden=!r;
+ if(r){
+  $('focusCaption').textContent=`Sujet ${group.items.indexOf(r)+1} / ${group.items.length} dans ce périmètre`;
+  $('focusTitle').textContent=r.name;
+  $('focusMeta').innerHTML=`<span><i class="dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span><span><strong>Phase :</strong> ${esc(r.phase)}</span><span class="owner">${esc(r.owner)}</span><span>${esc(dateText(r))}</span>`;
+  $('focusComment').textContent=r.comment;$('focusComment').hidden=!r.comment;
+  const seen=state.reviewed.has(r.id);$('reviewMark').setAttribute('aria-pressed',String(seen));$('reviewMark').textContent=seen?'✓ Abordé en séance':'○ Marquer abordé';
+ }
+ const seen=reviewCount(rows);
+ $('reviewProgress').textContent=`${seen} / ${rows.length} sujets abordés`;
+ $('reviewProgressFill').style.width=(rows.length?100*seen/rows.length:0)+'%';
+ $('pointPosition').textContent=pos>=0?`${pos+1} / ${items.length}`:'';
+ $('prevTask').disabled=pos<=0;$('nextTask').disabled=!items.length;
+ $('nextTask').textContent=pos===items.length-1?'Bilan de la séance →':'Suivant →';
+ $('nextTask').title=pos<items.length-1?'Sujet suivant (sans marquer automatiquement le sujet actuel)':'Voir le bilan de la revue';
+ renderAgenda(rows);
+}
+function makeTaskRow(r,rowH,index){
+ const seen=state.reviewed.has(r.id),meeting=state.mode==='meeting';
+ return `<div class="gantt-row task ${state.selected===r.id?'selected':''}" data-row-id="${esc(r.id)}"><div class="label-cell"><button class="task-name" data-task-id="${esc(r.id)}" aria-current="${state.selected===r.id}" title="${esc(titleText(r))}">${meeting?`<span class="task-dot ${seen?'reviewed':''}" title="${seen?'Abordé en séance':'À aborder en séance'}">${seen?'✓':String(index+1).padStart(2,'0')}</span>`:''}<span class="task-title">${esc(r.name)}</span><span class="task-meta"><i class="urgency-dot" style="background:${r.urgency.color}"></i><span class="phase-label">${esc(r.phase)}</span></span></button></div><div class="track"><svg viewBox="0 0 ${state.width} ${rowH}" role="group" aria-label="${esc(r.name+' : '+dateText(r))}">${trackContent(r,rowH)}</svg></div></div>`;
+}
+function renderRoadmap(allRows){
  const el=$('roadmap'),scroller=$('roadmapScroll');
  if(!state.range)return;
+ const meeting=state.mode==='meeting',rows=meeting?meetingContext(allRows).rows:allRows;
  const oldTop=scroller.scrollTop,oldLeft=scroller.scrollLeft;
  sizeChart();const {x,years,units}=axisGeometry();
- const rowH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row-height'))||70;
+ const available=scroller.clientHeight-53;
+ const rowH=meeting?Math.max(48,Math.min(state.presentation?94:78,Math.floor(available/Math.max(1,rows.length)))):(state.showDetails?64:(window.innerWidth<=560?46:42));
+ document.documentElement.style.setProperty('--row-height',rowH+'px');
  const refVisible=state.reference>=state.range.lo&&state.reference<state.range.hi;
- const axis=`<div class="axis"><div class="label-cell axis-label"><span>Chantiers</span><span class="rows-count">${rows.length} / ${state.rows.length}</span></div><div class="axis-track">${years.map(y=>`<div class="axis-year" style="left:${x(y.t)}px;width:${x(y.end)-x(y.t)}px">${y.year}</div>`).join('')}${units.map(u=>`<div class="axis-unit ${state.reference>=u.t&&state.reference<u.end?'current':''}" style="left:${x(u.t)}px;width:${x(u.end)-x(u.t)}px">${u.label}</div>`).join('')}${refVisible?`<div class="axis-reference" style="left:${x(state.reference)}px" title="Repère ${C.prettyDay(state.reference)}"></div>`:''}</div></div>`;
+ const axis=`<div class="axis"><div class="label-cell axis-label"><span>Chantiers</span><span class="rows-count">${rows.length} sujet${rows.length>1?'s':''}</span></div><div class="axis-track">${years.map(y=>`<div class="axis-year" style="left:${x(y.t)}px;width:${x(y.end)-x(y.t)}px">${y.year}</div>`).join('')}${units.map(u=>`<div class="axis-unit ${state.reference>=u.t&&state.reference<u.end?'current':''}" style="left:${x(u.t)}px;width:${x(u.end)-x(u.t)}px">${u.label}</div>`).join('')}${refVisible?`<div class="axis-reference" style="left:${x(state.reference)}px" title="Repère ${C.prettyDay(state.reference)}"></div>`:''}</div></div>`;
  let html=axis;
- if(!rows.length)html+=`<div class="roadmap-empty"><p class="empty-title">${state.rows.length?'Aucun chantier ne correspond aux filtres':'Aucun chantier à afficher'}</p><p>${state.rows.length?'Utilisez « Effacer » pour retrouver l’ensemble de la feuille de route.':'Vérifiez la table sélectionnée et les lignes visibles dans Grist.'}</p></div>`;
- for(const s of C.grouped(rows)){
-  html+=`<div class="gantt-row strand"><div class="label-cell strand-title">${esc(s.strand==='Internes DT'?'Chantiers archi internes DT':s.strand==='Avec les autres directions'?'Avec les autres directions':s.strand)}</div><div class="track">&nbsp;</div></div>`;
+ if(!rows.length)html+=`<div class="roadmap-empty"><p class="empty-title">${state.rows.length?'Aucun chantier ne correspond aux filtres':'Aucun chantier à afficher'}</p><p>${state.rows.length?'Effacez les filtres pour retrouver la feuille de route.':'Vérifiez les lignes visibles de la table Architecture.'}</p></div>`;
+ if(meeting){html+=rows.map((r,i)=>makeTaskRow(r,rowH,i)).join('');}
+ else for(const s of C.grouped(rows)){
+  html+=`<div class="gantt-row strand"><div class="label-cell strand-title">${esc(s.strand)}</div><div class="track"></div></div>`;
   for(const g of s.groups){
    const isCollapsed=state.collapsed.has(g.id);
-   html+=`<div class="gantt-row scope"><div class="label-cell"><button class="scope-button" data-collapse="${esc(g.id)}" aria-expanded="${!isCollapsed}" title="${isCollapsed?'Déplier':'Replier'} ce périmètre"><span class="chevron">›</span><span class="scope-name">${esc(g.scope)}</span><span class="group-count">${g.items.length}</span></button></div><div class="track"><svg viewBox="0 0 ${state.width} 30" aria-hidden="true">${groupTrack(g,30)}</svg></div></div>`;
-   if(!isCollapsed)for(const r of g.items){
-    html+=`<div class="gantt-row task ${state.selected===r.id?'selected':''}" data-row-id="${esc(r.id)}"><div class="label-cell"><button class="task-name" data-task-id="${esc(r.id)}" title="${esc(titleText(r))}"><span class="task-title">${esc(r.name)}</span><span class="task-meta"><i class="urgency-dot" style="background:${r.urgency.color}"></i><span class="phase-label">${esc(r.phase)}</span></span></button></div><div class="track"><svg viewBox="0 0 ${state.width} ${rowH}" role="group" aria-label="${esc(r.name+' : '+dateText(r))}">${trackContent(r,rowH)}</svg></div></div>`;
-   }
+   html+=`<div class="gantt-row scope"><div class="label-cell"><button class="scope-button" data-collapse="${esc(g.id)}" aria-expanded="${!isCollapsed}"><span class="chevron">›</span><span class="scope-name">${esc(g.scope)}</span><span class="group-count">${g.items.length}</span></button></div><div class="track"><svg viewBox="0 0 ${state.width} 30" aria-hidden="true">${groupTrack(g,30)}</svg></div></div>`;
+   if(!isCollapsed)html+=g.items.map((r,i)=>makeTaskRow(r,rowH,i)).join('');
   }
  }
  el.innerHTML=html;scroller.scrollTop=oldTop;scroller.scrollLeft=oldLeft;
@@ -457,16 +583,19 @@ function render(){
  $('resetQuick').hidden=!(filterCount||state.filters.strand||state.filters.search);
  $('missingEnd').checked=state.filters.incomplete;
  document.documentElement.classList.toggle('show-details',state.showDetails);
- document.documentElement.style.setProperty('--row-height',state.showDetails?'64px':(window.innerWidth<=560?'46px':'42px'));
+ renderMeetingControls(rows);
  $('export').disabled=!rows.length;$('print').disabled=!rows.length;
  document.querySelectorAll('[data-scale]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.scale===state.scale));
  renderRoadmap(rows);renderQuality(rows);
 }
 function ingest(data,source){
  const result=C.normalizeRows(data);if(result.keys.length&&!result.map.name){notice('La colonne « Nom » n’est pas accessible. Sélectionnez la table Architecture et ajoutez ses colonnes dans « Colonnes visibles » du widget.','error');return;}
+ if(state.loaded && state.source!==source){state.reviewed.clear();state.selected=null;state.scopeId=null;}
  state.rows=result.rows;state.loaded=true;state.source=source;state.map=result.map;
+ const ids=new Set(state.rows.map(r=>r.id));state.reviewed=new Set([...state.reviewed].filter(id=>ids.has(id)));
  if(!state.manualRange||!state.range){state.range=C.rangeFor(state.rows);syncRangeInputs();}
- if(state.selected&&!state.rows.some(r=>r.id===state.selected)){state.selected=null;closeDialog();}
+ if(state.selected&&!state.rows.some(r=>r.id===state.selected))state.selected=null;
+ if(state.dialogId&&!state.rows.some(r=>r.id===state.dialogId))closeDialog();
  clearTimeout(loadingTimer);
  const missing=Object.keys(C.FIELDS).filter(f=>!result.map[f]);
  const formulaErrors=state.rows.filter(r=>[r.name,r.scope,r.strand,r.phase,r.owner,r.urgency.label].some(v=>v.includes('Erreur de formule')||v==='Référence non développée'));
@@ -477,7 +606,7 @@ function ingest(data,source){
  const time=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
  liveStatus((source==='csv'?'Aperçu CSV · ':'Actualisé à ')+time);$('sync').title=source==='csv'?'Fichier lu localement, sans synchronisation Grist.':'Données Architecture en lecture seule';
  render();
- if(state.selected&&!$('overlay').hidden)fillDialog(state.rows.find(r=>r.id===state.selected));
+ if(!$('overlay').hidden){if(state.dialogType==='session')fillSessionSummary();else fillDialog(state.rows.find(r=>r.id===state.dialogId));}
 }
 function syncRangeInputs(){ $('rangeStart').value=C.iso(state.range.lo).slice(0,7);$('rangeEnd').value=C.iso(state.range.hi-C.DAY).slice(0,7); }
 function changeRange(){
@@ -493,15 +622,54 @@ function fillDialog(r){
  const dateDetail=(label,d)=>detail(label,esc(d.kind==='valid'?d.label:d.kind==='empty'?'À préciser':d.raw)+`<div class="precision">${d.kind==='valid'?'Précision : '+C.precisionName(d.precision):d.kind==='invalid'?'Valeur source non exploitable':'Aucune date déduite'}</div>`);
  $('dialogBody').innerHTML=(r.issues.length?`<div class="dialog-warnings">${r.issues.map(esc).join('<br>')}</div>`:'')+`<dl class="detail-grid">`+detail('Volet',esc(r.strand),true)+detail('Périmètre',esc(r.scope),true)+detail('Phase',esc(r.phase))+detail('Urgence',`<span class="urgency-tag"><i class="urgency-dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span>`)+detail('Responsable Projet',esc(r.owner),true)+dateDetail('Date de début',r.start)+dateDetail('Date de fin',r.end)+detail('Commentaires',r.comment?`<div class="comment">${esc(r.comment)}</div>`:'<span class="no-comment">Aucun commentaire renseigné.</span>',true)+detail('Ordre dans le périmètre',r.order===Number.MAX_SAFE_INTEGER?'Non renseigné':String(r.order))+'</dl>';
 }
-function openDialog(id){closePopovers(false);const r=state.rows.find(r=>r.id===id);if(!r)return;lastFocus=document.activeElement;state.selected=id;fillDialog(r);$('overlay').hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.gantt-row.task').forEach(el=>el.classList.toggle('selected',el.dataset.rowId===id));$('closeDialog').focus();}
-function closeDialog(){const wasOpen=!$('overlay').hidden;$('overlay').hidden=true;document.body.style.overflow='';if(wasOpen&&lastFocus?.isConnected)lastFocus.focus();}
+function selectTask(id,scroll=true){
+ const rows=getFiltered(),r=rows.find(r=>r.id===String(id));if(!r)return;
+ state.selected=r.id;
+ const g=agendaGroups(rows).find(g=>g.items.some(x=>x.id===r.id));if(g)state.scopeId=g.id;
+ if(state.mode==='overview'){state.mode='meeting';state.collapsed.clear();}
+ render();
+ if(scroll){requestAnimationFrame(()=>{
+  const el=[...document.querySelectorAll('[data-row-id]')].find(el=>el.dataset.rowId===id),scroller=$('roadmapScroll');
+  if(!el)return;const rect=el.getBoundingClientRect(),vp=scroller.getBoundingClientRect();
+  if(rect.top<vp.top+53)scroller.scrollTop+=rect.top-vp.top-53;
+  else if(rect.bottom>vp.bottom)scroller.scrollTop+=rect.bottom-vp.bottom;
+ });}
+}
+function moveSubject(delta){
+ const {items}=meetingContext();let p=items.findIndex(r=>r.id===state.selected);
+ if(!items.length)return;if(delta>0&&p===items.length-1){openSessionSummary();return;}
+ const r=items[Math.max(0,Math.min(items.length-1,p+delta))];if(r)selectTask(r.id);
+}
+function selectGroup(id){
+ const group=agendaGroups().find(g=>g.id===id);if(!group)return;
+ closePopovers();state.mode='meeting';state.scopeId=id;state.selected=group.items[0]?.id||null;
+ $('roadmapScroll').scrollTop=0;render();
+}
+function moveGroup(delta){const groups=agendaGroups(),p=groups.findIndex(g=>g.id===state.scopeId);if(groups[p+delta])selectGroup(groups[p+delta].id);}
+function markSubject(){
+ if(!state.selected||!state.rows.some(r=>r.id===state.selected))return;
+ state.reviewed.has(state.selected)?state.reviewed.delete(state.selected):state.reviewed.add(state.selected);render();
+}
+function openDialog(id){
+ closePopovers(false);const r=state.rows.find(r=>r.id===id);if(!r)return;
+ lastFocus=document.activeElement;state.dialogId=id;state.dialogType='task';fillDialog(r);
+ $('overlay').querySelector('.eyebrow').textContent='Détail du chantier';
+ $('overlay').hidden=false;document.body.style.overflow='hidden';$('closeDialog').focus();
+}
+function closeDialog(){const wasOpen=!$('overlay').hidden;$('overlay').hidden=true;state.dialogId=null;document.body.style.overflow='';if(wasOpen&&lastFocus?.isConnected)lastFocus.focus();}
+function fillSessionSummary(){
+ const rows=getFiltered(),seen=reviewCount(rows);$('dialogTitle').textContent='Bilan de la séance';
+ $('overlay').querySelector('.eyebrow').textContent='Suivi de la revue uniquement';
+ $('dialogBody').innerHTML=`<p class="checksum-report"><strong>${seen} sujet${seen>1?'s':''} abordé${seen>1?'s':''}</strong> sur ${rows.length} dans la sélection actuelle. ${rows.length-seen} reste${rows.length-seen>1?'nt':''} à parcourir.</p>`+agendaGroups(rows).map(g=>`<section class="session-group"><h3>${esc(g.scope)}</h3>${g.items.map(r=>`<div class="session-row ${state.reviewed.has(r.id)?'done':''}"><span class="session-status">${state.reviewed.has(r.id)?'✓ Abordé':'○ À aborder'}</span><button data-session-task="${esc(r.id)}">${esc(r.name)}</button></div>`).join('')}</section>`).join('')+`<p class="session-note">Ces marques ne signifient ni « validé » ni « terminé ». Elles restent en mémoire dans cette page jusqu’au rechargement ou à « Nouvelle séance ». Aucun compte rendu ni aucune modification des données n’est enregistré dans Grist.</p>`;
+}
+function openSessionSummary(){closePopovers();lastFocus=document.activeElement;state.dialogType='session';state.dialogId=null;fillSessionSummary();$('overlay').hidden=false;$('closeDialog').focus();}
 function wrapText(s,max=51){
  const words=String(s).split(/\s+/),lines=[];let line='';
  for(const word of words){if(line&&(line+' '+word).length>max){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);return lines;
 }
 function exportSVG(){
  if(!state.loaded)return;
- const rows=getFiltered(),L=430,W=state.width,total=L+W,oldWidth=state.width;
+ const rows=getShownRows(),L=430,W=state.width,total=L+W,oldWidth=state.width;
  const {x,years,units}=axisGeometry();let y=144;
  const svgText=(xx,yy,s,size=12,fill='#273b50',weight=400)=>`<text x="${xx}" y="${yy}" font-size="${size}" fill="${fill}" font-weight="${weight}">${esc(s)}</text>`;
  let out=`<rect width="100%" height="100%" fill="white"/>`+svgText(20,33,'Feuille de route pôle architecture',24,'#20394e',700);
@@ -571,17 +739,17 @@ $('today').addEventListener('click',()=>{state.reference=C.today();$('referenceD
 $('consolidated').addEventListener('change',e=>{state.showConsolidated=e.target.checked;render();});
 $('expand').addEventListener('click',()=>{state.collapsed.clear();render();});
 $('collapse').addEventListener('click',()=>{C.grouped(getFiltered()).forEach(s=>s.groups.forEach(g=>state.collapsed.add(g.id)));render();});
-$('roadmap').addEventListener('click',e=>{const c=e.target.closest('[data-collapse]');if(c){const id=c.dataset.collapse;state.collapsed.has(id)?state.collapsed.delete(id):state.collapsed.add(id);render();return;}const r=e.target.closest('[data-task-id]');if(r)openDialog(r.dataset.taskId);});
-$('roadmap').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('g[data-task-id]')){e.preventDefault();openDialog(e.target.dataset.taskId);}});
+$('roadmap').addEventListener('click',e=>{const c=e.target.closest('[data-collapse]');if(c){const id=c.dataset.collapse;state.collapsed.has(id)?state.collapsed.delete(id):state.collapsed.add(id);render();return;}const r=e.target.closest('[data-task-id]');if(r)selectTask(r.dataset.taskId);});
+$('roadmap').addEventListener('keydown',e=>{const hit=e.target.closest('[data-task-id]');if(!hit)return;if(e.key==='Enter'){e.preventDefault();openDialog(hit.dataset.taskId);}else if(e.key===' '&&e.target.matches('g[data-task-id]')){e.preventDefault();selectTask(hit.dataset.taskId);}});
 $('qualityList').addEventListener('click',e=>{const b=e.target.closest('[data-task-id]');if(b)openDialog(b.dataset.taskId);});
 $('closeDialog').addEventListener('click',closeDialog);$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeDialog();});
 document.addEventListener('keydown',e=>{if(!$('overlay').hidden){if(e.key==='Escape')closeDialog();if(e.key==='Tab'){const fs=[...$('overlay').querySelectorAll('button,a,input,[tabindex="0"]')].filter(x=>!x.disabled);if(fs.length===1){e.preventDefault();fs[0].focus();}else if(e.shiftKey&&document.activeElement===fs[0]){e.preventDefault();fs.at(-1).focus();}else if(!e.shiftKey&&document.activeElement===fs.at(-1)){e.preventDefault();fs[0].focus();}}}});
 $('refresh').addEventListener('click',refresh);$('export').addEventListener('click',()=>{closePopovers();exportSVG();});
-$('print').addEventListener('click',()=>{closePopovers();state.collapsed.clear();render();window.print();});
-$('importCsv').addEventListener('click',()=>$('csvFile').click());$('csvFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=C.parseCSV(await file.text());ingest(data,'csv');}catch(err){notice('Import CSV : '+err.message,'error');}e.target.value='';});
-let lastWidth=0;new ResizeObserver(entries=>{const width=Math.round(entries[0].contentRect.width);if(Math.abs(width-lastWidth)>1){lastWidth=width;clearTimeout(renderTimer);renderTimer=setTimeout(()=>{if(state.loaded)renderRoadmap(getFiltered());},80);}}).observe($('roadmapScroll'));
+$('print').addEventListener('click',()=>{closePopovers();window.print();});
+$('importCsv').addEventListener('click',()=>$('csvFile').click());$('csvFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=C.parseCSV(await file.text());state.reviewed.clear();state.selected=null;state.scopeId=null;ingest(data,'csv');}catch(err){notice('Import CSV : '+err.message,'error');}e.target.value='';});
+let lastSize='';new ResizeObserver(entries=>{const r=entries[0].contentRect,k=Math.round(r.width)+'x'+Math.round(r.height);if(k!==lastSize){lastSize=k;clearTimeout(renderTimer);renderTimer=setTimeout(()=>{if(state.loaded)renderRoadmap(getFiltered());},80);}}).observe($('roadmapScroll'));
 
-const popoverPairs=[['filtersToggle','filtersPanel'],['viewToggle','viewPanel'],['actionsToggle','actionsPanel']];
+const popoverPairs=[['filtersToggle','filtersPanel'],['viewToggle','viewPanel'],['actionsToggle','actionsPanel'],['agendaToggle','agendaPanel']];
 let activePopover=null;
 function placePopover(){
  if(!activePopover)return;
@@ -607,6 +775,35 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&activePopover){e.pr
 window.addEventListener('resize',()=>{combos.forEach(c=>c.close());placePopover();if(state.loaded)render();});
 for(const [,p] of popoverPairs)$(p).addEventListener('scroll',()=>combos.forEach(c=>c.close()));
 $('showDetails').addEventListener('change',e=>{state.showDetails=e.target.checked;render();});
+
+$('modeSwitch').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b)return;if(b.dataset.mode==='overview'&&state.presentation)$('presentationToggle').click();closePopovers();state.mode=b.dataset.mode;render();});
+$('prevScope').addEventListener('click',()=>moveGroup(-1));$('nextScope').addEventListener('click',()=>moveGroup(1));
+$('prevTask').addEventListener('click',()=>moveSubject(-1));$('nextTask').addEventListener('click',()=>moveSubject(1));
+$('focusDetails').addEventListener('click',()=>{if(state.selected)openDialog(state.selected);});
+$('reviewMark').addEventListener('click',markSubject);
+$('agendaList').addEventListener('click',e=>{const b=e.target.closest('[data-agenda-id]');if(b)selectGroup(b.dataset.agendaId);});
+$('sessionSummary').addEventListener('click',openSessionSummary);
+$('dialogBody').addEventListener('click',e=>{const b=e.target.closest('[data-session-task]');if(b){closeDialog();state.mode='meeting';selectTask(b.dataset.sessionTask);}});
+$('newSession').addEventListener('click',()=>{
+ if(state.reviewed.size&&!window.confirm('Effacer uniquement les repères de cette séance ? Aucune donnée Grist ne sera modifiée.'))return;
+ closePopovers();state.reviewed.clear();state.selected=null;state.scopeId=null;state.mode='meeting';$('roadmapScroll').scrollTop=0;render();
+});
+$('presentationToggle').addEventListener('click',()=>{
+ state.presentation=!state.presentation;if(state.presentation)state.mode='meeting';
+ document.body.classList.toggle('projection',state.presentation);$('presentationToggle').setAttribute('aria-pressed',String(state.presentation));$('presentationToggle').innerHTML=state.presentation?'⤡ <span>Quitter la projection</span>':'⤢ <span>Projection</span>';closePopovers();render();
+});
+document.addEventListener('keydown',e=>{
+ if(e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey||activePopover||!$('overlay').hidden)return;
+ if(e.target.closest('input,textarea,select,[contenteditable=true]'))return;
+ if(e.key==='Escape'&&state.presentation){e.preventDefault();$('presentationToggle').click();return;}
+ if(state.mode!=='meeting'||!state.loaded)return;
+ if(e.key==='ArrowRight'){e.preventDefault();moveSubject(1);}
+ else if(e.key==='ArrowLeft'){e.preventDefault();moveSubject(-1);}
+ else if(e.key==='PageDown'){e.preventDefault();moveGroup(1);}
+ else if(e.key==='PageUp'){e.preventDefault();moveGroup(-1);}
+ else if(e.key==='Enter'&&!e.target.closest('button,[role=button]')){e.preventDefault();if(state.selected)openDialog(state.selected);}
+});
+
 $('export').disabled=true;$('print').disabled=true;
 boot();
 })();

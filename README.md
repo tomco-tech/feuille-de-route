@@ -1,66 +1,106 @@
-# Pilotage DT — Feuille de route architecture · V1.1
+# Feuille de route architecture — version réunion 1.2
 
-Widget Grist en lecture seule. Version allégée : le planning occupe toute la largeur et la hauteur restante du widget. Aucune donnée métier n'est intégrée au code.
+Widget Grist en lecture seule, à publier sur GitHub Pages. Le mode **Réunion** est la vue initiale ; le mode **Vue d’ensemble** conserve le planning complet. Le fichier `index.html` contient le HTML, les styles, le modèle de lecture et le JavaScript. Aucun outil de compilation n’est requis.
 
-## Mise à jour depuis V1
+## Installation / mise à jour
 
-Remplacer `index.html` dans le dépôt ou le dossier GitHub Pages existant. Les réglages Grist et le modèle de la table `Architecture` ne changent pas. Ajouter temporairement `?v=1.1` à l'URL du widget pour distinguer cette version.
+1. Remplacer le précédent `index.html` par celui de ce dossier. Conserver `.nojekyll` et ce README dans le dépôt.
+2. Publier le dossier par GitHub Pages comme la version précédente.
+3. Dans Grist, conserver **Architecture** comme table source du widget personnalisé.
+4. Autoriser **Lire la table sélectionnée / Read selected table** et transmettre les 12 colonnes ci-dessous dans les colonnes accessibles au widget. L’accès complet au document n’est pas demandé.
+5. Ajouter temporairement `?v=1.2` à l’URL du widget pour distinguer cette publication de l’ancienne. Si l’URL comporte déjà un paramètre, ajouter `&v=1.2`.
 
-Le dossier à publier contient uniquement :
+Ne pas publier le CSV métier dans GitHub : il sert uniquement aux essais locaux. Aucune ligne métier n’est incluse dans le code livré. Les copies d’écran fournies séparément sont des aperçus réalisés à partir de l’export utilisateur, pas des données de démonstration embarquées.
 
-- `index.html` : interface, styles et logique de lecture ;
-- `.nojekyll` : fichier vide pour GitHub Pages ;
-- `README.md` : cette documentation.
+## Utilisation en réunion
 
-Ne pas publier les exports CSV ou les documents métier sur GitHub. Le widget reçoit les données depuis Grist.
+### Un périmètre à la fois
 
-## Nouvelle interface
+Le mode Réunion suit les volets et périmètres de la feuille de route, puis la colonne `Ordre` à l’intérieur de chaque périmètre. L’ordre des périmètres connus reprend la présentation initiale. Les nouveaux périmètres sont ajoutés après les périmètres connus de leur volet, dans l’ordre reçu de Grist.
 
-L'écran conserve en permanence le titre, les trois volets **Tous / Internes DT / Autres directions**, la recherche par mot-clé et les boutons **Filtres** et **Affichage**. Les grands indicateurs, sous-titres, explications permanentes et pieds de page ont été retirés de la vue principale.
+Le titre affiche le périmètre présenté et sa position dans la revue. Les boutons de droite passent au périmètre précédent ou suivant. **Ordre du jour** permet de choisir directement un périmètre sans faire défiler tout le planning.
 
-Le bouton **Filtres** ouvre un panneau flottant avec les recherches Périmètre, Phase, Urgence et Responsable projet. Une case permet de ne garder que les fins à préciser. Un badge indique le nombre de filtres avancés actifs ; le bouton × près d'Affichage apparaît lorsqu'un filtre ou une recherche est appliqué. Les panneaux ne réduisent pas la hauteur du planning.
+La roadmap conserve une période commune entre les périmètres, pour éviter de comparer à tort des barres dessinées à des échelles différentes. Sa zone utilise la hauteur disponible ; les lignes s’adaptent à cette hauteur avec une taille minimale lisible. Si un périmètre contient beaucoup de sujets, le défilement est interne au planning et le sujet choisi est ramené dans la zone visible.
 
-Le bouton **Affichage** regroupe l'échelle, la période, la date du repère vertical, les durées consolidées et les commandes pour replier ou déplier les périmètres. L'option **Afficher les phases et les dates sur chaque ligne** restitue la vue détaillée ; elle est désactivée au chargement. La vue d'ensemble adopte des graduations trimestrielles lorsque des mois seraient trop serrés. L'échelle Mois conserve un défilement horizontal pour une lecture plus précise.
+### Passer d’un sujet au suivant
 
-Les lignes sont plus compactes. Les noms de chantiers restent fixés à gauche et l'axe du temps reste visible pendant le défilement. Un clic sur un chantier ou sa barre affiche sa fiche détaillée, avec phase, dates, précision, urgence, responsable et commentaires. Fermer par la croix, par clic à l'extérieur ou avec Échap.
+Un clic sur un nom ou une barre met le chantier en évidence et affiche une fiche synthétique sous le planning : nom complet, urgence, phase, responsable et dates. Les commentaires apparaissent lorsqu’ils existent ; ils peuvent être lus intégralement avec **Voir le détail**.
 
-Le menu **⋯** contient l'export SVG et l'impression. Hors Grist, il propose également l'ouverture d'un CSV local. Cette prévisualisation n'est pas une connexion à Grist et le CSV n'est pas envoyé à un serveur.
+Les boutons **Précédent / Suivant** parcourent les sujets de la sélection courante. Après le dernier sujet d’un périmètre, « Suivant » passe au premier sujet du périmètre suivant. La navigation ne marque pas automatiquement un sujet comme abordé.
 
-## Table et accès Grist
+Raccourcis lorsque le widget a le focus et qu’aucun champ n’est en cours de saisie :
 
-Table source : `Architecture`. Choisir **Lire la table sélectionnée / Read selected table** et rendre les 12 colonnes accessibles au widget :
+- **← / →** : sujet précédent / suivant.
+- **Page précédente / Page suivante** : périmètre précédent / suivant.
+- **Entrée** sur le planning ou un chantier : ouvrir le détail.
+- **Échap** : fermer la fenêtre ou le panneau actif ; sortir du mode Projection quand aucun panneau n’est ouvert.
 
-| Nom visible | Identifiant usuel |
-| --- | --- |
-| Nom | Nom |
-| Périmètre | Perimetre |
-| Volet | Volet |
-| Phase | Phase |
-| Urgence | Urgence |
-| Responsable Projet | Responsable_Projet |
-| Commentaires | Commentaires |
-| Date de début | Date_de_debut |
-| Précision début | Precision_debut |
-| Date de fin | Date_de_fin |
-| Précision fin | Precision_fin |
-| Ordre | Ordre |
+Les raccourcis ne s’appliquent pas pendant la saisie dans un champ de recherche. Le focus doit être dans le widget et non dans une autre section de Grist.
 
-Le rapprochement des colonnes ignore les accents, la casse, les espaces et les underscores. Le widget conserve la lecture des références développées et des valeurs encodées de Grist, sans écrire dans le document. Il n'a pas besoin de l'accès complet au document.
+### Repères de séance, distincts de l’avancement métier
 
-## Règles conservées
+**Marquer abordé** ajoute un repère à un sujet explicitement discuté. Un deuxième clic retire le repère. Le compteur affiche le nombre de sujets abordés parmi ceux répondant aux filtres actuels. Les repères des sujets temporairement hors filtres restent en mémoire.
 
-- Regroupement par Volet, puis Périmètre ; tri par Ordre à l'intérieur des périmètres.
-- Les couleurs représentent l'urgence, et non le statut d'avancement : Mineur, Intermédiaire, Prioritaire, À qualifier/non renseignée.
-- Les dates au mois et à l'année conservent leur précision. Une année seule est représentée par une zone hachurée.
-- Une date de fin absente reste à préciser ; le widget n'invente aucune date de livraison.
-- Un calendrier absent reste sans barre. Les dates invalides ou incohérentes sont signalées.
-- Le repère vertical indique le jour courant par défaut. Il peut être modifié dans Affichage.
-- Le nombre de lignes, les dates et les calculs ne sont pas altérés par la simplification visuelle.
+Le menu **⋯ → Bilan de la séance** récapitule les sujets abordés et ceux restant à parcourir. Le bilan est également accessible après le dernier sujet. Chaque sujet du bilan est cliquable pour reprendre la revue à cet endroit.
+
+**Important :** « Abordé » ne veut pas dire « validé », « livré » ou « terminé ». Ces repères sont conservés uniquement en mémoire dans cette page, sans `localStorage`, sans table supplémentaire, sans écriture Grist. Ils disparaissent au rechargement de la page, lors d’un nouvel import CSV ou avec **⋯ → Nouvelle séance**. Ils ne constituent pas un compte rendu enregistré ou partagé.
+
+### Projection et vue d’ensemble
+
+**Projection** masque les filtres et outils secondaires et agrandit la typographie des lignes pour un partage d’écran. Ce bouton optimise l’espace dans le widget ; il ne force pas le navigateur ou Grist à passer en plein écran. **Quitter la projection** rétablit l’interface. Les boutons de navigation restent visibles.
+
+**Vue d’ensemble** affiche tous les chantiers filtrés, groupés et repliables, pour retrouver une vision transversale. Cliquer sur un chantier ramène en mode Réunion sur ce sujet. Les filtres, repères de séance et réglages de période sont conservés lors du changement de mode.
+
+## Modèle lu
+
+| Colonne visible | Identifiant reconnu |
+|---|---|
+| Nom | `Nom` |
+| Périmètre | `Perimetre` |
+| Volet | `Volet` |
+| Phase | `Phase` |
+| Urgence | `Urgence` |
+| Responsable Projet | `Responsable_Projet` |
+| Commentaires | `Commentaires` |
+| Date de début | `Date_de_debut` |
+| Précision début | `Precision_debut` |
+| Date de fin | `Date_de_fin` |
+| Précision fin | `Precision_fin` |
+| Ordre | `Ordre` |
+
+Les libellés et identifiants sont reconnus en ignorant accents, casse et séparateurs. L’API Grist est chargée depuis `https://docs.getgrist.com/grist-plugin-api.js`. L’abonnement est réalisé avec `grist.onRecords`, avec `keepEncoded:true`, `expandRefs:true`, `includeColumns:'shown'`. La lecture se limite aux lignes et colonnes que Grist transmet à cette vue. Les restrictions et filtres Grist continuent de s’appliquer.
+
+## Lecture des données et dates
+
+Les règles de la version épurée sont conservées :
+
+- La couleur de la barre correspond à **Urgence**, jamais à un pourcentage d’avancement.
+- Mineur : bleu clair ; Intermédiaire : bleu moyen ; Prioritaire : bleu foncé ; À qualifier ou valeur non reconnue : gris.
+- Les dates au jour, au mois et à l’année conservent leur précision. L’année seule est représentée avec des hachures, pas transformée en un engagement à une date précise.
+- Les dates Grist encodées et les valeurs `MM/AAAA`, `AAAA`, `JJ/MM/AAAA` et ISO sont reconnues.
+- Une date absente n’est pas inventée. Un début seul a une extension courte en pointillés, qui ne constitue pas une durée prévue. Sans début ni fin, la ligne indique « Calendrier à préciser ».
+- Une fin antérieure au début ou une date invalide reste signalée.
+- La date du repère est la date du navigateur, modifiable dans **Affichage**. Aucun retard ou achèvement n’est déduit de cette date.
+- La phase et les commentaires sont repris des données, sans création automatique de décisions, d’actions ou de statuts de réunion.
+
+## Réglages secondaires et export
+
+**Filtres** : périmètre, urgence, phase, responsable, et fins à préciser. Recherche par nom ou mot-clé disponible dans le bandeau hors mode Projection.
+
+**Affichage** : période, échelle, repère vertical, détails des lignes ; durées consolidées et pliage des périmètres en Vue d’ensemble. Les fenêtres flottent au-dessus du planning sans réduire sa surface permanente.
+
+**⋯ → Exporter la vue en SVG** : export du périmètre présenté en mode Réunion, ou de tous les chantiers filtrés en Vue d’ensemble. L’export contient les données métiers visibles ; ne pas le publier dans un dépôt public. **Imprimer** utilise le rendu d’impression du navigateur.
+
+Hors Grist, le menu permet d’ouvrir un export CSV local. Le fichier est lu dans le navigateur et ne fait l’objet d’aucun envoi par le widget.
 
 ## Vérifications réalisées
 
-Tests en navigateur Chromium avec l'export Architecture fourni et une API Grist simulée : 39 chantiers, filtres, recherche, volets, fenêtres de détail, groupes repliables, affichage détaillé optionnel, périodes, échelles, export SVG, actualisation des lignes et chargement CSV local.
+Tests navigateur automatisés sur l’export Architecture fourni (39 lignes, 13 périmètres), avec une API Grist simulée : navigation complète et clavier, changement de périmètre, ordre du jour, filtres et résultat vide, retour vue d’ensemble, projection, repères réversibles, actualisation sans perte de sélection, bilan, import CSV local, dates encodées et précision annuelle, export SVG valide.
 
-Vérification de la mise en page sur des fenêtres 1920×1080, 1440×900, 1366×768, 1024×768, 768×600, 390×844 et 1440×500. Sur les formats bureau testés, le calendrier occupe environ 80 à 86 % de la hauteur de la fenêtre, en affichage normal et sans message d'erreur. Sur les petits écrans, le défilement reste à l'intérieur du planning.
+Rendus contrôlés en 1920×1080, 1440×900, 1366×768, 1024×768, 768×1024 et 390×844. Le téléphone utilise un défilement horizontal interne au calendrier afin de ne pas rendre les noms et dates illisibles.
 
-Le moteur de normalisation des données et des dates est identique à V1. Pas de validation directe dans votre document Grist de production.
+Ces tests ne remplacent pas une vérification dans le document Grist réel. Aucun accès au Grist de production n’a été utilisé. Après publication, vérifier la réception des données, un changement de périmètre, l’ouverture d’un détail et le mode Projection.
+
+Références API :
+- https://support.getgrist.com/widget-custom/
+- https://support.getgrist.com/code/interfaces/grist_plugin_api.FetchSelectedOptions/
