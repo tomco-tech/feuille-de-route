@@ -1,6 +1,6 @@
-# Feuille de route DT — V1.6
+# Feuille de route DT — V1.7
 
-Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version reprend la V1.5 et ajuste la navigation, les couleurs et les commandes, sans changer le modèle de données.
+Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version reprend la V1.6 et ajuste les couleurs, l'ordre des commandes et le bouton de retour, sans changer le modèle de données.
 
 ## Fichiers à publier
 
@@ -8,25 +8,25 @@ Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version repren
 - `.nojekyll` : fichier vide à conserver.
 - `README.md` : documentation ; aucune donnée métier n'est embarquée dans le code.
 
-Remplacer `index.html` dans le même dossier GitHub Pages. Aucune compilation ni nouvelle dépendance n'est nécessaire. Dans l'URL du widget, remplacer le paramètre de version précédent par `?v=1.6` (ou `&v=1.6` si un autre paramètre existe déjà).
+Remplacer `index.html` dans le même dossier GitHub Pages. Aucune compilation ni nouvelle dépendance n'est nécessaire. Dans l'URL du widget, remplacer le paramètre de version précédent par `?v=1.7` (ou `&v=1.7` si un autre paramètre existe déjà).
 
-## Modifications V1.6
+## Interface V1.7
 
 ### Navigation dans les deux sens
 
-Les boutons **← Périmètre précédent** et **Périmètre suivant →** sont regroupés à droite du titre, en mode normal et en projection. Sur un écran étroit, ils passent sous le titre.
+Les boutons **←** et **Périmètre suivant →** sont regroupés à droite du titre, en mode normal et en projection. Le retour affiche uniquement une flèche ; son libellé accessible et son infobulle indiquent le périmètre précédent. Sur un écran étroit, les boutons passent sous le titre.
 
 Ils parcourent les périmètres dans l'ordre du portefeuille, en tenant compte des filtres. Le premier chantier du périmètre de destination est sélectionné et le défilement vertical revient en haut. La période et l'échelle du calendrier sont conservées. Le bouton précédent est désactivé au premier périmètre ; le suivant l'est au dernier. Les deux sont désactivés pendant le chargement ou sans périmètre disponible. Le parcours ne boucle pas.
 
 ### Couleurs des urgences
 
-La palette sauge / ambre / mauve est remplacée par des couleurs plus franches, sans effet fluorescent :
+L'orange devient un jaune doux, avec 70 % d'opacité (30 % de transparence). Le framboise conserve sa teinte RVB d'origine et s'éclaircit grâce à une opacité de 65 % (35 % de transparence). Le bleu et le gris restent inchangés.
 
 | Urgence | Couleur | Valeur |
 | --- | --- | --- |
 | Mineur | Bleu | `#478FC5` |
-| Intermédiaire | Orange | `#D26E32` |
-| Prioritaire | Framboise | `#C55C78` |
+| Intermédiaire | Jaune doux | `rgba(228, 201, 56, 0.70)` |
+| Prioritaire | Framboise éclairci | `rgba(197, 92, 120, 0.65)` |
 | À qualifier / non renseignée | Gris bleuté | `#7E8FA3` |
 
 Ces couleurs sont communes à la légende, aux barres du calendrier, aux pastilles du portefeuille et des détails, ainsi qu'à l'export SVG. Les libellés et les hachures restent présents.
@@ -44,7 +44,7 @@ Un seul bouton **Menu** rassemble :
 
 Une flèche de retour permet de revenir au menu depuis Affichage ou Filtres. Le nombre de filtres actifs apparaît sur le bouton Menu. Échap ou le bouton de fermeture referme le panneau et rend le focus au bouton Menu. Les flèches haut/bas et les touches Début/Fin parcourent les actions du menu.
 
-Le bouton **Portefeuille des chantiers**, la recherche et la commande **Projection** restent directement accessibles dans le bandeau supérieur. En projection, la recherche est masquée ; le portefeuille, le menu commun, la sortie de projection et l'heure d'actualisation restent accessibles.
+Le bandeau supérieur suit l'ordre **Projection → Recherche → Portefeuille des chantiers → Menu**, à l'écran comme au clavier. En projection, la recherche est masquée ; la sortie de projection, le portefeuille, le menu commun et l'heure d'actualisation restent accessibles.
 
 ### Bandeau de détail en projection
 
@@ -88,6 +88,6 @@ Hors Grist, **Menu → Ouvrir un CSV local** permet de prévisualiser un export.
 
 ## Vérifications de cette livraison
 
-La syntaxe des deux scripts JavaScript et la structure HTML ont été vérifiées. Les contrôles de logique avec des données fictives portent sur la navigation, les filtres, les états du menu et les dates du bandeau de projection. Aucun jeu de données de test n'est inclus dans les fichiers à publier.
+Les vérifications portent sur la syntaxe des deux scripts JavaScript et sur le code source : couleurs, ordre des commandes, bouton de retour et conservation du menu unique et du bandeau de projection sans dates. Aucun jeu de données de test n'est inclus dans les fichiers à publier.
 
 Le rendu visuel dans un navigateur et l'intégration dans le document Grist de production n'ont pas pu être validés dans l'environnement de cette livraison. Ils restent à confirmer après remplacement du fichier.

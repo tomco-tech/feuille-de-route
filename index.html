@@ -8,8 +8,8 @@
 
 :root{
  --bg:#f4f6f9;--paper:#fff;--ink:#233349;--muted:#738197;--line:#dfe5ed;
- --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#478fc5;--medium:#d26e32;
- --high:#c55c78;--unknown:#7e8fa3;--name-width:310px;--chart-width:900px;
+ --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#478fc5;--medium:rgba(228,201,56,0.70);
+ --high:rgba(197,92,120,0.65);--unknown:#7e8fa3;--name-width:310px;--chart-width:900px;
  --row-height:42px;--head-height:52px;
  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
  font-size:13px;color:var(--ink);color-scheme:light
@@ -197,14 +197,15 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
  .legend-hatching{display:inline-flex}.meeting-heading{min-height:0}
 }
 
-/* V1.6 — Navigation dans les deux sens, par périmètre. */
+/* V1.7 — Retour compact et navigation par périmètre. */
 .meeting-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:18px}
 .meeting-heading .heading-context{width:auto;min-width:0}
 .scope-navigation{display:flex;align-items:center;justify-content:flex-end;gap:8px;justify-self:end;align-self:end;min-width:0}
 .scope-step{height:34px;min-height:34px;margin-bottom:0;gap:8px}
+.scope-step.previous-scope{flex:0 0 34px;width:34px;padding:6px;font-size:18px;gap:0}
 .scope-step:disabled{background:#f7f9fb;border-color:#e5eaf0;color:#7f8b99;opacity:.65}
 @media(max-width:760px){.meeting-heading{grid-template-columns:minmax(0,1fr);gap:12px}.scope-navigation{justify-self:stretch}.scope-step{font-size:11px;padding:7px 9px}}
-@media(max-width:460px){.scope-navigation{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;gap:6px}.scope-step{height:auto;min-height:36px;white-space:normal;gap:6px}.scope-step>[aria-hidden]{flex-shrink:0}.meeting-heading h2{font-size:19px}}
+@media(max-width:460px){.scope-navigation{justify-self:end;max-width:100%;gap:6px}.scope-step{height:auto;min-height:36px;white-space:normal;gap:6px}.scope-step.previous-scope{flex-basis:36px;width:36px}.scope-step>[aria-hidden]{flex-shrink:0}.meeting-heading h2{font-size:19px}}
 @media print{.scope-navigation{display:none!important}}
 
 </style>
@@ -219,9 +220,9 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
    <p id="poleSubtitle" class="pole-subtitle">Architecture</p>
   </div>
   <nav class="header-toolbar" aria-label="Commandes de la feuille de route">
-   <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
-   <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
    <button class="btn quiet" id="presentationToggle" aria-pressed="false" title="Agrandir la présentation dans le widget">⤢ <span>Projection</span></button>
+   <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
+   <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
    <button class="btn menu-toggle" id="actionsToggle" title="Affichage, filtres et actions" aria-expanded="false" aria-controls="actionsPanel" aria-haspopup="dialog"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span><span id="menuFilterCount" class="badge" hidden></span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
   </nav>
  </header>
@@ -230,7 +231,7 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
   <div class="meeting-heading" id="meetingHeading">
    <div class="heading-context"><div class="eyebrow" id="meetingCrumb">Internes DT</div><h2 id="meetingScope">Chargement du périmètre…</h2></div>
    <div class="scope-navigation" role="group" aria-label="Navigation par périmètre">
-    <button type="button" class="btn scope-step previous-scope" id="previousScope" aria-controls="roadmap" title="Passer au périmètre précédent" disabled><span aria-hidden="true">←</span><span>Périmètre précédent</span></button>
+    <button type="button" class="btn scope-step previous-scope" id="previousScope" aria-controls="roadmap" aria-label="Périmètre précédent" title="Passer au périmètre précédent" disabled><span aria-hidden="true">←</span></button>
     <button type="button" class="btn scope-step next-scope" id="nextScope" aria-controls="roadmap" title="Passer au périmètre suivant" disabled><span>Périmètre suivant</span><span aria-hidden="true">→</span></button>
    </div>
   </div>
@@ -301,7 +302,7 @@ const RoadmapCore = (() => {
   ];
   const DEFAULT_POLE = 'Architecture';
   const PLANNED_POLES = ['Architecture','Lot 1','Lot 2','Lot 3'];
-  const COLORS = {minor:'#478fc5', medium:'#d26e32', high:'#c55c78', unknown:'#7e8fa3'};
+  const COLORS = {minor:'#478fc5', medium:'rgba(228,201,56,0.70)', high:'rgba(197,92,120,0.65)', unknown:'#7e8fa3'};
   function norm(v) { return String(v ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim().toLowerCase(); }
   function key(v) { return norm(v).replace(/[^a-z0-9]/g,''); }
   function text(v) {
