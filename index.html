@@ -8,8 +8,8 @@
 
 :root{
  --bg:#f4f6f9;--paper:#fff;--ink:#233349;--muted:#738197;--line:#dfe5ed;
- --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#a6bfae;--medium:#d7b67a;
- --high:#ab98bc;--unknown:#bdc5ce;--name-width:310px;--chart-width:900px;
+ --soft:#f0f3f7;--blue:#285e88;--orange:#c86c37;--minor:#478fc5;--medium:#d26e32;
+ --high:#c55c78;--unknown:#7e8fa3;--name-width:310px;--chart-width:900px;
  --row-height:42px;--head-height:52px;
  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
  font-size:13px;color:var(--ink);color-scheme:light
@@ -57,7 +57,7 @@ main{height:100vh;height:100dvh;max-width:none;margin:0;padding:12px 16px;displa
 .popover-footer{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}.small-toggle{display:flex;align-items:center;gap:6px;font-size:12px;color:#5d7186;cursor:pointer}.small-toggle input{accent-color:#6c8296;width:14px;height:14px}
 .options-block{display:flex;flex-direction:column;gap:10px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}.options-label{font-size:11px;color:#79899b;font-weight:650;margin-bottom:1px}.scale-buttons{width:100%;padding:2px}.scale-buttons button{flex:1;padding:7px 8px;font-size:11px}.date-fields{display:flex;gap:10px;align-items:flex-end}.date-fields>.field{flex:1}.date-fields input{width:100%;height:33px;font-size:11px;padding:5px}.date-fields .btn{height:33px}.option-hint{font-size:11px;color:#8290a1;line-height:1.5}
 .quality-panel{border-top:1px solid var(--line);padding-top:12px;margin-top:14px}.quality-panel summary{font-size:12px;color:#738499;cursor:pointer;line-height:1.5}.quality-list{display:grid;gap:6px;padding-top:10px}.quality-item{display:flex;flex-direction:column;gap:4px;border:1px solid #e1e6ec;border-radius:6px;padding:9px;font-size:12px;background:#fafbfd;text-align:left}.quality-item:hover{background:#eef3f8}.quality-item span:last-child{font-size:11px;color:#8d775c}
-.actions-popover{width:215px;padding:6px}.menu-item{width:100%;display:flex;align-items:center;gap:9px;border:0;border-radius:6px;background:white;padding:10px 11px;font-size:12px;text-align:left}.menu-item:hover{background:#edf2f7}.menu-item svg{width:16px;height:16px;color:#7a8c9e}.menu-item:disabled{opacity:.4}
+.actions-popover{width:280px;padding:14px;overscroll-behavior:contain}.actions-popover.settings-open{width:410px}.actions-popover .popover-head{margin:0 0 10px;gap:9px}.menu-heading{display:flex;align-items:center;gap:8px;min-width:0}.menu-heading h2{line-height:1.4}.menu-back{font-size:17px}.menu-item{width:100%;display:flex;align-items:center;gap:10px;border:0;border-radius:6px;background:white;padding:11px 9px;font-size:12px;text-align:left;min-height:39px}.menu-item:hover{background:#edf2f7}.menu-item svg{width:17px;height:17px;flex:none;color:#647c92}.menu-item .menu-label{flex:1}.menu-item .menu-chevron{margin-left:auto;color:#8292a3;font-size:17px;line-height:1}.menu-item .badge{text-align:center;padding:0 4px}.menu-item.active{background:#edf3f8;color:#294c6b}.menu-item:disabled{opacity:.4}.menu-divider{border:0;border-top:1px solid var(--line);margin:7px 0}.menu-view{padding-top:3px}.menu-toggle .badge{padding:0 4px}.menu-toggle>svg:last-child{color:#7b8a9c}.menu-reset{font-size:11px;color:#62788e}
 .overlay{position:fixed;inset:0;z-index:150;background:#15283d55;backdrop-filter:blur(2px);display:flex;justify-content:flex-end;padding:14px}.dialog{background:white;border:1px solid #d5dfe8;border-radius:13px;width:500px;max-width:100%;max-height:100%;box-shadow:0 20px 65px #0e203545;display:flex;flex-direction:column}.dialog-head{padding:21px 23px 17px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}.dialog-head .heading{flex:1;min-width:0}.eyebrow{font-size:10px;font-weight:650;letter-spacing:1.2px;text-transform:uppercase;color:#8190a2;margin-bottom:7px}.dialog h2{font-size:20px;line-height:1.35;letter-spacing:-.4px}.dialog-body{padding:18px 23px;overflow:auto}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.detail dt{font-size:10px;letter-spacing:.3px;font-weight:650;text-transform:uppercase;color:#8592a2;margin-bottom:5px}.detail dd{margin:0;font-size:13px;line-height:1.5;overflow-wrap:anywhere}.detail.wide{grid-column:1/-1}.detail .precision{font-size:11px;color:#8b98a7;margin-top:3px}.detail .comment{white-space:pre-wrap}.detail .no-comment{color:#8b97a5;font-style:italic}.urgency-tag{display:inline-flex;align-items:center;gap:6px;border:1px solid #dce3ec;padding:3px 8px;border-radius:5px;font-size:12px}.dialog-footer{padding:12px 23px;border-top:1px solid var(--line);font-size:10px;color:#8a97a6}.dialog-warnings{border-radius:7px;background:#faf4e9;color:#826036;padding:10px;margin-bottom:16px;font-size:12px;line-height:1.5}
 .visually-hidden{position:absolute;clip:rect(0,0,0,0);height:1px;width:1px;overflow:hidden}.no-script{padding:16px;color:#903e3e}
 @media(min-width:1700px){:root{--name-width:340px}main{padding:14px 20px}h1{font-size:23px}}
@@ -148,7 +148,7 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
 .focus-strip{align-items:flex-start}.focus-body{width:100%}
 .legend-hatching{color:#65768b}.legend-hatching .swatch{width:21px;height:10px;flex:none}
 .projection .app-header{display:flex;min-height:46px;gap:20px}
-.projection .header-toolbar .search-field,.projection #filtersToggle,.projection #viewToggle,.projection #resetQuick,.projection #refresh{display:none!important}
+.projection .header-toolbar .search-field{display:none!important}
 .projection .header-toolbar{flex:1;justify-content:flex-end}
 .projection .title-line .sync{display:inline-block!important}
 .projection .title-line h1{font-size:21px}
@@ -197,14 +197,15 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
  .legend-hatching{display:inline-flex}.meeting-heading{min-height:0}
 }
 
-/* V1.5 — Portefeuille en premier ; navigation par périmètre. */
+/* V1.6 — Navigation dans les deux sens, par périmètre. */
 .meeting-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:18px}
 .meeting-heading .heading-context{width:auto;min-width:0}
-.next-scope{height:34px;min-height:34px;justify-self:end;align-self:end;margin-bottom:0;gap:8px}
-.next-scope:disabled{background:#f7f9fb;border-color:#e5eaf0;color:#7f8b99;opacity:.65}
-@media(max-width:760px){.meeting-heading{column-gap:12px}.next-scope{font-size:11px;padding:7px 9px}}
-@media(max-width:460px){.meeting-heading{column-gap:10px}.next-scope{gap:6px}.meeting-heading h2{font-size:19px}}
-@media print{.next-scope{display:none!important}}
+.scope-navigation{display:flex;align-items:center;justify-content:flex-end;gap:8px;justify-self:end;align-self:end;min-width:0}
+.scope-step{height:34px;min-height:34px;margin-bottom:0;gap:8px}
+.scope-step:disabled{background:#f7f9fb;border-color:#e5eaf0;color:#7f8b99;opacity:.65}
+@media(max-width:760px){.meeting-heading{grid-template-columns:minmax(0,1fr);gap:12px}.scope-navigation{justify-self:stretch}.scope-step{font-size:11px;padding:7px 9px}}
+@media(max-width:460px){.scope-navigation{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;gap:6px}.scope-step{height:auto;min-height:36px;white-space:normal;gap:6px}.scope-step>[aria-hidden]{flex-shrink:0}.meeting-heading h2{font-size:19px}}
+@media print{.scope-navigation{display:none!important}}
 
 </style>
 </head>
@@ -220,19 +221,18 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
   <nav class="header-toolbar" aria-label="Commandes de la feuille de route">
    <button class="btn portfolio-toggle" id="portfolioToggle" aria-expanded="false" aria-controls="portfolioPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V4h7l2 2h7v3"/></svg><span>Portefeuille des chantiers</span></button>
    <div class="field search-field"><label for="search" class="visually-hidden">Rechercher un chantier</label><div class="input-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input type="search" id="search" placeholder="Rechercher un chantier" autocomplete="off"></div></div>
-   <button class="btn" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtres<span id="filterCount" class="badge" hidden></span></button>
-   <button class="btn" id="viewToggle" aria-expanded="false" aria-controls="viewPanel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>Affichage</button>
-   <button class="btn icon quiet" id="resetQuick" title="Effacer tous les filtres" aria-label="Effacer tous les filtres" hidden>×</button>
    <button class="btn quiet" id="presentationToggle" aria-pressed="false" title="Agrandir la présentation dans le widget">⤢ <span>Projection</span></button>
-   <button class="btn icon quiet" id="refresh" title="Actualiser les données" aria-label="Actualiser les données"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7v5h-5"/><path d="M20 12a8 8 0 1 0-2.3 5.7M20 7v5l-4-4"/></svg></button>
-   <button class="btn icon quiet" id="actionsToggle" title="Exporter ou imprimer" aria-label="Plus d’actions" aria-expanded="false" aria-controls="actionsPanel"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+   <button class="btn menu-toggle" id="actionsToggle" title="Affichage, filtres et actions" aria-expanded="false" aria-controls="actionsPanel" aria-haspopup="dialog"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span><span id="menuFilterCount" class="badge" hidden></span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
   </nav>
  </header>
  <div id="notice" class="notice info" role="status" hidden></div>
  <section class="roadmap-card" aria-label="Feuille de route DT">
   <div class="meeting-heading" id="meetingHeading">
    <div class="heading-context"><div class="eyebrow" id="meetingCrumb">Internes DT</div><h2 id="meetingScope">Chargement du périmètre…</h2></div>
-   <button type="button" class="btn next-scope" id="nextScope" aria-controls="roadmap" title="Passer au périmètre suivant" disabled><span>Périmètre suivant</span><span aria-hidden="true">→</span></button>
+   <div class="scope-navigation" role="group" aria-label="Navigation par périmètre">
+    <button type="button" class="btn scope-step previous-scope" id="previousScope" aria-controls="roadmap" title="Passer au périmètre précédent" disabled><span aria-hidden="true">←</span><span>Périmètre précédent</span></button>
+    <button type="button" class="btn scope-step next-scope" id="nextScope" aria-controls="roadmap" title="Passer au périmètre suivant" disabled><span>Périmètre suivant</span><span aria-hidden="true">→</span></button>
+   </div>
   </div>
   <div class="roadmap-legend" aria-label="Couleurs par niveau d’urgence">
    <span class="legend-label">Urgence</span>
@@ -254,25 +254,31 @@ h1{font-size:22px}.pole-subtitle{font-size:12px;font-weight:550;color:#76879a;li
  <div class="popover-head"><h2>Portefeuille des chantiers</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer le portefeuille">×</button></div>
  <div class="portfolio-note" id="portfolioNote"></div><div id="portfolioList"></div>
 </section>
-<section class="popover" id="filtersPanel" role="dialog" aria-label="Filtres de la feuille de route" hidden>
- <div class="popover-head"><h2>Filtres</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer les filtres">×</button></div>
+<section class="popover actions-popover" id="actionsPanel" role="dialog" aria-labelledby="menuTitle" hidden>
+ <div class="popover-head"><div class="menu-heading"><button type="button" class="btn icon quiet menu-back" id="menuBack" aria-label="Revenir au menu" title="Revenir au menu" hidden>←</button><h2 id="menuTitle">Menu</h2></div><button type="button" class="btn icon quiet" data-close-popover aria-label="Fermer le menu">×</button></div>
+ <div id="menuHome">
+  <button type="button" class="menu-item" id="viewToggle" aria-expanded="false" aria-controls="viewPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg><span class="menu-label">Affichage</span><span class="menu-chevron" aria-hidden="true">›</span></button>
+  <button type="button" class="menu-item" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span class="menu-label">Filtres</span><span id="filterCount" class="badge" hidden></span><span class="menu-chevron" aria-hidden="true">›</span></button>
+  <button type="button" class="menu-item menu-reset" id="resetQuick" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg><span>Effacer tous les filtres</span></button>
+  <hr class="menu-divider">
+  <button type="button" class="menu-item" id="refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 7v5h-5"/><path d="M20 12a8 8 0 1 0-2.3 5.7M20 7v5l-4-4"/></svg><span>Actualiser les données</span></button>
+  <button type="button" class="menu-item" id="export"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg><span>Exporter le périmètre en SVG</span></button>
+  <button type="button" class="menu-item" id="print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/></svg><span>Imprimer</span></button>
+  <div id="localActions" hidden><hr class="menu-divider"><button type="button" class="menu-item" id="importCsv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 7h7l2 2h9v11H3zM3 7V4h7l2 2h7v3"/></svg><span>Ouvrir un CSV local</span></button><input type="file" id="csvFile" accept=".csv,text/csv" hidden></div>
+ </div>
+ <div class="menu-view" id="filtersPanel" hidden>
  <div class="field combo pole-filter" id="poleCombo" hidden></div>
  <div class="strand-filter"><span class="field-label">Volet</span><div class="segmented" id="strandTabs" aria-label="Volet"><button data-strand="" aria-pressed="true">Tous</button><button data-strand="Internes DT" aria-pressed="false">Internes DT</button><button data-strand="Avec les autres directions" aria-pressed="false">Autres directions</button></div></div>
  <div class="filter-grid"><div class="field combo" id="scopeCombo"></div><div class="field combo" id="urgencyCombo"></div><div class="field combo" id="phaseCombo"></div><div class="field combo" id="ownerCombo"></div></div>
  <div class="popover-footer"><label class="small-toggle"><input id="missingEnd" type="checkbox">Fins à préciser uniquement</label><button id="clear" class="btn quiet">Effacer</button></div>
-</section>
-<section class="popover" id="viewPanel" role="dialog" aria-label="Affichage du planning" hidden>
- <div class="popover-head"><h2>Affichage du planning</h2><button class="btn icon quiet" data-close-popover aria-label="Fermer les réglages d’affichage">×</button></div>
+ </div>
+ <div class="menu-view" id="viewPanel" hidden>
  <div class="segmented scale-buttons" id="scales" aria-label="Échelle de temps"><button data-scale="fit" aria-pressed="true">Ajuster à l’écran</button><button data-scale="month" aria-pressed="false">Mois</button><button data-scale="quarter" aria-pressed="false">Trimestres</button></div>
  <div class="options-block"><div class="options-label">Période affichée</div><div class="date-fields"><label class="field">De<input type="month" id="rangeStart" aria-label="Début de la période affichée"></label><label class="field">À<input type="month" id="rangeEnd" aria-label="Fin de la période affichée"></label><button class="btn icon" id="allDates" title="Afficher toute la période" aria-label="Afficher toute la période">↔</button></div></div>
  <div class="options-block"><div class="options-label">Repère vertical</div><div class="date-fields"><label class="field"><span class="visually-hidden">Date du repère</span><input type="date" id="referenceDate" aria-label="Date du repère vertical"></label><button class="btn" id="today">Aujourd’hui</button></div></div>
  <div class="options-block"><label class="small-toggle"><input type="checkbox" id="showDetails">Afficher les détails sur les lignes</label><p class="option-hint">Hachures : date connue à l’année. Pointillés : date à préciser. La couleur indique l’urgence, pas l’avancement.</p></div>
  <details id="qualityPanel" class="quality-panel" hidden><summary id="qualitySummary"></summary><div id="qualityList" class="quality-list"></div></details>
-</section>
-<section class="popover actions-popover" id="actionsPanel" role="dialog" aria-label="Actions" hidden>
- <button class="menu-item" id="export"><span aria-hidden="true">↓</span>Exporter le périmètre en SVG</button>
- <button class="menu-item" id="print"><span aria-hidden="true">⎙</span>Imprimer</button>
- <div id="localActions" hidden><button class="menu-item" id="importCsv">Ouvrir un CSV local</button><input type="file" id="csvFile" accept=".csv,text/csv" hidden></div>
+ </div>
 </section>
 <div class="overlay" id="overlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="heading"><div class="eyebrow">Détail du chantier</div><h2 id="dialogTitle"></h2></div><button class="btn icon" id="closeDialog" aria-label="Fermer la fenêtre">✕</button></div><div class="dialog-body" id="dialogBody"></div><div class="dialog-footer">Lecture seule · Les modifications s’effectuent dans la table source Grist.</div></section></div>
 <script>/* Modèle de lecture de la table Architecture. Aucun appel d'écriture. */
@@ -295,7 +301,7 @@ const RoadmapCore = (() => {
   ];
   const DEFAULT_POLE = 'Architecture';
   const PLANNED_POLES = ['Architecture','Lot 1','Lot 2','Lot 3'];
-  const COLORS = {minor:'#a6bfae', medium:'#d7b67a', high:'#ab98bc', unknown:'#bdc5ce'};
+  const COLORS = {minor:'#478fc5', medium:'#d26e32', high:'#c55c78', unknown:'#7e8fa3'};
   function norm(v) { return String(v ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim().toLowerCase(); }
   function key(v) { return norm(v).replace(/[^a-z0-9]/g,''); }
   function text(v) {
@@ -630,7 +636,11 @@ function renderPortfolio(rows){
 function renderMeetingControls(rows){
  const {groups,group}=meetingContext(rows),r=group?.items.find(x=>x.id===state.selected);
  const groupIndex=groups.findIndex(g=>g.id===group?.id);
+ const previousGroup=groupIndex>0?groups[groupIndex-1]:null;
  const nextGroup=groupIndex>=0?groups[groupIndex+1]:null;
+ $('previousScope').disabled=!previousGroup;
+ $('previousScope').title=previousGroup?'Périmètre précédent : '+previousGroup.scope:group?'Premier périmètre de la sélection':'Aucun périmètre disponible';
+ $('previousScope').setAttribute('aria-label',previousGroup?'Périmètre précédent : '+previousGroup.scope:'Périmètre précédent');
  $('nextScope').disabled=!nextGroup;
  $('nextScope').title=nextGroup?'Périmètre suivant : '+nextGroup.scope:group?'Dernier périmètre de la sélection':'Aucun périmètre disponible';
  $('nextScope').setAttribute('aria-label',nextGroup?'Périmètre suivant : '+nextGroup.scope:'Périmètre suivant');
@@ -642,7 +652,7 @@ function renderMeetingControls(rows){
  $('focusStrip').hidden=!state.presentation||!r;
  if(r){
   $('focusTitle').textContent=r.name;
-  $('focusMeta').innerHTML=`<span><i class="dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span><span><strong>Phase :</strong> ${esc(r.phase)}</span><span class="owner">${esc(r.owner)}</span><span>${esc(dateText(r))}</span>`;
+  $('focusMeta').innerHTML=`<span><i class="dot" style="background:${r.urgency.color}"></i>${esc(r.urgency.label)}</span><span><strong>Phase :</strong> ${esc(r.phase)}</span><span class="owner">${esc(r.owner)}</span>`;
   $('focusComment').textContent=r.comment;$('focusComment').hidden=!r.comment;
  }
  renderPortfolio(rows);
@@ -678,6 +688,8 @@ function render(){
  $('poleCombo').hidden=new Set(state.rows.map(r=>r.pole)).size<2&&!state.filters.pole;
  const filterCount=['pole','strand','scope','phase','urgency','owner'].filter(k=>state.filters[k]).length+Number(state.filters.incomplete);
  $('filterCount').textContent=filterCount;$('filterCount').hidden=!filterCount;
+ $('menuFilterCount').textContent=filterCount;$('menuFilterCount').hidden=!filterCount;
+ $('actionsToggle').setAttribute('aria-label',filterCount?'Menu, '+filterCount+' filtre'+(filterCount>1?'s actifs':' actif'):'Menu');
  $('filtersToggle').classList.toggle('active',filterCount>0);
  $('resetQuick').hidden=!(filterCount||state.filters.strand||state.filters.search);
  $('missingEnd').checked=state.filters.incomplete;
@@ -817,7 +829,7 @@ function boot(){
  $('referenceDate').value=C.iso(state.reference);
  if(window.grist){connect();return;}
  if(window.parent===window){
-  liveStatus('Aperçu hors Grist');$('localActions').hidden=false;notice('Aperçu hors Grist : ouvrez votre export Architecture avec le menu ⋯ → Ouvrir un CSV local.','info');
+  liveStatus('Aperçu hors Grist');$('localActions').hidden=false;notice('Aperçu hors Grist : ouvrez votre export Architecture avec Menu → Ouvrir un CSV local.','info');
   $('roadmap').innerHTML='<div class="roadmap-empty"><p class="empty-title">Votre feuille de route, alimentée par Architecture</p><p>Intégrez cette URL dans un widget Grist, ou ouvrez votre CSV pour prévisualiser le résultat.</p></div>';
   return;
  }
@@ -826,7 +838,7 @@ function boot(){
 $('strandTabs').addEventListener('click',e=>{const b=e.target.closest('[data-strand]');if(b){state.filters.strand=b.dataset.strand;render();}});
 $('search').addEventListener('input',e=>{state.filters.search=e.target.value;clearTimeout(renderTimer);renderTimer=setTimeout(render,100);});
 function resetFilters(){state.filters={pole:'',strand:'',scope:'',phase:'',urgency:'',owner:'',search:'',incomplete:false};$('search').value='';combos.forEach(c=>c.close());render();}
-$('clear').addEventListener('click',resetFilters);$('resetQuick').addEventListener('click',resetFilters);
+$('clear').addEventListener('click',resetFilters);$('resetQuick').addEventListener('click',()=>{resetFilters();closePopovers(true);});
 $('missingEnd').addEventListener('change',e=>{state.filters.incomplete=e.target.checked;render();});
 $('scales').addEventListener('click',e=>{const b=e.target.closest('[data-scale]');if(b){state.scale=b.dataset.scale;render();}});
 $('rangeStart').addEventListener('change',changeRange);$('rangeEnd').addEventListener('change',changeRange);
@@ -836,6 +848,7 @@ $('today').addEventListener('click',()=>{state.reference=C.today();$('referenceD
 
 
 
+$('previousScope').addEventListener('click',()=>moveGroup(-1));
 $('nextScope').addEventListener('click',()=>moveGroup(1));
 
 $('roadmap').addEventListener('click',e=>{const r=e.target.closest('[data-task-id]');if(r)selectTask(r.dataset.taskId);});
@@ -844,13 +857,32 @@ $('roadmap').addEventListener('keydown',e=>{const hit=e.target.closest('[data-ta
 $('qualityList').addEventListener('click',e=>{const b=e.target.closest('[data-task-id]');if(b)openDialog(b.dataset.taskId);});
 $('closeDialog').addEventListener('click',closeDialog);$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeDialog();});
 document.addEventListener('keydown',e=>{if(!$('overlay').hidden){if(e.key==='Escape')closeDialog();if(e.key==='Tab'){const fs=[...$('overlay').querySelectorAll('button,a,input,[tabindex="0"]')].filter(x=>!x.disabled);if(fs.length===1){e.preventDefault();fs[0].focus();}else if(e.shiftKey&&document.activeElement===fs[0]){e.preventDefault();fs.at(-1).focus();}else if(!e.shiftKey&&document.activeElement===fs.at(-1)){e.preventDefault();fs[0].focus();}}}});
-$('refresh').addEventListener('click',refresh);$('export').addEventListener('click',()=>{closePopovers();exportSVG();});
-$('print').addEventListener('click',()=>{closePopovers();window.print();});
-$('importCsv').addEventListener('click',()=>$('csvFile').click());$('csvFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=C.parseCSV(await file.text());state.selected=null;state.scopeId=null;ingest(data,'csv');}catch(err){notice('Import CSV : '+err.message,'error');}e.target.value='';});
+$('refresh').addEventListener('click',()=>{closePopovers(true);refresh();});$('export').addEventListener('click',()=>{closePopovers(true);exportSVG();});
+$('print').addEventListener('click',()=>{closePopovers(true);window.print();});
+$('importCsv').addEventListener('click',()=>{closePopovers(true);$('csvFile').click();});$('csvFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=C.parseCSV(await file.text());state.selected=null;state.scopeId=null;ingest(data,'csv');}catch(err){notice('Import CSV : '+err.message,'error');}e.target.value='';});
 let lastSize='';new ResizeObserver(entries=>{const r=entries[0].contentRect,k=Math.round(r.width)+'x'+Math.round(r.height);if(k!==lastSize){lastSize=k;clearTimeout(renderTimer);renderTimer=setTimeout(()=>{if(state.loaded)renderRoadmap(getFiltered());},80);}}).observe($('roadmapScroll'));
 
-const popoverPairs=[['filtersToggle','filtersPanel'],['viewToggle','viewPanel'],['actionsToggle','actionsPanel'],['portfolioToggle','portfolioPanel']];
-let activePopover=null;
+const popoverPairs=[['actionsToggle','actionsPanel'],['portfolioToggle','portfolioPanel']];
+let activePopover=null,menuView='home';
+function setMenuView(view,focus=true){
+ const prior=menuView;menuView=view;combos.forEach(c=>c.close());
+ $('menuHome').hidden=view!=='home';$('filtersPanel').hidden=view!=='filters';$('viewPanel').hidden=view!=='view';
+ $('menuBack').hidden=view==='home';$('menuTitle').textContent=view==='filters'?'Filtres':view==='view'?'Affichage du planning':'Menu';
+ $('filtersToggle').setAttribute('aria-expanded',String(view==='filters'));$('viewToggle').setAttribute('aria-expanded',String(view==='view'));
+ $('actionsPanel').classList.toggle('settings-open',view!=='home');$('actionsPanel').scrollTop=0;placePopover();
+ if(focus){const target=view==='home'?$(prior==='filters'?'filtersToggle':'viewToggle'):$('menuBack');target.focus({preventScroll:true});}
+}
+$('filtersToggle').addEventListener('click',()=>setMenuView('filters'));
+$('viewToggle').addEventListener('click',()=>setMenuView('view'));
+$('menuBack').addEventListener('click',()=>setMenuView('home'));
+$('actionsPanel').addEventListener('keydown',e=>{
+ if(menuView!=='home'||!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;
+ const items=[...$('menuHome').querySelectorAll('.menu-item')].filter(b=>!b.disabled&&b.getClientRects().length);
+ if(!items.length)return;
+ const current=items.indexOf(document.activeElement);
+ const next=e.key==='Home'?0:e.key==='End'?items.length-1:current<0?(e.key==='ArrowUp'?items.length-1:0):(current+(e.key==='ArrowUp'?-1:1)+items.length)%items.length;
+ e.preventDefault();items[next].focus();
+});
 function placePopover(){
  if(!activePopover)return;
  const [buttonId,panelId]=activePopover,button=$(buttonId),panel=$(panelId),r=button.getBoundingClientRect();
@@ -862,12 +894,13 @@ function placePopover(){
 function closePopovers(restore=false){
  const prior=activePopover;combos.forEach(c=>c.close());
  popoverPairs.forEach(([b,p])=>{$(p).hidden=true;$(b).setAttribute('aria-expanded','false');});activePopover=null;
+ setMenuView('home',false);
  if(restore&&prior)$(prior[0]).focus();
 }
 function togglePopover(pair){
  const was=activePopover&&activePopover[1]===pair[1];closePopovers();if(was)return;
  activePopover=pair;$(pair[1]).hidden=false;$(pair[0]).setAttribute('aria-expanded','true');placePopover();
- const first=$(pair[1]).querySelector('button,input');if(first)first.focus({preventScroll:true});
+ const first=pair[1]==='actionsPanel'?$('viewToggle'):$(pair[1]).querySelector('button,input');if(first)first.focus({preventScroll:true});
 }
 popoverPairs.forEach(pair=>$(pair[0]).addEventListener('click',()=>togglePopover(pair)));
 document.querySelectorAll('[data-close-popover]').forEach(b=>b.addEventListener('click',()=>closePopovers(true)));
