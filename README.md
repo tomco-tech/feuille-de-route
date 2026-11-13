@@ -1,93 +1,65 @@
-# Feuille de route DT — V1.7
+# Feuille de route DT — V1.8
 
-Widget Grist en lecture seule, à publier sur GitHub Pages. Cette version reprend la V1.6 et ajuste les couleurs, l'ordre des commandes et le bouton de retour, sans changer le modèle de données.
+Widget **Grist en lecture seule**, destiné à être hébergé sur **GitHub Pages**.
+Cette version conserve la navigation par périmètre, la recherche, le menu unique et les couleurs d’urgence de la V1.7. Elle supprime intégralement le mode projection et simplifie la consultation des chantiers.
 
-## Fichiers à publier
+## Publication
 
-- `index.html` : code complet du widget (HTML, CSS, JavaScript).
+Publier les trois fichiers du dossier à la racine du site GitHub Pages :
+
+- `index.html` : widget complet (HTML, CSS et JavaScript, sans compilation).
 - `.nojekyll` : fichier vide à conserver.
-- `README.md` : documentation ; aucune donnée métier n'est embarquée dans le code.
+- `README.md` : documentation.
 
-Remplacer `index.html` dans le même dossier GitHub Pages. Aucune compilation ni nouvelle dépendance n'est nécessaire. Dans l'URL du widget, remplacer le paramètre de version précédent par `?v=1.7` (ou `&v=1.7` si un autre paramètre existe déjà).
+Dans GitHub, remplacer le `index.html` existant par celui de cette archive ; ne pas modifier les données Grist. Pour forcer la mise à jour du cache, utiliser `?v=1.8` dans l’URL du widget, ou `&v=1.8` si l’URL possède déjà des paramètres.
 
-## Interface V1.7
+## Changements V1.8
 
-### Navigation dans les deux sens
+1. **Fiche chantier plus lisible** : la mention **« Ordre dans le périmètre »** n’est plus affichée. Le champ source `Ordre` reste lu par le widget pour trier les chantiers dans leur périmètre.
+2. **Projection supprimée complètement** : plus de bouton Projection, d’état de projection, de bandeau inférieur dédié, ni de raccourci de sortie de projection.
+3. **Portefeuille entièrement replié à l’ouverture** : les pôles et les périmètres démarrent fermés, y compris celui de la sélection courante. L’utilisateur peut les déplier, mais à chaque nouvelle ouverture du portefeuille tout est de nouveau replié.
+4. **Fiche accessible au clic simple** : cliquer n’importe où sur une ligne de chantier (son nom, sa barre du calendrier ou une zone vide de sa ligne) affiche sa fiche. Le double-clic n’est plus requis ni associé à une action distincte. Un court délai de protection empêche le second clic d’un double-clic de fermer immédiatement la fenêtre par son fond. La fenêtre peut toujours être fermée par **×**, **Échap** ou par un clic sur le fond après ce délai.
 
-Les boutons **←** et **Périmètre suivant →** sont regroupés à droite du titre, en mode normal et en projection. Le retour affiche uniquement une flèche ; son libellé accessible et son infobulle indiquent le périmètre précédent. Sur un écran étroit, les boutons passent sous le titre.
+## Interface conservée des V1.6 et V1.7
 
-Ils parcourent les périmètres dans l'ordre du portefeuille, en tenant compte des filtres. Le premier chantier du périmètre de destination est sélectionné et le défilement vertical revient en haut. La période et l'échelle du calendrier sont conservées. Le bouton précédent est désactivé au premier périmètre ; le suivant l'est au dernier. Les deux sont désactivés pendant le chargement ou sans périmètre disponible. Le parcours ne boucle pas.
+- Barre supérieure, de gauche à droite : **Recherche → Portefeuille des chantiers → Menu**.
+- Menu unique : **Affichage**, **Filtres**, **Actualiser les données**, **Exporter le périmètre en SVG**, **Imprimer** et, dans l’aperçu autonome, **Ouvrir un CSV local**. Les sous-menus comportent une flèche de retour.
+- Navigation dans les périmètres : bouton **←** (retour) et bouton **Périmètre suivant →** ; les boutons sont désactivés aux extrémités et respectent les filtres actifs.
+- Couleurs d’urgence : **bleu** pour Mineur (`#478FC5`), **jaune translucide** pour Intermédiaire (`rgba(231,181,41,.70)`, 30 % transparent), **framboise translucide** pour Prioritaire (`rgba(197,92,120,.65)`, 35 % transparent), **gris bleuté** pour À qualifier (`#7E8FA3`). Les mêmes couleurs sont utilisées dans le calendrier, la légende et l’export SVG.
+- Hachures pour les dates à la précision de l’année, pointillés lorsque l’une des dates est à préciser ; la couleur décrit l’urgence et non l’avancement.
 
-### Couleurs des urgences
+## Utilisation
 
-L'orange devient un jaune doux, avec 70 % d'opacité (30 % de transparence). Le framboise conserve sa teinte RVB d'origine et s'éclaircit grâce à une opacité de 65 % (35 % de transparence). Le bleu et le gris restent inchangés.
+Cliquer sur une ligne de la feuille de route ouvre directement le détail. Le portefeuille est organisé en **Pôle → Volet → Périmètre → Chantier**. Déplier un pôle pour voir ses volets et périmètres, puis un périmètre pour voir ses chantiers. Cliquer sur le nom du périmètre affiche son calendrier.
 
-| Urgence | Couleur | Valeur |
-| --- | --- | --- |
-| Mineur | Bleu | `#478FC5` |
-| Intermédiaire | Jaune doux | `rgba(228, 201, 56, 0.70)` |
-| Prioritaire | Framboise éclairci | `rgba(197, 92, 120, 0.65)` |
-| À qualifier / non renseignée | Gris bleuté | `#7E8FA3` |
+Les raccourcis clavier **flèche gauche/droite** (chantier précédent/suivant), **Page précédente/suivante** (périmètre précédent/suivant), **Entrée** et **Échap** restent disponibles lorsque le focus est hors d’un champ de saisie ou d’un panneau. Pour les chantiers, **Entrée** ou **Espace** ouvrent également la fiche depuis un élément accessible au clavier.
 
-Ces couleurs sont communes à la légende, aux barres du calendrier, aux pastilles du portefeuille et des détails, ainsi qu'à l'export SVG. Les libellés et les hachures restent présents.
+## Table Grist et permissions
 
-### Menu unique
+Sélectionner la table **Architecture** et autoriser **« Lire la table sélectionnée »** (`read table`). Rendre visibles les colonnes suivantes dans les options du widget :
 
-Un seul bouton **Menu** rassemble :
-
-- **Affichage** : échelle, période, repère vertical, détails des lignes et informations à préciser.
-- **Filtres** : pôle, volet, périmètre, urgence, phase, responsable et fins à préciser.
-- **Effacer tous les filtres**, lorsqu'un filtre ou une recherche est actif.
-- **Actualiser les données**.
-- **Exporter le périmètre en SVG** et **Imprimer**.
-- **Ouvrir un CSV local**, dans l'aperçu hors Grist.
-
-Une flèche de retour permet de revenir au menu depuis Affichage ou Filtres. Le nombre de filtres actifs apparaît sur le bouton Menu. Échap ou le bouton de fermeture referme le panneau et rend le focus au bouton Menu. Les flèches haut/bas et les touches Début/Fin parcourent les actions du menu.
-
-Le bandeau supérieur suit l'ordre **Projection → Recherche → Portefeuille des chantiers → Menu**, à l'écran comme au clavier. En projection, la recherche est masquée ; la sortie de projection, le portefeuille, le menu commun et l'heure d'actualisation restent accessibles.
-
-### Bandeau de détail en projection
-
-Les dates de début et de fin sont retirées du bandeau inférieur du chantier sélectionné. Il conserve le titre, l'urgence, la phase, le responsable et le commentaire, selon la place disponible. Les dates restent consultables dans le calendrier et dans la fiche complète du chantier.
-
-## Navigation conservée
-
-Le portefeuille reste organisé en **Pôle → Volet → Périmètre → Chantier**. Cliquer sur un périmètre affiche sa roadmap ; son chevron déplie les chantiers.
-
-Un clic sur un chantier le met en évidence. Un double-clic ou Entrée ouvre la fiche complète. Échap ferme les menus ou la fiche ; hors des panneaux, Échap quitte la projection. Les flèches gauche/droite parcourent les sujets ; les touches Page précédente/suivante parcourent les périmètres. Aucune notion de séance, de sujet abordé ou de bilan n'est réintroduite.
-
-## Configuration Grist inchangée
-
-Conserver la table source **Architecture** et l'autorisation **Lire la table sélectionnée** (`read table`). Rendre accessibles les colonnes suivantes dans les colonnes visibles du widget :
-
-| Colonne | Rôle |
+| Colonne | Usage |
 | --- | --- |
-| Nom | Intitulé du chantier |
-| Périmètre | Regroupement dans le portefeuille |
-| Volet | Internes DT / Avec les autres directions |
-| Phase | Fiche de détail et filtres |
-| Urgence | Couleur de la barre |
-| Responsable Projet | Fiche de détail et filtres |
-| Commentaires | Fiche de détail ; résumé en projection |
-| Date de début | Début |
-| Précision début | Jour, Mois, Année |
-| Date de fin | Fin |
-| Précision fin | Jour, Mois, Année |
-| Ordre | Ordre au sein d'un périmètre |
+| Nom | Nom du chantier |
+| Périmètre | Regroupement et navigation |
+| Volet | Regroupement |
+| Phase | Fiche et filtre |
+| Urgence | Code couleur |
+| Responsable Projet | Fiche et filtre |
+| Commentaires | Fiche de détail |
+| Date de début | Début du calendrier |
+| Précision début | Jour, Mois ou Année |
+| Date de fin | Fin du calendrier |
+| Précision fin | Jour, Mois ou Année |
+| Ordre | Classement interne, **non affiché dans la fiche** |
 | Pôle (facultative) | Architecture, Lot 1, Lot 2, Lot 3… |
 
-Les noms visibles accentués et les identifiants techniques usuels restent reconnus. La colonne Pôle est facultative : une valeur absente signifie Architecture. Aucun pôle n'est inféré d'un intitulé contenant « Lot 3 ».
+Les variantes usuelles d’intitulés/identifiants techniques sont reconnues. Si la colonne Pôle est absente, le pôle `Architecture` est utilisé. Les pôles futurs sans données sont indiqués comme « Non alimenté ». Les données Grist ne sont jamais modifiées par le widget.
 
-Les pôles prévus sans données sont indiqués comme **Non alimenté**. Le widget ne lit que la table sélectionnée, pas d'autres tables de lots automatiquement.
+## Vérifications
 
-## Règles et sécurité
+- **Syntaxe JavaScript :** les deux scripts passent `node --check`.
+- **CSS :** analyse sans erreur.
+- **Tests Chromium avec données Grist simulées :** 75 vérifications réussies aux tailles **1440 × 850**, **760 × 800** et **390 × 800**. Elles couvrent les menus et leurs retours, la suppression de la projection, la navigation par périmètre, le portefeuille replié à chaque ouverture, l’ouverture au clic sur le nom ou une zone de la ligne, le double-clic non fermant, la fermeture par Échap, l’absence du champ Ordre dans la fiche, la recherche et l’absence d’erreur JavaScript.
 
-La couleur représente l'urgence, pas la phase ou l'avancement. Les dates absentes ne sont pas inventées ; une date à l'année reste imprécise. La période affichée reste commune aux périmètres. Les données de Grist ne sont jamais écrites par le widget.
-
-Hors Grist, **Menu → Ouvrir un CSV local** permet de prévisualiser un export. Son contenu n'est envoyé à aucun serveur et n'est pas intégré aux fichiers à publier.
-
-## Vérifications de cette livraison
-
-Les vérifications portent sur la syntaxe des deux scripts JavaScript et sur le code source : couleurs, ordre des commandes, bouton de retour et conservation du menu unique et du bandeau de projection sans dates. Aucun jeu de données de test n'est inclus dans les fichiers à publier.
-
-Le rendu visuel dans un navigateur et l'intégration dans le document Grist de production n'ont pas pu être validés dans l'environnement de cette livraison. Ils restent à confirmer après remplacement du fichier.
+Ces vérifications ne remplacent pas un test dans le document Grist réel. Aucun chantier réel, CSV métier ou identifiant sensible n’est distribué dans cette archive.
